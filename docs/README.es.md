@@ -24,32 +24,27 @@
 - Almacenamiento local de datos de HTML5: cookies, storage y indexed DB.
 
 ## Descripción del Proyecto
-Con el fin de ejercitar y demostrar los conocimientos adquiridos en clases virtuales este proyecto consiste en desarrollar una aplicación web similar a Wallapop. No se tiene permitido utilizar librerías o frameworks de JavaScript. En cambio, sí está permitido utilizar utilidades de CSS externas.
+Con el fin de ejercitar y demostrar los conocimientos adquiridos en clases virtuales este proyecto consiste en desarrollar una aplicación web similar a Wallapop. No se tiene permitido utilizar librerías o frameworks de JavaScript. En cambio, sí está permitido utilizar utilidades de CSS externas. 
 Además, se debe proporcionar un archivo db.json para el backend con los datos de ejemplo para la corrección de la práctica.
 
 1. Listado de anuncios.
-- Cada anuncio debe mostrar su imagen (si tiene), nombre, descripción, precio y si es
-compra o venta. Los anuncios publicados deben obtenerse a través de un endpoint,
-mencionado más adelante.
-- La pantalla de listado de los anuncios deberá gestionar todos los estados de
-interfaz correctamente: vacío (no hay anuncios), error (cuando se produce un error al cargar
-los anuncios), carga (mientras se cargan los anuncios desde el backend) y éxito
-(cuando se han recuperado los anuncios y están listos para ser mostrados).
+- Cada anuncio debe mostrar su imagen (si tiene), nombre, descripción, precio y si es compra o venta. Los anuncios publicados deben obtenerse a través de un endpoint, mencionado más adelante.
+- La pantalla de listado de los anuncios deberá gestionar todos los estados de interfaz correctamente:
+    - Vacío (no hay anuncios)
+    - Error (cuando se produce un error al cargar los anuncios).
+    - Carga (mientras se cargan los anuncios desde el backend).
+    - Éxito (cuando se han recuperado los anuncios y están listos para ser mostrados).
 - Al pulsar sobre un anuncio, iremos a la pantalla de detalle de anuncio.
-- Si el usuario ha hecho login, hay que mostrar al usuario un botón que le permita
-acceder a la pantalla de creación de un anuncio.
+- Si el usuario ha hecho login, hay que mostrar al usuario un botón que le permita acceder a la pantalla de creación de un anuncio.
 
 2. Detalle de anuncio.
-- La página de detalle de anuncio deberá mostrar foto (si tiene), nombre, descripción,
-precio y si es compra o venta.
-- En este detalle de anuncio se deberá gestionar todos los estados de interfaz
-correctamente: vacío (no existe el anuncio), error (cuando se produce un error al
-cargar la información del anuncio), carga (mientras se cargan la información del
-anuncio desde el backend) y éxito (cuando se ha recuperado la información del
-anuncio y está listo para ser mostrado).
-- Si el usuario está autenticado y el anuncio le pertenece, deberá además mostrar un
-botón que permita eliminar el anuncio (aunque antes de eliminarlo, deberá confirmar
-con el usuario si realmente quiere eliminar o no el anuncio).
+- La página de detalle de anuncio deberá mostrar foto (si tiene), nombre, descripción, precio y si es compra o venta.
+- En este detalle de anuncio se deberá gestionar todos los estados de interfaz correctamente: 
+    - Vacío (no existe el anuncio)
+    - Error (cuando se produce un error al cargar la información del anuncio)
+    - Carga (mientras se cargan la información del anuncio desde el backend)
+    - Éxito (cuando se ha recuperado la información del anuncio y está listo para ser mostrado).
+- Si el usuario está autenticado y el anuncio le pertenece, deberá además mostrar un botón que permita eliminar el anuncio (aunque antes de eliminarlo, deberá confirmar con el usuario si realmente quiere eliminar o no el anuncio).
 
 3. Creación de un anuncio.
 
@@ -58,45 +53,31 @@ con el usuario si realmente quiere eliminar o no el anuncio).
     - Nombre (obligatorio): nombre del producto.
     - Descripción (obligatorio): descripción del producto.
     - Precio (obligatorio): precio del producto.
-    - Compra/venta (obligatorio): indica si el anuncio se trata de una compra o una
-    venta.
-- Cuando el usuario envíe el formulario, deberá enviar al backend una petición para
-guardar el anuncio.
-- Se deberá gestionar todos los estados de interfaz correctamente: error (cuando se
-produce un error al guardar la información del anuncio), carga (mientras se guarda la
-información del anuncio en el backend) y éxito (cuando se han guardado
-correctamente la información del anuncio).
-- A esta pantalla sólo podremos acceder si estamos logados. En caso contrario,
-habrá que redireccionar al usuario a la página de listado de anuncios, informándole
-del motivo.
+    - Compra/venta (obligatorio): indica si el anuncio se trata de una compra o una venta.
+- Cuando el usuario envíe el formulario, deberá enviar al backend una petición para guardar el anuncio.
+- Se deberá gestionar todos los estados de interfaz correctamente:
+    - Error (cuando se produce un error al guardar la información del anuncio)
+    - Carga (mientras se guarda la información del anuncio en el backend)
+    - Éxito (cuando se han guardado correctamente la información del anuncio).
+- A esta pantalla sólo podremos acceder si estamos logados. En caso contrario, habrá que redireccionar al usuario a la página de listado de anuncios, informándole del motivo.
 
 4. Login.
 
-- La página de login deberá mostrar un formulario solicitando el nombre de usuario y
-contraseña.
-- Cuando el usuario envíe el formulario, deberá autenticar al usuario contra el
-backend para obtener un token JWT que será utilizado en las siguientes
-comunicaciones con el backend para autenticar al usuario.
-- Se deberá gestionar todos los estados de interfaz correctamente: carga, error y
-éxito.
+- La página de login deberá mostrar un formulario solicitando el nombre de usuario y contraseña.
+- Cuando el usuario envíe el formulario, deberá autenticar al usuario contra el backend para obtener un token JWT que será utilizado en las siguientes comunicaciones con el backend para autenticar al usuario.
+- Se deberá gestionar todos los estados de interfaz correctamente: carga, error y éxito.
 
 5. Registro.
 
-- Muy parecida a la de login. Deberá mostrar un formulario solicitando el nombre de
-usuario y contraseña.
+- Muy parecida a la de login. Deberá mostrar un formulario solicitando el nombre de usuario y contraseña.
 - Cuando el usuario envíe el formulario, deberá registrar al usuario en el backend.
-- Se deberá gestionar todos los estados de interfaz correctamente: carga, error y
-éxito.
+- Se deberá gestionar todos los estados de interfaz correctamente: carga, error y éxito.
 
 ### Opcional
-- Gestionar la paginación de anuncios en el listado, ya que por defecto la API
-sólo devuelve 10 elementos.
+- Gestionar la paginación de anuncios en el listado, ya que por defecto la API sólo devuelve 10 elementos.
 - Implementar un buscador de anuncios en el listado.
-- Permitir editar un anuncio, sólo si el usuario autenticado es el propietario del
-anuncio.
-- Permitir el filtrado de anuncios usando tags. Por lo que en el formulario de anuncio
-deberán poder incluirse tags de los mismos. Estos tags inicialmente pueden ser
-estáticos (siempre los mismos).
+- Permitir editar un anuncio, sólo si el usuario autenticado es el propietario del anuncio.
+- Permitir el filtrado de anuncios usando tags. Por lo que en el formulario de anuncio deberán poder incluirse tags de los mismos. Estos tags inicialmente pueden ser estáticos (siempre los mismos).
 - Unido al anterior, hacer que los tags sean dinámicos.
 
 
@@ -112,33 +93,24 @@ Se utilizará sparrest.js como API REST de apoyo para la práctica (creado por e
 
 ### Requisitos de Software
 
-- **Git** (Requerido)
-- **SourceTree** (Opcional)
-- **Visual Studio** (Ejecutado en la versión 1.99.0) (Requerido)
+- **Visual Studio** (Testeado en la versión 1.99.0)
+- **Live Server** (Addon de Visual Studio, Opcional)
+
 
 ### Descripción de los Programas
 
-- **Git**: Herramienta de control de versiones. Es imprescindible para clonar el repositorio.
-- **SourceTree**: Una herramienta visual para gestionar repositorios Git. Permite interactuar con Git de forma sencilla sin necesidad de utilizar la línea de comandos.
 - **Visual Studio**: Entorno de desarrollo integrado (IDE) necesario para ejecutar el proyecto. Asegúrate de utilizar la versión 1.99.0 para evitar problemas de compatibilidad.
+- **Live Server**: Extensión de Visual Studio que permite visualizar los archivos HTML de manera local en un navegador, mostrando los cambios en tiempo real.
 
 ### Pasos para utilizar este proyecto
 
-1. Clona el repositorio de GitHub utilizando **SourceTree** o directamente con el siguiente comando mediante Git:
+1. Descargue el comprimido del proyecto desde GitHub a su ordenador.
 
-   ```bash
-   git clone https://github.com/PabloSch26/keepcoding-frontend-javascript-submission-5.git
-
-2. Una vez clonado el repositorio:
-
-2.1 Abre el proyecto en Visual Studio agregando el directorio del proyecto a tu espacio de trabajo.
-
-2.2 -
+2. Una vez desgargado el comprimido, abra el proyecto en Visual Studio agregando el directorio del proyecto a su espacio de trabajo.
 
 ### Notas
 
 - Asegúrate de tener correctamente instalados todos los programas necesarios antes de proceder con la ejecución del proyecto.
-- Si no deseas usar SourceTree, puedes clonar el repositorio directamente usando la terminal con el comando git clone.
 
 ## Sin contribuciones ni licencias
 
