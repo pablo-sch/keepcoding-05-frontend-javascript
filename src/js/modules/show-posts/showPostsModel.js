@@ -12,10 +12,6 @@ export async function getPosts() {
        the error will have a better context so you have a better answer for detecting problems with BD. */
 
        // here "error" would return a 'status code'.
-
-       /* the error should not be sent to the file driver for it to handle, but directly send the error itself. */
-
-
        
       throw new Error("It was not possible to get the posts. Please try again later.") // this error is sended to showPostsController.js
     }
