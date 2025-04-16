@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Post</title>
+</head>
+
+<body>
+    <h1>Create Post</h1>
+
+    <form id="createPostForm">
+        <label for="post-image">Photo: </label>
+        <input type="file" id="post-image" accept="image/*">
+
+        <label for="post-name">Product Name: </label>
+        <input required id="post-name" name="post-name" type="text" placeholder="Introduce the name of your post." />
+
+        <label for="post-description">Description: </label>
+        <textarea required name="post-description" id="post-description" maxlength="300"
+            placeholder="Max. Length 300"></textarea>
+
+        <label for="post-price">Price: </label>
+        <input required id="post-price" name="post-price" type="number" placeholder="Introduce the price of your product." />
+
+        <div>
+            <label for="purchase">
+                <input required type="radio" id="purchase" name="transactionType" value="purchase">
+                Purchase
+            </label>
+    
+            <label for="sale">
+                <input required type="radio" id="sale" name="transactionType" value="sale">
+                Sale
+            </label>
+        </div>
+
+        <button>Create Post</button>
+    </form>
+
+    <script type="module" src="../src/js/modules/create-post/create-post.js"></script>
+</body>
+
+</html>

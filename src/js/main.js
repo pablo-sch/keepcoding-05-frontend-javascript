@@ -1,16 +1,18 @@
 import { loaderController } from "./components/loader/loaderController.js";
 import { notificationsController } from "./components/notifications/notificationsController.js";
+
 import { showPostsController } from "./modules/show-posts/showPostsController.js";
+import { loginController } from "../js/modules/login/loginController.js";
 
 
 // Get the DOM nodes we need to interact with.
 document.addEventListener("DOMContentLoaded", () => {
 
     // Here I go to the DOM and select the nodes I need to manage in my code and I manage them in my controllers.
-    const container = document.querySelector(".posts-container") // ".posts-container" is a Node
-    const loader = document.querySelector(".loader") // ".loader" is a Node
+    const container = document.querySelector(".posts-container")
+    const loader = document.querySelector(".loader")
     const notifications = document.querySelector(".notifications")
-
+    const session = document.querySelector(".session")
 
     const { show, hide } = loaderController(loader);
     const { showNotification } = notificationsController(notifications)
@@ -36,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
         showNotification(errorMessage) // <-- Here we do not add the type “success” so it will be “error”.
     })
 
-    // Then this next code happens in showPostsController.js
-    showPostsController(container)
-
+    showPostsController(container) // This line happens in showPostsController.js
+    loginController(session)
 })

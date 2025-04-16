@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../src/styles/notifications.css">
+
+  </head>
+  <body>
+    <h1>Login</h1>
+
+    <div id="notifications"></div>
+    <form id="loginForm">
+      <label for="mail">mail</label>
+      <input type="mail" id="mail" name="mail" required />
+
+      <br />
+
+      <label for="password">password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        minlength="6"
+      />
+
+      <button type="submit">Login</button>
+    </form>
+
+    <script type="module" src="../src/js/modules/login/login.js"></script>
+  </body>
+</html>

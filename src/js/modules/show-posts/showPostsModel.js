@@ -5,18 +5,22 @@ export async function getPosts() {
   try {
     const response = await fetch('http://localhost:8000/api/posts')
 
+    const data = await response.json();
+
     if (!response.ok) {
-      // It will occur when there is a connection to the server and to the database, but the server responds with an error.
-      throw new Error("Server error: " + response.status + " - " + response.statusText);
+      const errorMessage = data.message || 'Error desconocido';
+      console.error(`Error: ${response.status} (${response.statusText}): ${errorMessage}`);
+      throw new Error(errorMessage);
     }
 
-    posts = await response.json();
+    if (data.length === 0) {
+      const apiMessage = 'No posts to fetch in the API';
+      console.error(`Response: ${response.status} (${response.statusText}) --> ${apiMessage}`);
+      throw new Error(apiMessage);
+    }
 
   } catch (error) {
-
-    // It will occur when you cannot connect to the server or database at all.
-    console.error("Fetch error:", error);
-    throw new Error("It was not possible to get the posts. Please try again later.");
+    throw error;
   }
 
   return posts;

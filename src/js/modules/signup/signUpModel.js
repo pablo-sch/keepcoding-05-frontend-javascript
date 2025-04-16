@@ -12,14 +12,17 @@ export const createUser = async (name, email, pw) => {
       }
     });
 
+    const data = await response.json();
+
+    // If response is not OK, throw an error with the response message
     if (!response.ok) {
-      // If response is not OK, throw an error with the response message
-      const data = await response.json();
-      throw new Error(data.message || "Server error occurred.");
+      const errorMessage = data.message;
+      console.error(`Error: ${response.status} (${response.statusText}) --> ${errorMessage}`);
+      throw new Error(errorMessage);
     }
 
   } catch (error) {
-    console.error('Error during user creation:', error);
+
     throw error;
   }
 };

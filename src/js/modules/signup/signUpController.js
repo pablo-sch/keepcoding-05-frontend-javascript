@@ -1,24 +1,24 @@
 import { REGEXP } from "../../utils/constants.js";
 import { createUser } from "../signup/signUpModel.js";
 
-export const signUpController = (form) => {
+export const signUpController = (signupForm) => {
 
-  form.addEventListener("submit", (event) => {
+  signupForm.addEventListener("submit", (event) => {
 
     /* By default, when a form is submitted the browser reloads the page and 
     all JavaScript and current app state information is lost. */
     event.preventDefault();
 
-    const nameElement = form.querySelector('#name');
+    const nameElement = signupForm.querySelector('#name');
     const name = nameElement.value;
 
-    const emailElement = form.querySelector('#email');
+    const emailElement = signupForm.querySelector('#email');
     const email = emailElement.value;
 
-    const passwordElement = form.querySelector('#password');
+    const passwordElement = signupForm.querySelector('#password');
     const password = passwordElement.value;
 
-    const passwordConfirmElement = form.querySelector('#password-confirm');
+    const passwordConfirmElement = signupForm.querySelector('#password-confirm');
     const passwordConfirm = passwordConfirmElement.value;
 
     const errors = []
@@ -36,29 +36,29 @@ export const signUpController = (form) => {
       errors.push('The email format is incorrect.')
     }
 
-    // check that the passwords are the same
+    // check that the passwords are the sameH
     if (password !== passwordConfirm) {
       errors.push('Passwords are not the same.')
     }
 
     if (errors.length === 0) {
-      handleCreateUser(name, email, password, form)
+      handleCreateUser(name, email, password, signupForm)
     } else {
       errors.forEach(error => {
-        const event = new CustomEvent("register-error", {
-          detail: error
+        const event = new CustomEvent("sigup-error", {
+          detail: error // <-- "error" are actually theh
         });
-        form.dispatchEvent(event)
+        signupForm.dispatchEvent(event)
       })
     }
   })
 
-  const handleCreateUser = async (name, email, password, form) => {
+  const handleCreateUser = async (name, email, password, signupForm) => {
     try {
 
       /* Insert User to API REST VVVVVVVVVVVVVVVVVVV */
       await createUser(name, email, password);
-      const event = new CustomEvent("register-ok", {
+      const event = new CustomEvent("sigup-ok", {
         detail: {
           message: 'You have successfully registered.',
           type: 'success'
@@ -66,19 +66,19 @@ export const signUpController = (form) => {
       });
       /* AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
 
-      form.dispatchEvent(event)
+      signupForm.dispatchEvent(event)
       setTimeout(() => {
         window.location = '/'
       }, 5000);
 
     } catch (error) {
 
-      const event = new CustomEvent("register-error", {
+      const event = new CustomEvent("sigup-error", {
         detail: error.message
       });
 
       // This event is sent to "signup" as it is being listened to.
-      form.dispatchEvent(event)
+      signupForm.dispatchEvent(event)
     }
   }
 }
