@@ -44,7 +44,8 @@ function drawPosts(posts, container) {
 
         posts.forEach((post) => { // If "posts" is an empty array, the "forEach" will not be executed.
 
-            const postHtml = document.createElement("div");
+            const postHtml = document.createElement("a");
+            postHtml.setAttribute("href", `./views/post-detail.html?id=${post.id}`)
             // Creates an empty HTML element in memory (postHtml), which is not yet in the DOM.
 
             postHtml.innerHTML = buildPost(post)

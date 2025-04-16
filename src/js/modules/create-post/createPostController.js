@@ -26,9 +26,7 @@ export const createPostController = (createPostForm) => {
     })
 
     const handlecreatePost = async (postData, createPostForm) => {
-
         try {
-
             await createPost(postData);
 
             dispatchCreateProductSuccess(createPostForm, 'Post created successfully.');
