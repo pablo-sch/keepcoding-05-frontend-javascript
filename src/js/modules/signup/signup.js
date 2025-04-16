@@ -8,12 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const { showNotification } = notificationsController(notifications)
 
-  sigupForm.addEventListener("sigup-error", (event) => {
+  sigupForm.addEventListener("signup-error", (event) => {
     const message = event.detail;
     showNotification(message)
   })
 
-  sigupForm.addEventListener("sigup-ok", (event) => {
+  sigupForm.addEventListener("signup-ok", (event) => {
     const message = event.detail.message;
     const type = event.detail.type;
     showNotification(message, type)

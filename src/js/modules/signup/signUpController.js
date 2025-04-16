@@ -36,7 +36,7 @@ export const signUpController = (signupForm) => {
       errors.push('The email format is incorrect.')
     }
 
-    // check that the passwords are the sameH
+    // check that the passwords are the same
     if (password !== passwordConfirm) {
       errors.push('Passwords are not the same.')
     }
@@ -45,8 +45,8 @@ export const signUpController = (signupForm) => {
       handleCreateUser(name, email, password, signupForm)
     } else {
       errors.forEach(error => {
-        const event = new CustomEvent("sigup-error", {
-          detail: error // <-- "error" are actually theh
+        const event = new CustomEvent("signup-error", {
+          detail: error // <-- "error" is actually the descriptions
         });
         signupForm.dispatchEvent(event)
       })
@@ -58,7 +58,7 @@ export const signUpController = (signupForm) => {
 
       /* Insert User to API REST VVVVVVVVVVVVVVVVVVV */
       await createUser(name, email, password);
-      const event = new CustomEvent("sigup-ok", {
+      const event = new CustomEvent("signup-ok", {
         detail: {
           message: 'You have successfully registered.',
           type: 'success'
@@ -73,7 +73,7 @@ export const signUpController = (signupForm) => {
 
     } catch (error) {
 
-      const event = new CustomEvent("sigup-error", {
+      const event = new CustomEvent("signup-error", {
         detail: error.message
       });
 
