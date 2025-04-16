@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="../src/styles/notifications.css">
+
+</head>
+<body>
+    <div id="notifications"></div>
+    <form>
+      <label for="name">Name: </label>
+      <input
+        id="name"
+        name="name"
+        type="text"
+        placeholder="Introduce your name"
+      />
+
+      <label for="email">Email:</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        placeholder="Introduce your email"
+        required
+      />
+
+      <label for="password">Password:</label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        placeholder="Introduce your password"
+        required
+        minlength="6"
+      />
+
+      <label for="password-confirm">Confirm Password:</label>
+      <input
+        id="password-confirm"
+        name="password-confirm"
+        type="password"
+        placeholder="Confirm your password"
+        required
+        minlength="6"
+      />
+
+      <button type="submit">Create User</button>
+    </form>
+
+    <script type="module" src="../src/js/modules/signup/signup.js"></script>
+</body>
+</html>

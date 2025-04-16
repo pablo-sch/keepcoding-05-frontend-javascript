@@ -1,20 +1,23 @@
 export async function getPosts() {
 
-    let posts = [];
-  
-    try {
-      const response = await fetch('http://localhost:8000/api/posts')
-      posts = await response.json(); 
-      // This code line won't be executed if fech fails.
-      // Automatically catch(error) will be executed.
-    } catch (error) {
-      /* being in the model if an error occurs on fech,
-       the error will have a better context so you have a better answer for detecting problems with BD. */
+  let posts = [];
 
-       // here "error" would return a 'status code'.
-       
-      throw new Error("It was not possible to get the posts. Please try again later.") // this error is sended to showPostsController.js
+  try {
+    const response = await fetch('http://localhost:8000/api/posts')
+
+    if (!response.ok) {
+      // It will occur when there is a connection to the server and to the database, but the server responds with an error.
+      throw new Error("Server error: " + response.status + " - " + response.statusText);
     }
-    
-    return posts;
+
+    posts = await response.json();
+
+  } catch (error) {
+
+    // It will occur when you cannot connect to the server or database at all.
+    console.error("Fetch error:", error);
+    throw new Error("It was not possible to get the posts. Please try again later.");
   }
+
+  return posts;
+}

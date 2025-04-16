@@ -30,9 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     container.addEventListener('load-posts-finished', () => {
         hide();
-        showNotification('Posts Loaded' , 'success') // <-- Here we add type as “success”.
     })
-    container.addEventListener('load-tweets-error', (event) => {
+    container.addEventListener('load-posts-error', (event) => {
         const errorMessage = event.detail; // <-- Here we are passing the error obtained from "showPostsController.js".
         showNotification(errorMessage) // <-- Here we do not add the type “success” so it will be “error”.
     })
