@@ -2,7 +2,7 @@ import { postDetailController } from "../post-detail/postDetailController.js";
 import { notificationsController } from "../../components/notifications/notificationsController.js";
 
 
-document.addEventListener("DOMContentLoaded", () => {
+export function initPostDetail() {
 
     const searchParams = new URLSearchParams(window.location.search);
     const postId = searchParams.get("id");
@@ -27,4 +27,4 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         window.location = '/'
     }
-})
+}

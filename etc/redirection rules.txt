@@ -1,0 +1,60 @@
+
+Redirection Rules
+
+1. Access login.html directly
+   - Condition: Without token
+   - Behavior: Access login.html page (if no token)
+
+2. Access signup.html directly
+   - Condition: Without token
+   - Behavior: Access signup.html page (if no token)
+
+3. Access create-post.html directly
+   - Condition: Without token
+   - Behavior: Redirect to index.html (if no token)
+
+4. Access post-detail.html directly
+   - Condition: Without token
+   - Behavior: Access post-detail.html without redirect (no token needed)
+
+   ---------
+
+5. Access login.html directly (with token)
+   - Condition: With token
+   - Behavior: Redirect to index.html (if already has a token)
+
+6. Access signup.html directly (with token)
+   - Condition: With token
+   - Behavior: Redirect to index.html (if already has a token)
+
+7. Access create-post.html directly (with token)
+   - Condition: With token
+   - Behavior: Access create-post.html page (if has token)
+
+8. Access post-detail.html directly (with token)
+   - Condition: With token
+   - Behavior: Access post-detail.html page (if has token)
+
+   ++++++++++
+
+9. Login button
+   - Condition: Visible only if no token
+   - Behavior: Redirect to login.html if no token; redirect to index.html if has token
+
+10. Sign Up button
+    - Condition: Visible only if no token
+    - Behavior: Redirect to signup.html if no token; redirect to index.html if has token
+
+    ---------
+
+11. Logout button
+    - Condition: Visible only if has token
+    - Behavior: Removes the token and redirects to index.html
+
+12. Create Post button
+    - Condition: Always visible
+    - Behavior: Redirect to create-post.html if has token; redirect to index.html if no token
+
+13. Index button
+    - Condition: Always visible
+    - Behavior: Redirect to index.html

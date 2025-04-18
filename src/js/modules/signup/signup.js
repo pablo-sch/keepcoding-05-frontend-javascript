@@ -1,7 +1,7 @@
 import { signUpController } from "./signUpController.js";
 import {notificationsController} from "../../components/notifications/notificationsController.js"
 
-document.addEventListener("DOMContentLoaded", () => {
+export function initSignUp() {
   
   const sigupForm = document.querySelector("#signupForm");
   const notifications = document.querySelector("#notifications");
@@ -19,5 +19,5 @@ document.addEventListener("DOMContentLoaded", () => {
     showNotification(message, type)
   })
 
-  signUpController(registerForm)
-})
+  signUpController(sigupForm)
+}

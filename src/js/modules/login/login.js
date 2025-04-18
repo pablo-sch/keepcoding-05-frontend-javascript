@@ -1,7 +1,7 @@
 import { loginController } from "./loginController.js"
 import {notificationsController} from "../../components/notifications/notificationsController.js"
  
-document.addEventListener("DOMContentLoaded", () => {
+export function initLogin() {
 
   const loginForm = document.querySelector("#loginForm")
   const notifications = document.querySelector("#notifications");
@@ -20,4 +20,4 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   loginController(loginForm)
-})
+}

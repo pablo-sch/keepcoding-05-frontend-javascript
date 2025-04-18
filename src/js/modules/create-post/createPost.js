@@ -1,7 +1,7 @@
 import { createPostController } from "../create-post/createPostController.js";
 import {notificationsController} from "../../components/notifications/notificationsController.js"
 
-document.addEventListener("DOMContentLoaded", () => {
+export function initCreatePost() {
     const token = localStorage.getItem('accessToken');
 
     if (!token) {
@@ -25,4 +25,4 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     createPostController(createPostForm)
-})
+}
