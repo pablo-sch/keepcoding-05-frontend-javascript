@@ -1,16 +1,18 @@
 import { getPosts } from "./showPostsModel.js"
 import { buildPost } from './showPostsView.js';
 
+//===================================================================================================================
 export async function showPostsController(container) { // the container is ".posts-container"
-    
+
     try {
-
-
         //container.dispatchEvent(new CustomEvent("load-posts-started"))
         const event = new CustomEvent("load-posts-started");
         container.dispatchEvent(event); // --> This "event" goes to "load-posts-started".
 
+        //===================================
         const posts = await getPosts();
+        //===================================
+
         drawPosts(posts, container)
 
     } catch (error) {
@@ -27,13 +29,12 @@ export async function showPostsController(container) { // the container is ".pos
 
     } finally {
 
-        //container.dispatchEvent(new CustomEvent("load-posts-finished"))
         const event = new CustomEvent("load-posts-finished")
         container.dispatchEvent(event) // --> This "event" goes to "load-posts-finished".
-
     }
 }
 
+//-------------------------------------------------------------------------------------------------------------------
 function drawPosts(posts, container) {
 
     container.innerHTML = ''; // I clean all displayed posts if any.
@@ -58,3 +59,4 @@ function drawPosts(posts, container) {
         })
     }
 }
+

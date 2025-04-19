@@ -2,7 +2,7 @@ export function isAuthenticated() {
   return !!localStorage.getItem('accessToken');
 }
 
-export function redirectIfNotAuthenticated(path2) {
+export function redirectIfNotAuthenticated() {
 
   const token = isAuthenticated();
   const path = window.location.pathname;

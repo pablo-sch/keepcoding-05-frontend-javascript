@@ -1,8 +1,10 @@
 import { REGEXP } from "../../utils/constants.js";
 import { createUser } from "../signup/signUpModel.js";
 
+//===================================================================================================================
 export const signUpController = (signupForm) => {
 
+  //-------------------------------------------------------------------------------------------------------------------
   signupForm.addEventListener("submit", (event) => {
 
     /* By default, when a form is submitted the browser reloads the page and 
@@ -45,40 +47,74 @@ export const signUpController = (signupForm) => {
       handleCreateUser(name, email, password, signupForm)
     } else {
       errors.forEach(error => {
+
+        /* 
         const event = new CustomEvent("signup-error", {
           detail: error // <-- "error" is actually the descriptions
         });
+
         signupForm.dispatchEvent(event)
+        */
+
+        dispatchNotification('signup-error', error)
       })
     }
   })
 
+  //-------------------------------------------------------------------------------------------------------------------
   const handleCreateUser = async (name, email, password, signupForm) => {
     try {
+      //----------------------------------------------------
+      const event = new CustomEvent("load-posts-started");
+      signupForm.dispatchEvent(event);
+      //----------------------------------------------------
 
-      /* Insert User to API REST VVVVVVVVVVVVVVVVVVV */
+      //====================================================
       await createUser(name, email, password);
+      //====================================================
+      /* 
       const event = new CustomEvent("signup-ok", {
         detail: {
           message: 'You have successfully registered.',
           type: 'success'
         }
       });
-      /* AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA */
 
       signupForm.dispatchEvent(event)
-      setTimeout(() => {
-        window.location = '/'
-      }, 5000);
+
+       */
+      dispatchNotification(signupForm, "signup-ok", {
+        message: 'You have successfully registered.',
+        type: 'success'
+      });
+
+      
+      setTimeout(() => { window.location = '/' }, 5000);
 
     } catch (error) {
 
+      /* 
       const event = new CustomEvent("signup-error", {
         detail: error.message
       });
 
       // This event is sent to "signup" as it is being listened to.
+      signupForm.dispatchEvent(event) 
+      */
+
+      dispatchNotification('signup-error', error.message)
+
+    } finally {
+      //----------------------------------------------------
+      const event = new CustomEvent("load-posts-finished")
       signupForm.dispatchEvent(event)
+      //----------------------------------------------------
     }
+  }
+
+  //-------------------------------------------------------------------------------------------------------------------
+  const dispatchNotification = (eventType, message) => {
+    const event = new CustomEvent(eventType, { detail: message });
+    signupForm.dispatchEvent(event);
   }
 }

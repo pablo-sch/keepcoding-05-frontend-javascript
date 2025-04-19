@@ -1,5 +1,8 @@
 import { createPostController } from "../create-post/createPostController.js";
+
 import {notificationsController} from "../../components/notifications/notificationsController.js"
+import { loaderController } from "../../components/loader/loaderController.js";
+
 
 export function initCreatePost() {
     const token = localStorage.getItem('accessToken');
@@ -10,8 +13,18 @@ export function initCreatePost() {
 
     const createPostForm = document.querySelector('#createPostForm')
     const notifications = document.querySelector("#notifications");
+    const loader = document.querySelector(".loader")
 
     const { showNotification } = notificationsController(notifications)
+    const { show, hide } = loaderController(loader);
+
+    createPostForm.addEventListener('load-posts-started', () => {
+        show();
+    })
+
+    createPostForm.addEventListener('load-posts-finished', () => {
+        hide();
+    })
 
     createPostForm.addEventListener("createPost-ok", (event) => {
         const message = event.detail.message;

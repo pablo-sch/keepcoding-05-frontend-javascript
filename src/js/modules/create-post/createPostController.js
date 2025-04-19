@@ -1,6 +1,9 @@
 import { createPost } from "./createPostModel.js";
 
+//===================================================================================================================
 export const createPostController = (createPostForm) => {
+
+    //-------------------------------------------------------------------------------------------------------------------
     createPostForm.addEventListener('submit', async (event) => {
 
         event.preventDefault();
@@ -21,39 +24,60 @@ export const createPostController = (createPostForm) => {
             isPurchase: isPurchase
         }
 
-        handlecreatePost(postData, createPostForm)
+        handlecreatePost(postData)
 
     })
 
-    const handlecreatePost = async (postData, createPostForm) => {
+    //-------------------------------------------------------------------------------------------------------------------
+    const handlecreatePost = async (postData) => {
         try {
+            //----------------------------------------------------
+            const event = new CustomEvent("load-posts-started");
+            createPostForm.dispatchEvent(event);
+            //----------------------------------------------------
+
+            //====================================================
             await createPost(postData);
+            //====================================================
 
-            dispatchCreateProductSuccess(createPostForm, 'Post created successfully.');
+            //dispatchCreateProductSuccess(createPostForm, 'Post created successfully.');
+            dispatchNotification('createPost-ok', {
+                message: 'Post created successfully.',
+                type: 'success'
+            })
 
-            setTimeout(() => {
-                window.location = '/';
-            }, 2000)
+            setTimeout(() => { window.location = '/'; }, 3000)
 
         } catch (error) {
-            dispatchCreateProductError(createPostForm, error.message);
+            //dispatchCreateProductError(createPostForm, error.message);
+            dispatchNotification('createPost-error', error.message)
+        } finally {
+            //----------------------------------------------------
+            const event = new CustomEvent("load-posts-finished")
+            createPostForm.dispatchEvent(event)
+            //----------------------------------------------------
         }
     }
-
-    function dispatchCreateProductSuccess(createPostForm, successMessage) {
-        const event = new CustomEvent("createPost-ok", {
-            detail: {
-                message: successMessage,
-                type: 'success'
-            }
-        });
+    //-------------------------------------------------------------------------------------------------------------------
+    function dispatchNotification(eventType, message) {
+        const event = new CustomEvent(eventType, { detail: message })
         createPostForm.dispatchEvent(event)
     }
-
-    function dispatchCreateProductError(createPostForm, errorMessage) {
-        const event = new CustomEvent("createPost-error", {
-            detail: errorMessage
-        });
-        createPostForm.dispatchEvent(event)
-    }
+    //-------------------------------------------------------------------------------------------------------------------
+    /*     function dispatchCreateProductSuccess(createPostForm, successMessage) {
+            const event = new CustomEvent("createPost-ok", {
+                detail: {
+                    message: successMessage,
+                    type: 'success'
+                }
+            });
+            createPostForm.dispatchEvent(event)
+        }
+    
+        function dispatchCreateProductError(createPostForm, errorMessage) {
+            const event = new CustomEvent("createPost-error", {
+                detail: errorMessage
+            });
+            createPostForm.dispatchEvent(event)
+        } */
 }

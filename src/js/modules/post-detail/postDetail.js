@@ -1,5 +1,7 @@
 import { postDetailController } from "../post-detail/postDetailController.js";
+
 import { notificationsController } from "../../components/notifications/notificationsController.js";
+import { loaderController } from "../../components/loader/loaderController.js";
 
 
 export function initPostDetail() {
@@ -8,18 +10,29 @@ export function initPostDetail() {
     const postId = searchParams.get("id");
 
     const notifications = document.querySelector("#notifications")
+    const loader = document.querySelector(".loader")
+
 
     const { showNotification } = notificationsController(notifications)
+    const { show, hide } = loaderController(loader);
 
     if (postId) {
 
         const postContainer = document.querySelector(".post-container")
 
-        document.addEventListener("post-error", (event) => {
+        postContainer.addEventListener('load-posts-started', () => {
+            show();
+        })
+
+        postContainer.addEventListener('load-posts-finished', () => {
+            hide();
+        })
+
+        postContainer.addEventListener("post-error", (event) => {
             showNotification(event.detail)
         })
 
-        document.addEventListener("post-success", (event) => {
+        postContainer.addEventListener("post-success", (event) => {
             showNotification(event.detail.message, event.detail.type)
         })
 

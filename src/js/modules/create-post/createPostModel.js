@@ -17,18 +17,19 @@ export const createPost = async (postData) => {
       }
     });
 
-    const data = await response.json();
-
-    // If response is not OK, throw an error with the response message
     if (!response.ok) {
       const errorMessage = data.message;
       console.error(`Error: ${response.status} (${response.statusText}) --> ${errorMessage}`);
-      throw new Error(errorMessage);
+      throw new Error(response.status + " " + response.statusText);
     }
 
-  } catch (error) {
-    throw error;
+    const data = await response.json();
 
+  } catch (error) {
+    if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+      throw new Error('Oops... There was a problem with the server connection.');
+    }
+    throw error
   }
 
 }

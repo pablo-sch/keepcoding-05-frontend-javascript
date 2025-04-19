@@ -4,17 +4,22 @@ export async function postDetailModel(postId) {
     const response = await fetch(`http://localhost:8000/api/posts/${postId}?_expand=user`);
 
     if (!response.ok) {
-      const errorMessage = posts.message;
+
+      const errorMessage = response.message;
+
       console.error(`Error: ${response.status} (${response.statusText}): ${errorMessage}`);
-      throw new Error(errorMessage);
+      throw new Error(response.status + " " + response.statusText);
+    } else {
+      const postDetail = await response.json();
+
+      return postDetail;
     }
 
-    const postDetail = await response.json();
-
-    return postDetail;
-
   } catch (error) {
-    throw error;
+    if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+      throw new Error('Oops... There was a problem with the server connection.');
+    }
+    throw error
   }
 }
 //-----------------------------------------------------------------------------------------------
@@ -31,12 +36,15 @@ export async function removepost(postId) {
     });
 
     if (!response.ok) {
-      const errorMessage = posts.message;
+      const errorMessage = response.message;
       console.error(`Error: ${response.status} (${response.statusText}): ${errorMessage}`);
-      throw new Error(errorMessage);
+      throw new Error(response.status + " " + response.statusText);
     }
   } catch (error) {
-    throw error;
+    if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+      throw new Error('Oops... There was a problem with the server connection.');
+    }
+    throw error
   }
 }
 //-----------------------------------------------------------------------------------------------
@@ -52,16 +60,20 @@ export async function getLoggedInUserInfo() {
     });
 
     if (!response.ok) {
-      const errorMessage = posts.message;
+      const errorMessage = response.message;
       console.error(`Error: ${response.status} (${response.statusText}): ${errorMessage}`);
-      throw new Error(errorMessage);
+      throw new Error(response.status + " " + response.statusText);
     }
 
     const user = await response.json();
 
     return user;
+
   } catch (error) {
-    throw error;
+    if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+      throw new Error('Oops... There was a problem with the server connection.');
+    }
+    throw error
   }
 }
 //-----------------------------------------------------------------------------------------------
