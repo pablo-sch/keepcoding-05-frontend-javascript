@@ -9,7 +9,7 @@ export function initPostDetail() {
     const searchParams = new URLSearchParams(window.location.search);
     const postId = searchParams.get("id");
 
-    const notifications = document.querySelector("#notifications")
+    const notifications = document.querySelector(".notifications")
     const loader = document.querySelector(".loader")
 
 
@@ -18,7 +18,7 @@ export function initPostDetail() {
 
     if (postId) {
 
-        const postContainer = document.querySelector(".post-container")
+        const postContainer = document.querySelector(".postDetail-container")
 
         postContainer.addEventListener('load-posts-started', () => {
             show();

@@ -1,0 +1,18 @@
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+
+    padding: clamp(1rem, 5vw, 2rem);
+
+    background-color: var(--bg-color-3);
+}
+
+.form input, textarea, label, p{
+    margin-bottom: 1rem;
+}
+
+.form label{
+    font-weight: bold;
+}

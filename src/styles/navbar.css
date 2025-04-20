@@ -1,0 +1,22 @@
+.navbar {
+    display: flex;
+
+    font-weight: bold;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(1px, 5vw, 16px);
+
+    background-color: var(--bg-color);
+}
+
+.navbar a {
+    padding: clamp(1px, 5vw, 8px);
+
+    cursor: pointer;
+    background-color: var(--bg-color-4);
+}
+
+.nav-right {
+    display: flex;
+    gap: clamp(1px, 5vw, 16px);
+}

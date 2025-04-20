@@ -9,7 +9,7 @@ import {
 } from './navbarController.js';
 
 export function navbar() {
-  const container = document.getElementById('navbar');
+  const container = document.querySelector('.navbar');
   if (!container) return;
 
   container.innerHTML = navbarView();

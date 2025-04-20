@@ -1,0 +1,64 @@
+:root {
+    --bg-color: #575757e8;
+    --bg-color-2: #747474;
+    --bg-color-3: #a1a1a1;
+    --bg-color-4: #b3b3b3;
+
+    --bg-post: white;
+
+    --btn-X-notification-success: #1e84be;
+    --btn-X-notification-error: brown;
+
+    font-family: Arial, sans-serif;
+    font-size: clamp(2px, 5vw, 16px);
+}
+
+body {
+    background-color: var(--bg-color-2);
+
+}
+
+main {
+    margin: clamp(5px, 2vw , 1rem) clamp(10px, 5vw , 2rem);
+    background-color: var(--bg-color-4);
+}
+
+video,
+iframe {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+
+    border: 2px solid;
+    border-color: black;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4{
+    padding-bottom: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
+    text-align: justify;
+}
+
+textarea{
+    padding: 4px;
+}
+
+p {
+    white-space: pre-line;
+}

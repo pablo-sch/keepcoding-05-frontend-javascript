@@ -1,12 +1,12 @@
 
 export function navbarView() {
   return `
-    <nav>
-      <button id="index-btn">Inicio</button>
-      <button id="create-post-btn">Crear Post</button>
-      <button id="login-btn">Login</button>
-      <button id="signup-btn">Sign Up</button>
-      <button id="logout-btn">Logout</button>
-    </nav>
+    <a id="index-btn">Home</a>
+    <div class="nav-right">
+      <a id="create-post-btn">Create Post</a>
+      <a id="login-btn">Login</a>
+      <a id="signup-btn">Sign Up</a>
+      <a id="logout-btn">Log Out</a>
+    </div>
   `;
 }

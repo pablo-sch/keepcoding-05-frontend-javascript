@@ -1,11 +1,12 @@
 export const buildpostDetailView = (post) => {
   let postView = `
-        <p>${post.user.name}</p>
-        <p>${post.name}</p>
-        <p>${post.photo}</p>
+        <label> Post Owner: ${post.user.name}</label>
+        <label>${post.name}</label>
+        <label>${post.photo}</label>
+        <label> Description:</label>
         <p>${post.description}</p>
-        <p>${post.price}</p>
-        <p>${post.isPurchase}</p>
+        <label>Price: $ ${post.price}</label>
+        <label>${post.isPurchase}</label>
       `;
 
   return postView
@@ -13,7 +14,7 @@ export const buildpostDetailView = (post) => {
 
 export const buildRemovepostButton = () => {
   const removeButton = document.createElement("button");
-  removeButton.textContent = 'Borrar post';
+  removeButton.textContent = 'Delete Post';
 
   return removeButton;
 }

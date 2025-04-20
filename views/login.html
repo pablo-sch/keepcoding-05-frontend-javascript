@@ -4,33 +4,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <title>Login</title>
 
-  <link rel="stylesheet" href="../src/styles/notifications.css">
-  <link rel="stylesheet" href="../src/styles/loader.css">
+  <link rel="stylesheet" href="../src/styles/normalize.css">
+  <link rel="stylesheet" href="../src/styles/common.css">
+
+  <link rel="stylesheet" href="../src/styles/navbar.css">
+  <link rel="stylesheet" href="../src/styles/form.css">
+
+  <link rel="stylesheet" href="../src/styles/components/notifications.css">
+
+  <link rel="stylesheet" href="../src/styles/components/loader.css">
+  <link rel="stylesheet" href="../src/styles/components/loader-container.css">
 
 </head>
 
 <body>
-  <div id="navbar"></div>
+  <div class="navbar"></div>
 
-  <h1>Login</h1>
-  <div id="notifications"></div>
-  <div class="loader hidden"></div>
+  <main>
+    <h1>Login</h1>
+    <div class="loader-container">
+      <div class="loader hidden"></div>
+    </div>
 
+    <div class="notifications"></div>
 
-  <form id="loginForm">
-    <label for="mail">mail</label>
-    <input type="mail" id="mail" name="mail" required />
+    <form id="loginForm" class="form">
+      <label for="mail">Email:</label>
+      <input type="mail" id="mail" name="mail" placeholder="Introduce your Email" />
 
-    <br />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Introduce your password" minlength="4"
+        required />
 
-    <label for="password">password</label>
-    <input type="password" id="password" name="password" required minlength="6" />
-
-    <button type="submit">Login</button>
-  </form>
+      <button type="submit">Login</button>
+    </form>
+  </main>
 
   <script type="module" src="../src/js/main.js"></script>
 </body>

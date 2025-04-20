@@ -4,21 +4,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Post Detail</title>
-  <link rel="stylesheet" href="../src/styles/notifications.css">
-  <link rel="stylesheet" href="../src/styles/loader.css">
+
+  <link rel="stylesheet" href="../src/styles/normalize.css">
+  <link rel="stylesheet" href="../src/styles/common.css">
+
+  <link rel="stylesheet" href="../src/styles/navbar.css">
+  <link rel="stylesheet" href="../src/styles/form.css">
+
+  <link rel="stylesheet" href="../src/styles/components/notifications.css">
+
+  <link rel="stylesheet" href="../src/styles/components/loader.css">
+  <link rel="stylesheet" href="../src/styles/components/loader-container.css">
 
 </head>
 
 <body>
 
-  <div id="navbar"></div>
+  <div class="navbar"></div>
 
   <h1>Product Detail</h1>
 
-  <div class="loader hidden"></div>
-  <div id="notifications"></div>
-  <div class="post-container"></div>
+  <div class="loader-container">
+    <div class="loader hidden"></div>
+  </div>
+
+  <div class="notifications"></div>
+
+  <div class="postDetail-container form"></div>
 
   <script type="module" src="../src/js/main.js"></script>
 </body>

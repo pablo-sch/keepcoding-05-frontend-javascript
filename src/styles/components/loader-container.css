@@ -1,0 +1,9 @@
+.loader-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-container:has(.loader:not(.hidden)) {
+    padding-bottom: 2rem;
+  }

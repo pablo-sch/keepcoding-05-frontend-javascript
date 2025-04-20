@@ -1,0 +1,47 @@
+.notification {
+  display: flex;
+  justify-content: space-between;
+  padding: clamp(1px, 4vw, 1rem);
+
+  gap: 1rem;
+  border: solid 1px;
+}
+
+.notification button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 1.5rem;
+  height: 1.5rem;
+
+  font-weight: bold;
+  font-size: 1rem;
+
+  border: none;
+  outline: none;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+
+}
+
+.notification.success {
+  background-color: lightblue;
+  border-color: rgb(0, 172, 230);
+
+  button {
+    background-color: var(--btn-X-notification-success)
+  }
+}
+
+.notification.error {
+  background-color: lightcoral;
+  border-color: rgb(242, 8, 8);
+
+  button {
+    background-color: var(--btn-X-notification-error)
+  }
+}

@@ -6,7 +6,7 @@ import { loaderController } from "../../components/loader/loaderController.js";
 export function initLogin() {
 
   const loginForm = document.querySelector("#loginForm")
-  const notifications = document.querySelector("#notifications");
+  const notifications = document.querySelector(".notifications");
   const loader = document.querySelector(".loader")
 
   const { showNotification } = notificationsController(notifications)

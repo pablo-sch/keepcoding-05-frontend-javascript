@@ -12,7 +12,7 @@ export function initCreatePost() {
     }
 
     const createPostForm = document.querySelector('#createPostForm')
-    const notifications = document.querySelector("#notifications");
+    const notifications = document.querySelector(".notifications");
     const loader = document.querySelector(".loader")
 
     const { showNotification } = notificationsController(notifications)
