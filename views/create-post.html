@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../src/styles/common.css">
 
     <link rel="stylesheet" href="../src/styles/navbar.css">
+    <link rel="stylesheet" href="src/styles/footer.css">
+
     <link rel="stylesheet" href="../src/styles/form.css">
 
     <link rel="stylesheet" href="../src/styles/components/notifications.css">
@@ -38,14 +40,15 @@
         <input type="file" id="post-image" name="photo" accept="image/*">
 
         <label for="post-name">Product Name: </label>
-        <input required id="post-name" name="post-name" type="text" placeholder="Introduce the name of your post." />
+        <input required id="post-name" name="post-name" type="text" maxlength="120"
+            placeholder="Introduce the name of your post." />
 
         <label for="post-description">Description: </label>
         <textarea required name="post-description" id="post-description" maxlength="300"
             placeholder="Max. Length 300"></textarea>
 
         <label for="post-price">Price: </label>
-        <input required id="post-price" name="post-price" type="number"
+        <input required id="post-price" name="post-price" type="number" min="1" max="9999999" step="0.01"
             placeholder="Introduce the price of your product." />
 
         <div>
@@ -63,6 +66,7 @@
         <button>Create Post</button>
     </form>
 
+    <div class="footer"></div>
     <script type="module" src="../src/js/main.js"></script>
 </body>
 

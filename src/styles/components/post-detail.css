@@ -1,0 +1,29 @@
+.image-container {
+    position: relative;
+    display: flex;
+    width: auto;
+
+    justify-content: center;
+    align-content: center;
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.post-image {
+    max-height: none;
+
+    width: auto;
+    height: clamp(120px, 80vw, 480px);
+}
+
+.sale-label {
+    font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+    .post-image {
+        height: clamp(480px, 80vw, 720px);
+    }
+}

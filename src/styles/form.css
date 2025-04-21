@@ -9,10 +9,13 @@
     background-color: var(--bg-color-3);
 }
 
-.form input, textarea, label, p{
+.form input,
+textarea,
+label,
+p {
     margin-bottom: 1rem;
 }
 
-.form label{
+.form label {
     font-weight: bold;
 }

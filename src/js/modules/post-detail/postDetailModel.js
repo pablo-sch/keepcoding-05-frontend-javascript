@@ -61,8 +61,8 @@ export async function getLoggedInUserInfo() {
 
     if (!response.ok) {
       const errorMessage = response.message;
-      console.error(`Error: ${response.status} (${response.statusText}): ${errorMessage}`);
-      throw new Error(response.status + " " + response.statusText);
+      console.error(`Error: ${response.status} (${response.statusText})`);
+      //throw new Error(response.status + " " + response.statusText);
     }
 
     const user = await response.json();

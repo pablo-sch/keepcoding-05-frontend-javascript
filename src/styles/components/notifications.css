@@ -1,10 +1,37 @@
+.notifications {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+
+
+  width: 100%;
+
+  transform: translate(17%, -20%);
+
+  font-size: clamp(0.5rem, 5vw, 2rem);
+  font-weight: bold;
+
+  z-index: 9999;
+}
+
 .notification {
+  position: relative;
+
   display: flex;
   justify-content: space-between;
-  padding: clamp(1px, 4vw, 1rem);
+  align-items: center;
+
+  padding: clamp(1px, 4vw, 3rem);
+  width: 60%;
 
   gap: 1rem;
   border: solid 1px;
+
+
+
+  p {
+    margin: 0;
+  }
 }
 
 .notification button {
@@ -12,11 +39,8 @@
   justify-content: center;
   align-items: center;
 
-  width: 1.5rem;
-  height: 1.5rem;
-
-  font-weight: bold;
-  font-size: 1rem;
+  width: clamp(1.5rem, 2rem, 2rem);
+  height: clamp(1.5rem, 2rem, 24rem);
 
   border: none;
   outline: none;
@@ -24,8 +48,6 @@
   border-radius: 50%;
 
   cursor: pointer;
-
-
 }
 
 .notification.success {

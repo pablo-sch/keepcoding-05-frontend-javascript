@@ -10,12 +10,14 @@ import { initSignUp } from './modules/signup/signup.js';
 
 import { navbar } from './components/navbar/navbar.js';
 import { redirectIfNotAuthenticated } from './auth/auth.js';
+import { footer } from './components/footer/footer.js';
 
 
 document.addEventListener("DOMContentLoaded", () => {
 
     redirectIfNotAuthenticated();
     navbar();
+    footer();
 
     const path = window.location.pathname;
 

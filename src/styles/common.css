@@ -15,11 +15,10 @@
 
 body {
     background-color: var(--bg-color-2);
-
 }
 
 main {
-    margin: clamp(5px, 2vw , 1rem) clamp(10px, 5vw , 2rem);
+    margin: clamp(5px, 2vw, 1rem) clamp(10px, 5vw, 2rem);
     background-color: var(--bg-color-4);
 }
 
@@ -30,9 +29,6 @@ iframe {
 
 a {
     text-decoration: none;
-
-    border: 2px solid;
-    border-color: black;
 }
 
 * {
@@ -42,7 +38,7 @@ a {
 h1,
 h2,
 h3,
-h4{
+h4 {
     padding-bottom: 1rem;
 }
 
@@ -55,9 +51,15 @@ p {
     text-align: justify;
 }
 
-textarea{
-    padding: 4px;
+input,
+textarea,
+label,
+p,
+textarea,
+button {
+    padding: 5px;
 }
+
 
 p {
     white-space: pre-line;

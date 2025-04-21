@@ -2,8 +2,6 @@
 .loader {
   width: 5vw;
 
-/*   margin: 2rem;
- */
   aspect-ratio: 1.154;
   --_g: no-repeat radial-gradient(farthest-side, #000 90%, #0000);
   background:

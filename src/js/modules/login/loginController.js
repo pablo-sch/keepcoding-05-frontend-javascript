@@ -57,7 +57,7 @@ export function loginController(loginForm) {
 
             localStorage.setItem("accessToken", token)
 
-            setTimeout(() => { window.location = '/index.html' }, 500);
+            setTimeout(() => { window.location = '/index.html' }, 1000);
 
         } catch (error) {
 
