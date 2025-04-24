@@ -83,15 +83,23 @@ Además, se debe proporcionar un archivo db.json para el backend con los datos d
 - Permitir el filtrado de anuncios usando tags. Por lo que en el formulario de anuncio deberán poder incluirse tags de los mismos. Estos tags inicialmente pueden ser estáticos (siempre los mismos).
 - Unido al anterior, hacer que los tags sean dinámicos.
 
-### API REST de Apoyo Para la Práctica
+### API REST de Apoyo Para la Práctica y como utilizarla
 
-Se utilizará sparrest.js como API REST de apoyo para la práctica (creado por el docente de KeepCoding Alberto Casero), este proyecto está basado en la utilidad json-server, el cual nos ofrece un completo API REST para simular un backend real y adaptarse a las necesidades de esta práctica.
+Para emular una base de datos en esta práctica, utilizaremos **sparrest.js** como API REST de apoyo (creado por el docente de KeepCoding, Alberto Casero). Sparrest está basado en **json-server** y proporciona una API REST completa para simular un backend real y se adapta perfectamente a las necesidades de esta práctica.
 
 Enlace al API REST
 
 ```bash
 git clone https://github.com/kasappeal/sparrest.js.git
 ```
+
+Una vez descargado el proyecto, deberás actualizar las dependencias. Después, reemplaza el archivo db.json generado con el archivo correspondiente del mismo nombre del proyecto, lo que permitirá cargar la base de datos. Para iniciar la base de datos, simplemente ejecuta el comando:
+
+```bash
+npm start
+```
+
+Esto levantará el servidor y pondrá en funcionamiento el API REST para que puedas interactuar con la base de datos simulada.
 
 ## Tecnologías Utilizadas
 

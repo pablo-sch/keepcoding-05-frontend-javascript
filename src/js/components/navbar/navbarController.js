@@ -1,13 +1,82 @@
+import { navbarView } from './navbarView.js';
 import { isAuthenticated } from '../../auth/auth.js';
 
+export function navbarController(container) {
+  container.innerHTML = navbarView();
+
+  handleVisibility();
+  searchForm();
+}
+
+//-------------------------------------------------------------------------------------------------------------------
+function handleVisibility() {
+  const path = window.location.pathname;
+
+  const searchBtn = document.querySelector('.nav-center');
+  const logoutBtn = document.getElementById('logout-btn');
+  const loginBtn = document.getElementById('login-btn');
+  const signupBtn = document.getElementById('signup-btn');
+  const createPostBtn = document.getElementById('create-post-btn');
+
+  // Button visibility logic based on path
+  if (searchBtn) searchBtn.style.display = 'none';
+
+  if (path.endsWith('index.html')) {
+    if (searchBtn) searchBtn.style.display = 'block'; // Make sure it's visible
+  }
+
+  // Button visibility logic based on authentication state
+  if (isAuthenticated()) {
+
+    // Show "Logout" and "Create Post", hide "Login" and "Sign Up"
+    if (logoutBtn) logoutBtn.style.display = 'block'; // Make sure it's visible
+    if (loginBtn) loginBtn.style.display = 'none'; // Hide if there's a token
+    if (signupBtn) signupBtn.style.display = 'none'; // Hide if there's a token
+    if (createPostBtn) createPostBtn.style.display = 'block'; // Make sure it's visible
+
+  } else {
+
+    // Show "Login" and "Sign Up", hide "Logout" and "Create Post"
+    if (logoutBtn) logoutBtn.style.display = 'none'; // Hide if there's no token
+    if (createPostBtn) createPostBtn.style.display = 'none'; // Hide if there's no token
+    if (loginBtn) loginBtn.style.display = 'block'; // Make sure it's visible
+    if (signupBtn) signupBtn.style.display = 'block'; // Make sure it's visible
+  }
+
+}
+
+//-------------------------------------------------------------------------------------------------------------------
+function searchForm() {
+  const searchForm = document.getElementById('search-form');
+
+  searchForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const searchQuery = document.getElementById('search').value.trim();
+    const selectedCategory = document.getElementById('category-select').value;
+
+    if (!searchQuery && !selectedCategory) {
+      dispatchErrorNotification("Enter a word or select a category.");
+      return;
+    }
+
+    const params = new URLSearchParams();
+    if (searchQuery) params.set('search', searchQuery);
+    if (selectedCategory) params.set('category', selectedCategory);
+
+    window.location.href = `/index.html?${params.toString()}`;
+  });
+}
+
+//-------------------------------------------------------------------------------------------------------------------
 export function handleLogout() {
-// Remove the token from localStorage and redirect to index
-localStorage.removeItem('accessToken');
+  // Remove the token from localStorage and redirect to index
+  localStorage.removeItem('accessToken');
   window.location.href = '/index.html';
 }
 
 export function goToLogin() {
-  // Redirigir a la página de Login solo si no hay token
+  // Redirect to Login page only if no token is present
   if (!isAuthenticated()) {
     window.location.href = '/views/login.html';
   } else {
@@ -16,7 +85,7 @@ export function goToLogin() {
 }
 
 export function goToSignup() {
-    // Redirect to Login page only if no token is present
+  // Redirect to Login page only if no token is present
   if (!isAuthenticated()) {
     window.location.href = '/views/signup.html';
   } else {
@@ -36,4 +105,16 @@ export function goToCreatePost() {
 export function goToIndex() {
   // Always redirect to index
   window.location.href = '/index.html';
+}
+
+//-------------------------------------------------------------------------------------------------------------------
+function dispatchErrorNotification(message) {
+
+  const container = document.querySelector('.navbar');
+
+  const event = new CustomEvent('search-error', {
+    detail: message
+  })
+
+  container.dispatchEvent(event)
 }

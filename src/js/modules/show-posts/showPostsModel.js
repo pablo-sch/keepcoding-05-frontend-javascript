@@ -1,9 +1,20 @@
-export async function getPosts(page) {
+export async function getPosts(search = '', category = '', page = 1, postsPerPage = 10) {
 
   let posts = [];
 
   try {
-    const response = await fetch(`http://localhost:8000/api/posts?_page=${page}&_limit=12`)
+    let url = `http://localhost:8000/api/posts?_page=${page}&_limit=${postsPerPage}`;
+
+    if (search) {
+      url += `&q=${search}`;
+    }
+
+    if (category) {
+      url += `&category=${category}`;
+    }
+
+    const response = await fetch(url);
+
     const totalPosts = parseInt(response.headers.get('X-Total-Count'), 10);
 
     if (!response.ok) {
@@ -27,6 +38,5 @@ export async function getPosts(page) {
       throw new Error('Oops... There was a problem with the server connection.');
     }
     throw error
-
   }
 }

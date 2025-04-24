@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const path = window.location.pathname;
 
-    if (path === '/index.html' || path === '/' || path === '/index') {
+    if (path.endsWith('index.html')) {
         initShowPosts();
     }
 

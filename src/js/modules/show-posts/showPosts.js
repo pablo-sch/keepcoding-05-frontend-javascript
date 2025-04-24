@@ -13,8 +13,8 @@ export function initShowPosts() {
     const loader = document.querySelector(".loader")
     const notifications = document.querySelector(".notifications")
     const session = document.querySelector(".session")
-    
 
+    //-------------------------------------------------------------------------------------------------------------------
 
     const { show, hide } = loaderController(loader);
     const { showNotification } = notificationsController(notifications)
