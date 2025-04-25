@@ -8,8 +8,15 @@ export const createPostController = (createPostForm) => {
 
         event.preventDefault();
 
-        const postImage = createPostForm.querySelector('#post-image').value;
+        const image = createPostForm.querySelector('#post-image').value;
+        let postImage;
+
+        if (!image) {
+            postImage = '../public/no-image-available.jpg';
+        }
+
         const postName = createPostForm.querySelector('#post-name').value;
+        const postTag = createPostForm.querySelector('#post-tag').value;
         const postDescription = createPostForm.querySelector('#post-description').value;
         const postPrice = createPostForm.querySelector('#post-price').value;
         const transactionType = createPostForm.querySelector('input[name="transactionType"]:checked').value;
@@ -19,6 +26,7 @@ export const createPostController = (createPostForm) => {
         const postData = {
             image: postImage,
             name: postName,
+            tag: postTag,
             description: postDescription,
             price: postPrice,
             isPurchase: isPurchase

@@ -5,9 +5,7 @@ export async function postDetailModel(postId) {
 
     if (!response.ok) {
 
-      const errorMessage = response.message;
-
-      console.error(`Error: ${response.status} (${response.statusText}): ${errorMessage}`);
+      console.error(`Error: ${response.status} (${response.statusText})`);
       throw new Error(response.status + " " + response.statusText);
     } else {
       const postDetail = await response.json();
@@ -22,8 +20,9 @@ export async function postDetailModel(postId) {
     throw error
   }
 }
+
 //-----------------------------------------------------------------------------------------------
-export async function removepost(postId) {
+export async function removePost(postId) {
   try {
     const token = localStorage.getItem('accessToken');
 
@@ -36,8 +35,7 @@ export async function removepost(postId) {
     });
 
     if (!response.ok) {
-      const errorMessage = response.message;
-      console.error(`Error: ${response.status} (${response.statusText}): ${errorMessage}`);
+      console.error(`Error: ${response.status} (${response.statusText})`);
       throw new Error(response.status + " " + response.statusText);
     }
   } catch (error) {
@@ -47,6 +45,7 @@ export async function removepost(postId) {
     throw error
   }
 }
+
 //-----------------------------------------------------------------------------------------------
 export async function getLoggedInUserInfo() {
   try {
@@ -60,9 +59,8 @@ export async function getLoggedInUserInfo() {
     });
 
     if (!response.ok) {
-      const errorMessage = response.message;
       console.error(`Error: ${response.status} (${response.statusText})`);
-      //throw new Error(response.status + " " + response.statusText);
+      throw new Error(response.status + " " + response.statusText);
     }
 
     const user = await response.json();
@@ -76,4 +74,40 @@ export async function getLoggedInUserInfo() {
     throw error
   }
 }
+
 //-----------------------------------------------------------------------------------------------
+export const updatePost = async (postId, postData) => {
+  try {
+    const token = localStorage.getItem("accessToken");
+
+    const response = await fetch(`http://localhost:8000/api/posts/${postId}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        photo: postData.image,
+        name: postData.name,
+        description: postData.description,
+        price: postData.price,
+        isPurchase: postData.isPurchase
+      }),
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      console.error(`Error: ${response.status} (${response.statusText})`);
+      throw new Error(response.status + " " + response.statusText);
+    }
+
+    const post = await response.json();
+
+    return post;
+
+  } catch (error) {
+    if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+      throw new Error('Oops... There was a problem with the server connection.');
+    }
+    throw error
+  }
+};

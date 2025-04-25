@@ -22,38 +22,34 @@ export function notificationsController(container) { // container is ".notificat
 
     container.appendChild(newNotification) // <-- Here we insert our HTML ready to use.
 
-    // Obtener todas las notificaciones actuales después de agregar la nueva
     let currentNotifications = Array.from(container.querySelectorAll('.notification'));
 
-    // Si hay más de 3, elimina las más antiguas
     while (currentNotifications.length > 3) {
-      const oldest = currentNotifications.shift(); // remueve la primera (más vieja)
+      const oldest = currentNotifications.shift();
       removeNotification(oldest);
     }
 
-    // Control de duración dependiendo del tipo
     if (type === 'error') {
-      // Errores antiguos (excepto el nuevo)
       const oldErrors = currentNotifications.filter(n =>
         n !== newNotification && n.classList.contains('error')
       );
 
-      // Los errores antiguos duran 1 segundo
       oldErrors.forEach(n => {
         setTimeout(() => removeNotification(n), 1000);
       });
 
-      // El nuevo error dura 5 segundos
       setTimeout(() => {
         removeNotification(newNotification);
       }, 5000);
     } else {
-      // Notificaciones que no son de tipo 'error' también desaparecen a los 5s
       setTimeout(() => {
         removeNotification(newNotification);
       }, 5000);
     }
+
+    console.log('Error:',message)
   };
+  
 
   return {
     showNotification

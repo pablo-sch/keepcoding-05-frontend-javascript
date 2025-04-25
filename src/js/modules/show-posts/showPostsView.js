@@ -20,5 +20,4 @@ export const buildPost = (post) => {
     </div>`;
 
     return postView
-
 }       

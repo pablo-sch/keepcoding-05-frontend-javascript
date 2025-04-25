@@ -1,4 +1,5 @@
 import { createPostController } from "../create-post/createPostController.js";
+import { buildCreatePostForm } from "./createPostView.js";
 
 import {notificationsController} from "../../components/notifications/notificationsController.js"
 import { loaderController } from "../../components/loader/loaderController.js";
@@ -17,6 +18,8 @@ export function initCreatePost() {
 
     const { showNotification } = notificationsController(notifications)
     const { show, hide } = loaderController(loader);
+
+    createPostForm.innerHTML = buildCreatePostForm()
 
     createPostForm.addEventListener('load-posts-started', () => {
         show();

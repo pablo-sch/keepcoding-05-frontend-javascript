@@ -5,8 +5,9 @@ export const createPost = async (postData) => {
     const response = await fetch("http://localhost:8000/api/posts", {
       method: "POST",
       body: JSON.stringify({
-        photo: postData.image,
+        image: postData.image,
         name: postData.name,
+        tag: postData.tag,
         description: postData.description,
         price: postData.price,
         isPurchase: postData.isPurchase
