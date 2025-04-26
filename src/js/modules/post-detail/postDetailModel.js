@@ -76,18 +76,38 @@ export async function getLoggedInUserInfo() {
 }
 
 //-----------------------------------------------------------------------------------------------
-export const updatePost = async (postId, postData) => {
+export const updatePost = async (post) => {
   try {
     const token = localStorage.getItem("accessToken");
 
-    const response = await fetch(`http://localhost:8000/api/posts/${postId}`, {
+    const formData = new FormData();
+    formData.append('file', post.image);
+
+    const responseImage = await fetch('http://localhost:8000/upload', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: formData
+    });
+
+    if (!responseImage.ok) {
+      console.error(`Error: ${responseImage.status} (${responseImage.statusText})`);
+      throw new Error(responseImage.status + " " + responseImage.statusText);
+    }
+
+    const dataImage = await responseImage.json();
+    const imageURL = dataImage.path
+
+    const response = await fetch(`http://localhost:8000/api/posts/${post.id}?_expand=user`, {
       method: "PUT",
       body: JSON.stringify({
-        photo: postData.image,
-        name: postData.name,
-        description: postData.description,
-        price: postData.price,
-        isPurchase: postData.isPurchase
+        image: imageURL,
+        name: post.name,
+        tag: post.tag,
+        description: post.description,
+        price: post.price,
+        isPurchase: post.isPurchase
       }),
       headers: {
         "Content-type": "application/json",
@@ -100,9 +120,9 @@ export const updatePost = async (postId, postData) => {
       throw new Error(response.status + " " + response.statusText);
     }
 
-    const post = await response.json();
+    const updatedPost = await response.json();
 
-    return post;
+    return updatedPost;
 
   } catch (error) {
     if (error instanceof TypeError && error.message.includes('Failed to fetch')) {

@@ -30,7 +30,7 @@ export const buildPostDetailReadOnlyView = (post, isOwner) => {
       <p>${post.description}</p>
 
       <p><strong>Tag:</strong></p>
-      <p>${post.tag}</p>
+      <p>${post.tag != null ? post.tag : 'None'}</p>
 
       <p><strong>Last update at: </strong>${formattedDate}</p>
 
@@ -46,10 +46,18 @@ export const buildPostDetailReadOnlyView = (post, isOwner) => {
 
 export const buildPostDetailEditableView = (post) => {
 
-  const tagSelector = tags.map(tag => {
+  const tagSelector = `
+
+  <option value="" ${!post.tag ? 'selected' : ''}>None</option>
+
+  ${tags.map(tag => {
+
     const selected = tag === post.tag ? 'selected' : '';
+
     return `<option value="${tag}" ${selected}>${tag}</option>`;
-  }).join('');
+
+  }).join('')}
+  `;
 
   const postHTML = `
     <form id="editPostForm" class="form">
@@ -86,7 +94,7 @@ export const buildPostDetailEditableView = (post) => {
         </div>
 
       <p><strong>Tag:</strong></p>
-      <select id="edit-tag">${tagSelector}</select>
+      <select id='post-tag'>${tagSelector}</select>
 
       <button id="save-changes">Save</button>
       <button id="cancel-edit">Cancel</button>

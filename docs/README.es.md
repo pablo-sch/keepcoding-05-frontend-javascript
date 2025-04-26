@@ -122,7 +122,7 @@ Esto levantará el servidor y pondrá en funcionamiento el API REST para que pue
 
 1. Descargue el comprimido del proyecto desde GitHub a su ordenador.
 
-2. Una vez desarcargado el comprimido, abra el proyecto en Visual Studio agregando el directorio del proyecto a su espacio de trabajo.
+2. Una vez descarcargado el comprimido, abra el proyecto en Visual Studio agregando el directorio del proyecto a su espacio de trabajo.
 
 ### Notas
 

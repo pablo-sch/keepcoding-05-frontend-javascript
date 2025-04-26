@@ -2,9 +2,13 @@ import { tags } from "../../utils/constants.js";
 
 export const buildCreatePostForm = () => {
 
-    const tagOptions = tags.map(tag => {
-        return `<option value="${tag}">${tag}</option>`;
-    }).join('');
+    const tagSelector = `
+      <option value="" selected>None</option>
+      ${tags.map(tag => {
+          return `<option value="${tag}">${tag}</option>`;
+      }).join('')}
+    `;
+  
 
 
     let createPostFormView = `
@@ -38,7 +42,7 @@ export const buildCreatePostForm = () => {
 
         <label for="post-tag">Tag: </label>
         <select id="post-tag" name="tag">
-            ${tagOptions}
+            ${tagSelector}
         </select>
 
         <button>Create Post</button>

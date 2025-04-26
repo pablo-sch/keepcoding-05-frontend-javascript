@@ -1,16 +1,18 @@
 export const buildPost = (post) => {
 
     const postType = post.isPurchase ? 'purchase' : 'sale';
-    const imageSrc = post.photo ? post.photo : './public/no-image-available.jpg';
+    //const imageSrc = post.photo ? post.photo : './public/no-image-available.jpg';
 
 
     let postView = `
 
     <div class='post'>
 
-        <img src="${imageSrc}" alt="Product Image" class="post-image">
+        <img src="${post.image}" alt="Product Image" class="post-image">
 
         <p class="title">${post.name}</p>
+
+        <p>${post.tag ?? 'None'}</p>
 
         <p>€ ${post.price}</p>
 

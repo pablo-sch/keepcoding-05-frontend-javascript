@@ -6,10 +6,12 @@ export const postDetailController = async (postContainer, postId) => {
   let postDetail = null;
   let user = null;
   let isEditing = false;
-  
+
   try {
+    //----------------------------------------------------
     const event = new CustomEvent("load-posts-started");
     postContainer.dispatchEvent(event);
+    //----------------------------------------------------
 
     try {
       //===================================
@@ -34,8 +36,10 @@ export const postDetailController = async (postContainer, postId) => {
   } catch (error) {
     dispatchNotification('post-error', error.message);
   } finally {
+    //----------------------------------------------------
     const event = new CustomEvent("load-posts-finished");
     postContainer.dispatchEvent(event);
+    //----------------------------------------------------
   }
 
   //===================================================================================================================
@@ -83,7 +87,8 @@ export const postDetailController = async (postContainer, postId) => {
 
         dispatchNotification('post-success', {
           message: "Post successfully deleted.",
-          type: 'success'
+          type: 'success',
+          type_success: 'post-deleted'
         });
       } catch (error) {
         dispatchNotification('post-error', error.message);
@@ -93,40 +98,44 @@ export const postDetailController = async (postContainer, postId) => {
 
   //------------------------------------------------------------------------
   async function handleSave(post) {
+
     const editPostForm = postContainer.querySelector('#editPostForm');
+
+    const image = editPostForm.querySelector('#post-image').files[0];
 
     const name = editPostForm.querySelector('#post-name').value;
     const description = editPostForm.querySelector('#post-description').value;
     const price = editPostForm.querySelector('#post-price').value;
-    const tag = editPostForm.querySelector('#edit-tag').value;
+
+    const tag = editPostForm.querySelector('#post-tag').value;
+
     const isPurchase = editPostForm.querySelector('input[name="transactionType"]:checked').value === 'purchase';
 
-    const fileInput = editPostForm.querySelector('#post-image');
-    const newImage = fileInput.files[0];
-
+    post.image = image;
     post.name = name;
     post.description = description;
     post.price = price;
-    post.tag = tag;
+    post.tag = tag || null;
     post.isPurchase = isPurchase;
 
-    if (newImage) {
-      post.photo = newImage;
+    if (!post.image) {
+      post.image = '../../../../public/no-image-available.jpg';
     }
 
     try {
       //===================================
-      const updatedPost = await updatePost(post.id, post);
+      const updatedPost = await updatePost(post);
       //===================================
 
-      postDetail = updatedPost; // actualizar info local
+      postDetail = updatedPost;
+
       dispatchNotification('post-success', {
         message: "Post successfully updated.",
-        type: 'success'
+        type: 'success',
       });
 
-      renderReadOnlyView(updatedPost, true);
-      
+      renderReadOnlyView(postDetail, true);
+
     } catch (error) {
       dispatchNotification('post-error', error.message);
     }
@@ -136,8 +145,8 @@ export const postDetailController = async (postContainer, postId) => {
   function dispatchNotification(eventType, message) {
     const event = new CustomEvent(eventType, { detail: message });
 
-    if (message.type === 'success') {
-      setTimeout(() => window.location = '/index.html', 7000);
+    if (message.type_success === 'post-deleted') {
+      setTimeout(() => window.location = '/index.html', 500);
     }
 
     postContainer.dispatchEvent(event);

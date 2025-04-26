@@ -8,44 +8,62 @@ export const createPostController = (createPostForm) => {
 
         event.preventDefault();
 
-        const image = createPostForm.querySelector('#post-image').value;
-        let postImage;
+        const image = createPostForm.querySelector('#post-image').files[0];
 
-        if (!image) {
-            postImage = '../public/no-image-available.jpg';
+        const name = createPostForm.querySelector('#post-name').value;
+        const description = createPostForm.querySelector('#post-description').value;
+        const price = createPostForm.querySelector('#post-price').value;
+
+        const tag = createPostForm.querySelector('#post-tag').value;
+
+        const isPurchase = createPostForm.querySelector('input[name="transactionType"]:checked').value === 'purchase';
+
+
+
+        const post = {
+            image: image,
+            name: name,
+            description: description,
+            price: price,
+            tag: tag || null,
+            isPurchase: isPurchase,
         }
 
-        const postName = createPostForm.querySelector('#post-name').value;
-        const postTag = createPostForm.querySelector('#post-tag').value;
-        const postDescription = createPostForm.querySelector('#post-description').value;
-        const postPrice = createPostForm.querySelector('#post-price').value;
-        const transactionType = createPostForm.querySelector('input[name="transactionType"]:checked').value;
+        if (!post.image) {
+            post.image = '../../../../public/no-image-available.jpg';
+          }
 
-        const isPurchase = transactionType === 'purchase';
-
-        const postData = {
-            image: postImage,
-            name: postName,
-            tag: postTag,
-            description: postDescription,
-            price: postPrice,
-            isPurchase: isPurchase
-        }
-
-        handlecreatePost(postData)
-
+        handlecreatePost(post)
     })
 
     //-------------------------------------------------------------------------------------------------------------------
-    const handlecreatePost = async (postData) => {
+    const handlecreatePost = async (post) => {
         try {
             //----------------------------------------------------
             const event = new CustomEvent("load-posts-started");
             createPostForm.dispatchEvent(event);
             //----------------------------------------------------
 
+/*             try {
+
+                if (!image) {
+                    image = '../../../../public/no-image-available.jpg';
+                    postData.image = image
+                } else {
+                    //====================================================
+                    image = await uploadImage(image);
+                    //====================================================
+                    postData.image = image
+                }
+
+            } catch (error) {
+                dispatchNotification('createPost-error', error.message)
+            } */
+
+                
+
             //====================================================
-            await createPost(postData);
+            await createPost(post);
             //====================================================
 
             //dispatchCreateProductSuccess(createPostForm, 'Post created successfully.');
@@ -54,7 +72,7 @@ export const createPostController = (createPostForm) => {
                 type: 'success'
             })
 
-            setTimeout(() => { window.location = '/'; }, 1000)
+            setTimeout(() => { window.location = '/index.html'; }, 1000)
 
         } catch (error) {
             //dispatchCreateProductError(createPostForm, error.message);
