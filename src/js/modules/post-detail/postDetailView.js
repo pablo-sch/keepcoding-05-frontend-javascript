@@ -1,8 +1,7 @@
 import { tags } from "../../utils/constants.js";
 
-export const buildPostDetailReadOnlyView = (post, isOwner) => {
+export const buildPostDetail_ReadOnlyView = (post, isOwner) => {
   const postType = post.isPurchase ? 'purchase' : 'sale';
-  const imageSrc = post.photo ? post.photo : '../public/no-image-available.jpg';
 
   const date = new Date(post.updatedAt);
   const hours = date.getHours().toString().padStart(2, '0');
@@ -15,7 +14,7 @@ export const buildPostDetailReadOnlyView = (post, isOwner) => {
   const postHTML = `
   <div class="post-view">
       <div class='image-container'>
-        <img src="${imageSrc}" alt="Product Image" class='post-image'>
+        <img src="${post.image}" alt="Product Image" class='post-image'>
         <p class='sale-label ${postType}'>${postType}</p>
       </div>
 
@@ -44,7 +43,7 @@ export const buildPostDetailReadOnlyView = (post, isOwner) => {
   return postHTML
 };
 
-export const buildPostDetailEditableView = (post) => {
+export const buildPostDetail_EditableView = (post) => {
 
   const tagSelector = `
 
@@ -60,17 +59,17 @@ export const buildPostDetailEditableView = (post) => {
   `;
 
   const postHTML = `
-    <form id="editPostForm" class="form">
+    <form id="edit-post-form" class="form">
 
       <div class="image-preview">
-        <img src="${post.photo || '../public/no-image-available.jpg'}" alt="Current Image" class="post-image" />
+        <img src="${post.image}" alt="Current Image" class="post-image" />
       </div>
 
       <label for="post-image">Change Photo:</label>
       <input type="file" id="post-image" name="photo" accept="image/*" />
 
         <label for="post-name">Product Name: </label>
-          <input required id="post-name" name="post-name" type="text" maxlength="120"
+        <input required id="post-name" name="post-name" type="text" maxlength="120"
             placeholder="Introduce the name of your post." value="${post.name}" />
 
         <label for="post-description">Description: </label>
@@ -83,12 +82,12 @@ export const buildPostDetailEditableView = (post) => {
 
         <div>
             <label for="purchase">
-                <input type="radio" id="purchase" name="transactionType" value="purchase" ${post.isPurchase ? 'checked' : ''}>
+                <input type="radio" id="purchase" name="transactionType" value="purchase" required ${post.isPurchase ? 'checked' : ''}>
                 Purchase
             </label>
 
             <label for="sale">
-                <input type="radio" id="sale" name="transactionType" value="sale" ${!post.isPurchase ? 'checked' : ''}>
+                <input type="radio" id="sale" name="transactionType" value="sale" required ${!post.isPurchase ? 'checked' : ''}>
                 Sale
             </label>
         </div>

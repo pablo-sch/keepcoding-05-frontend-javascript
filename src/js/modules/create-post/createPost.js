@@ -21,21 +21,21 @@ export function initCreatePost() {
 
     createPostForm.innerHTML = buildCreatePostForm()
 
-    createPostForm.addEventListener('load-posts-started', () => {
+    createPostForm.addEventListener('load-post-started', () => {
         show();
     })
 
-    createPostForm.addEventListener('load-posts-finished', () => {
+    createPostForm.addEventListener('load-post-finished', () => {
         hide();
     })
 
-    createPostForm.addEventListener("createPost-ok", (event) => {
+    createPostForm.addEventListener("create-post-ok", (event) => {
         const message = event.detail.message;
         const type = event.detail.type;
         showNotification(message, type)
     })
 
-    createPostForm.addEventListener("createPost-error", (event) => {
+    createPostForm.addEventListener("create-post-error", (event) => {
         const message = event.detail;
         showNotification(message)
     })

@@ -8,7 +8,7 @@ export async function showPostsController(container) { // the container is ".pos
 
     const urlParams = new URLSearchParams(window.location.search);
     const search = urlParams.get('search') || '';
-    const category = urlParams.get('category') || '';
+    const category = urlParams.get('tag') || '';
     let currentPage = parseInt(urlParams.get('page')) || 1;
 
     const POSTS_PER_PAGE = 12;

@@ -20,11 +20,11 @@ export function initPostDetail() {
 
         const postContainer = document.querySelector(".postDetail-container")
 
-        postContainer.addEventListener('load-posts-started', () => {
+        postContainer.addEventListener('load-post-started', () => {
             show();
         })
 
-        postContainer.addEventListener('load-posts-finished', () => {
+        postContainer.addEventListener('load-post-finished', () => {
             hide();
         })
 

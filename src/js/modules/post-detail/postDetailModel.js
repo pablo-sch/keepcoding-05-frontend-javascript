@@ -1,5 +1,5 @@
-//-----------------------------------------------------------------------------------------------
-export async function postDetailModel(postId) {
+//===================================================================================================================
+export async function getPost(postId) {
   try {
     const response = await fetch(`http://localhost:8000/api/posts/${postId}?_expand=user`);
 
@@ -21,7 +21,7 @@ export async function postDetailModel(postId) {
   }
 }
 
-//-----------------------------------------------------------------------------------------------
+//===================================================================================================================
 export async function removePost(postId) {
   try {
     const token = localStorage.getItem('accessToken');
@@ -46,7 +46,7 @@ export async function removePost(postId) {
   }
 }
 
-//-----------------------------------------------------------------------------------------------
+//===================================================================================================================
 export async function getLoggedInUserInfo() {
   try {
     const token = localStorage.getItem('accessToken');
@@ -75,14 +75,15 @@ export async function getLoggedInUserInfo() {
   }
 }
 
-//-----------------------------------------------------------------------------------------------
-export const updatePost = async (post) => {
+//===================================================================================================================
+export const uploadImage = async (image) => {
   try {
     const token = localStorage.getItem("accessToken");
 
     const formData = new FormData();
-    formData.append('file', post.image);
+    formData.append('file', image);
 
+    //-----------------------------------------------------------------------------------------------
     const responseImage = await fetch('http://localhost:8000/upload', {
       method: 'POST',
       headers: {
@@ -99,10 +100,26 @@ export const updatePost = async (post) => {
     const dataImage = await responseImage.json();
     const imageURL = dataImage.path
 
-    const response = await fetch(`http://localhost:8000/api/posts/${post.id}?_expand=user`, {
+    return imageURL
+
+  } catch (error) {
+    if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+      throw new Error('Oops... There was a problem with the server connection.');
+    }
+    throw error
+  }
+}
+
+//===================================================================================================================
+export const updatePost = async (post) => {
+  try {
+    const token = localStorage.getItem("accessToken");
+
+    //-----------------------------------------------------------------------------------------------
+    const responseUpdatedPost = await fetch(`http://localhost:8000/api/posts/${post.id}`, {
       method: "PUT",
       body: JSON.stringify({
-        image: imageURL,
+        image: post.image,
         name: post.name,
         tag: post.tag,
         description: post.description,
@@ -115,14 +132,26 @@ export const updatePost = async (post) => {
       }
     });
 
-    if (!response.ok) {
-      console.error(`Error: ${response.status} (${response.statusText})`);
-      throw new Error(response.status + " " + response.statusText);
+    if (!responseUpdatedPost.ok) {
+      console.error(`Error: ${responseUpdatedPost.status} (${responseUpdatedPost.statusText})`);
+      throw new Error(responseUpdatedPost.status + " " + responseUpdatedPost.statusText);
     }
 
-    const updatedPost = await response.json();
+    //-----------------------------------------------------------------------------------------------
+    const responsePostWithUser = await fetch(`http://localhost:8000/api/posts/${post.id}?_expand=user`, {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    });
 
-    return updatedPost;
+    if (!responsePostWithUser.ok) {
+      console.error(`Error: ${responsePostWithUser.status} (${responsePostWithUser.statusText})`);
+      throw new Error(responsePostWithUser.status + " " + responsePostWithUser.statusText);
+    }
+
+    const updatedPostWithUser = await responsePostWithUser.json();
+
+    return updatedPostWithUser;
 
   } catch (error) {
     if (error instanceof TypeError && error.message.includes('Failed to fetch')) {

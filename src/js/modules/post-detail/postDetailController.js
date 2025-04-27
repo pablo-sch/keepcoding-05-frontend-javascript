@@ -1,21 +1,22 @@
-import { postDetailModel, getLoggedInUserInfo, removePost, updatePost } from "./postDetailModel.js";
-import { buildPostDetailEditableView, buildPostDetailReadOnlyView } from "./postDetailView.js";
+import { getPost, getLoggedInUserInfo, removePost, updatePost, uploadImage } from "./postDetailModel.js";
+import { buildPostDetail_EditableView, buildPostDetail_ReadOnlyView } from "./postDetailView.js";
 
 
 export const postDetailController = async (postContainer, postId) => {
+
+
   let postDetail = null;
   let user = null;
   let isEditing = false;
 
   try {
     //----------------------------------------------------
-    const event = new CustomEvent("load-posts-started");
-    postContainer.dispatchEvent(event);
+    loadStarted();
     //----------------------------------------------------
 
     try {
       //===================================
-      postDetail = await postDetailModel(postId);
+      postDetail = await getPost(postId);
       //===================================
     } catch (error) {
       dispatchNotification('post-error', error.message);
@@ -31,26 +32,24 @@ export const postDetailController = async (postContainer, postId) => {
 
     const isOwner = user.id === postDetail.userId;
 
-    renderReadOnlyView(postDetail, isOwner);
+    render_ReadOnlyView(postDetail, isOwner);
 
   } catch (error) {
     dispatchNotification('post-error', error.message);
   } finally {
     //----------------------------------------------------
-    const event = new CustomEvent("load-posts-finished");
-    postContainer.dispatchEvent(event);
+    loadFinished();
     //----------------------------------------------------
   }
 
   //===================================================================================================================
-
-  function renderReadOnlyView(post, isOwner) {
+  function render_ReadOnlyView(post, isOwner) {
     isEditing = false;
-    postContainer.innerHTML = buildPostDetailReadOnlyView(post, isOwner);
+    postContainer.innerHTML = buildPostDetail_ReadOnlyView(post, isOwner);
 
     if (isOwner) {
       const editPost = postContainer.querySelector("#edit-post")
-      editPost.addEventListener("click", () => renderEditableView(post));
+      editPost.addEventListener("click", () => render_EditableView(post));
 
       const deletePost = postContainer.querySelector("#delete-post")
       deletePost.addEventListener("click", () => handleDelete(post.id));
@@ -58,22 +57,23 @@ export const postDetailController = async (postContainer, postId) => {
   }
 
   //------------------------------------------------------------------------
-  function renderEditableView(post) {
+  function render_EditableView(post) {
     isEditing = true;
-    postContainer.innerHTML = buildPostDetailEditableView(post);
+    postContainer.innerHTML = buildPostDetail_EditableView(post);
 
-    const saveEdit = postContainer.querySelector("#save-changes")
-    saveEdit.addEventListener("click", (event) => {
+    const editForm = document.getElementById("edit-post-form");
+
+    editForm.addEventListener('submit', (event) => {
       event.preventDefault();
 
       handleSave(post);
     });
 
-    const cancelEdit = postContainer.querySelector("#cancel-edit")
-    cancelEdit.addEventListener("click", (event) => {
+    const cancel = postContainer.querySelector("#cancel-edit")
+    cancel.addEventListener("click", (event) => {
       event.preventDefault();
 
-      renderReadOnlyView(postDetail, true);
+      render_ReadOnlyView(postDetail, true);
     });
   }
 
@@ -81,6 +81,10 @@ export const postDetailController = async (postContainer, postId) => {
   async function handleDelete(postId) {
     if (confirm("Are you sure about deleting the post?")) {
       try {
+        //----------------------------------------------------
+        loadStarted();
+        //----------------------------------------------------
+
         //===================================
         await removePost(postId);
         //===================================
@@ -92,6 +96,10 @@ export const postDetailController = async (postContainer, postId) => {
         });
       } catch (error) {
         dispatchNotification('post-error', error.message);
+      } finally {
+        //----------------------------------------------------
+        loadFinished();
+        //----------------------------------------------------
       }
     }
   }
@@ -99,49 +107,71 @@ export const postDetailController = async (postContainer, postId) => {
   //------------------------------------------------------------------------
   async function handleSave(post) {
 
-    const editPostForm = postContainer.querySelector('#editPostForm');
+    const editForm = document.getElementById("edit-post-form");
 
-    const image = editPostForm.querySelector('#post-image').files[0];
+    const image = editForm.querySelector('#post-image').files[0];
 
-    const name = editPostForm.querySelector('#post-name').value;
-    const description = editPostForm.querySelector('#post-description').value;
-    const price = editPostForm.querySelector('#post-price').value;
+    const name = editForm.querySelector('#post-name').value;
+    const description = editForm.querySelector('#post-description').value;
+    const price = editForm.querySelector('#post-price').value;
 
-    const tag = editPostForm.querySelector('#post-tag').value;
+    const tag = editForm.querySelector('#post-tag').value;
 
-    const isPurchase = editPostForm.querySelector('input[name="transactionType"]:checked').value === 'purchase';
-
-    post.image = image;
-    post.name = name;
-    post.description = description;
-    post.price = price;
-    post.tag = tag || null;
-    post.isPurchase = isPurchase;
-
-    if (!post.image) {
-      post.image = '../../../../public/no-image-available.jpg';
-    }
+    const isPurchase = editForm.querySelector('input[name="transactionType"]:checked').value === 'purchase';
 
     try {
+      //----------------------------------------------------
+      loadStarted()
+      //----------------------------------------------------
+
+      let imageURL
+
+      if (image) {
+        //===================================
+        imageURL = await uploadImage(image);
+        //===================================
+
+      } else {
+        imageURL = '../../../../public/no-image-available.jpg';
+      }
+
+      post.image = imageURL;
+      post.name = name;
+      post.description = description;
+      post.price = price;
+      post.tag = tag || null;
+      post.isPurchase = isPurchase;
+
       //===================================
-      const updatedPost = await updatePost(post);
+      await updatePost(post);
       //===================================
 
-      postDetail = updatedPost;
+      let getUpdatedPost;
+
+      const postId = post.id
+      //===================================
+      getUpdatedPost = await getPost(postId);
+      //===================================
+
+      postDetail = getUpdatedPost;
 
       dispatchNotification('post-success', {
         message: "Post successfully updated.",
         type: 'success',
       });
 
-      renderReadOnlyView(postDetail, true);
+      render_ReadOnlyView(postDetail, true);
 
     } catch (error) {
       dispatchNotification('post-error', error.message);
+    } finally {
+      //----------------------------------------------------
+      loadFinished()
+      //----------------------------------------------------
     }
   }
 
-  //------------------------------------------------------------------------
+  //===================================================================================================================
   function dispatchNotification(eventType, message) {
     const event = new CustomEvent(eventType, { detail: message });
 
@@ -149,6 +179,16 @@ export const postDetailController = async (postContainer, postId) => {
       setTimeout(() => window.location = '/index.html', 500);
     }
 
+    postContainer.dispatchEvent(event);
+  }
+
+  function loadStarted() {
+    const event = new CustomEvent("load-post-started");
+    postContainer.dispatchEvent(event);
+  }
+
+  function loadFinished() {
+    const event = new CustomEvent("load-post-finished");
     postContainer.dispatchEvent(event);
   }
 };

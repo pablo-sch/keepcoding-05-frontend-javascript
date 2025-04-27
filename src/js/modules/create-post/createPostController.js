@@ -1,4 +1,4 @@
-import { createPost } from "./createPostModel.js";
+import { createPost, uploadImage } from "./createPostModel.js";
 
 //===================================================================================================================
 export const createPostController = (createPostForm) => {
@@ -18,20 +18,26 @@ export const createPostController = (createPostForm) => {
 
         const isPurchase = createPostForm.querySelector('input[name="transactionType"]:checked').value === 'purchase';
 
+        let imageURL
 
-
-        const post = {
-            image: image,
+        if (image) {
+      
+            //===================================
+            imageURL = await uploadImage(image);
+            //===================================
+      
+          } else {
+            imageURL = '../../../../public/no-image-available.jpg';
+          }
+      
+          const post = {
+            image: imageURL,
             name: name,
             description: description,
             price: price,
             tag: tag || null,
             isPurchase: isPurchase,
         }
-
-        if (!post.image) {
-            post.image = '../../../../public/no-image-available.jpg';
-          }
 
         handlecreatePost(post)
     })
@@ -40,34 +46,15 @@ export const createPostController = (createPostForm) => {
     const handlecreatePost = async (post) => {
         try {
             //----------------------------------------------------
-            const event = new CustomEvent("load-posts-started");
+            const event = new CustomEvent("load-post-started");
             createPostForm.dispatchEvent(event);
             //----------------------------------------------------
-
-/*             try {
-
-                if (!image) {
-                    image = '../../../../public/no-image-available.jpg';
-                    postData.image = image
-                } else {
-                    //====================================================
-                    image = await uploadImage(image);
-                    //====================================================
-                    postData.image = image
-                }
-
-            } catch (error) {
-                dispatchNotification('createPost-error', error.message)
-            } */
-
-                
 
             //====================================================
             await createPost(post);
             //====================================================
 
-            //dispatchCreateProductSuccess(createPostForm, 'Post created successfully.');
-            dispatchNotification('createPost-ok', {
+            dispatchNotification('create-post-ok', {
                 message: 'Post created successfully.',
                 type: 'success'
             })
@@ -75,11 +62,10 @@ export const createPostController = (createPostForm) => {
             setTimeout(() => { window.location = '/index.html'; }, 1000)
 
         } catch (error) {
-            //dispatchCreateProductError(createPostForm, error.message);
-            dispatchNotification('createPost-error', error.message)
+            dispatchNotification('create-post-error', error.message)
         } finally {
             //----------------------------------------------------
-            const event = new CustomEvent("load-posts-finished")
+            const event = new CustomEvent("load-post-finished")
             createPostForm.dispatchEvent(event)
             //----------------------------------------------------
         }
@@ -89,21 +75,4 @@ export const createPostController = (createPostForm) => {
         const event = new CustomEvent(eventType, { detail: message })
         createPostForm.dispatchEvent(event)
     }
-    //-------------------------------------------------------------------------------------------------------------------
-    /*     function dispatchCreateProductSuccess(createPostForm, successMessage) {
-            const event = new CustomEvent("createPost-ok", {
-                detail: {
-                    message: successMessage,
-                    type: 'success'
-                }
-            });
-            createPostForm.dispatchEvent(event)
-        }
-    
-        function dispatchCreateProductError(createPostForm, errorMessage) {
-            const event = new CustomEvent("createPost-error", {
-                detail: errorMessage
-            });
-            createPostForm.dispatchEvent(event)
-        } */
 }

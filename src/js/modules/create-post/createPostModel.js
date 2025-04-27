@@ -1,11 +1,12 @@
-
-export const createPost = async (post) => {
+//===================================================================================================================
+export const uploadImage = async (image) => {
   try {
     const token = localStorage.getItem("accessToken");
 
     const formData = new FormData();
-    formData.append('file', post.image);
+    formData.append('file', image);
 
+    //-----------------------------------------------------------------------------------------------
     const responseImage = await fetch('http://localhost:8000/upload', {
       method: 'POST',
       headers: {
@@ -22,13 +23,27 @@ export const createPost = async (post) => {
     const dataImage = await responseImage.json();
     const imageURL = dataImage.path
 
-    //===================================================================================================================
+    return imageURL
 
+  } catch (error) {
+    if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+      throw new Error('Oops... There was a problem with the server connection.');
+    }
+    throw error
+  }
+}
+
+//===================================================================================================================
+export const createPost = async (post) => {
+  try {
+    const token = localStorage.getItem("accessToken");
+
+    //-----------------------------------------------------------------------------------------------
     const responseCreatePost = await fetch("http://localhost:8000/api/posts", {
       method: "POST",
       body: JSON.stringify({
 
-        image: imageURL,
+        image: post.image,
         name: post.name,
         tag: post.tag,
         description: post.description,
@@ -41,21 +56,11 @@ export const createPost = async (post) => {
       }
     });
 
-    /*     
-    const response = await fetch("http://localhost:8000/api/posts", {
-      method: "POST",
-      body: formData, // Aquí se está enviando FormData, no JSON
-      headers: {
-        "Authorization": `Bearer ${token}`,
-      },
-    }); 
-    */
-
     const data = await responseCreatePost.json();
 
     if (!responseCreatePost.ok) {
-      console.error(`Error: ${response.status} (${response.statusText})`);
-      throw new Error(response.status + " " + response.statusText);
+      console.error(`Error: ${responseCreatePost.status} (${responseCreatePost.statusText})`);
+      throw new Error(responseCreatePost.status + " " + responseCreatePost.statusText);
     }
 
     return data;

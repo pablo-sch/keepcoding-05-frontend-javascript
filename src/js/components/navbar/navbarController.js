@@ -4,6 +4,7 @@ import { isAuthenticated } from '../../auth/auth.js';
 export function navbarController(container) {
   container.innerHTML = navbarView();
 
+
   handleVisibility();
   searchForm();
 }
@@ -53,16 +54,16 @@ function searchForm() {
     event.preventDefault();
 
     const searchQuery = document.getElementById('search').value.trim();
-    const selectedCategory = document.getElementById('category-select').value;
+    const tag = document.getElementById('post-tag').value;
 
-    if (!searchQuery && !selectedCategory) {
+/*     if (!searchQuery && !selectedCategory) {
       dispatchErrorNotification("Enter a word or select a category.");
       return;
-    }
+    } */
 
     const params = new URLSearchParams();
     if (searchQuery) params.set('search', searchQuery);
-    if (selectedCategory) params.set('category', selectedCategory);
+    if (tag) params.set('tag', tag);
 
     window.location.href = `/index.html?${params.toString()}`;
   });

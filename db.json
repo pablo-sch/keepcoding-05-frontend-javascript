@@ -1,0 +1,178 @@
+{
+  "users": [
+    {
+      "name": "Pablo",
+      "username": "pablsch.it@gmail.com",
+      "password": "$2b$10$/kBuLvxoenYLoDQvVCUIyuW1Ush3D.BVsHOJ2Mkajxy0RVEnLz4/q",
+      "id": 1
+    },
+    {
+      "name": "José",
+      "username": "Pedro.it@gmail.com",
+      "password": "$2b$10$/kBuLvxoenYLoDQvVCUIyuW1Ush3D.BVsHOJ2Mkajxy0RVEnLz4/q",
+      "id": 2
+    },
+    {
+      "name": "Pedro",
+      "username": "jose.JJ@gmail.com",
+      "password": "$2b$10$PfblmuGsB.lxsuV7dXkSAe3uHjucMlVuyaOna.qXR5XRNr4GrJAeu",
+      "id": 3
+    }
+  ],
+  "posts": [
+    {
+      "image": "http://localhost:8000//file-1745777864788.png",
+      "name": "Synthetic Wheat",
+      "tag": "fashion",
+      "description": "It is used but still in very good condition.",
+      "price": "35",
+      "isPurchase": true,
+      "userId": 1,
+      "updatedAt": "2025-04-27T18:17:44.846Z",
+      "id": 8
+    },
+    {
+      "image": "http://localhost:8000//file-1745775601839.jpg",
+      "name": "Cellphone",
+      "tag": "tech",
+      "description": "Modern Cell Phone. Fresh out of the box. \nSpecifications:\n-XXXXXXXXXXXXXXXXXXXXXX\n-XXX\n-X.X.X.X.X",
+      "price": "480",
+      "isPurchase": false,
+      "userId": 2,
+      "updatedAt": "2025-04-27T17:40:01.914Z",
+      "id": 10
+    },
+    {
+      "image": "http://localhost:8000//file-1745776219721.jpg",
+      "name": "Native forest wood chair",
+      "tag": null,
+      "description": "Used native forest wood chair. I have been using it for 4 years and no longer need it.",
+      "price": "60",
+      "isPurchase": true,
+      "userId": 2,
+      "updatedAt": "2025-04-27T17:50:19.782Z",
+      "id": 11
+    },
+    {
+      "image": "http://localhost:8000//file-1745776159099.jpg",
+      "name": "Veneered wood table",
+      "tag": "home",
+      "description": "Dimensions 4x2x1.5 Meters",
+      "price": "120",
+      "isPurchase": true,
+      "userId": 2,
+      "updatedAt": "2025-04-27T17:49:20.188Z",
+      "id": 12
+    },
+    {
+      "image": "http://localhost:8000//file-1745777215469.jpg",
+      "name": "Monitor 4K",
+      "tag": "tech",
+      "description": "Original price 1,200 + 40% discount!",
+      "price": "480",
+      "isPurchase": false,
+      "userId": 3,
+      "updatedAt": "2025-04-27T18:06:55.528Z",
+      "id": 13
+    },
+    {
+      "image": "http://localhost:8000//file-1745777249789.jpg",
+      "name": "Power saw with a 15% discount.",
+      "tag": "tech",
+      "description": "Original Price 120 Euros.\n\n1400 Watts\n230 Volts\n",
+      "price": "48",
+      "isPurchase": false,
+      "userId": 3,
+      "updatedAt": "2025-04-27T18:07:29.846Z",
+      "id": 14
+    },
+    {
+      "image": "http://localhost:8000//file-1745777270542.jpg",
+      "name": "Beret",
+      "tag": "fashion",
+      "description": "Men's black wool Basque beret for men",
+      "price": "20",
+      "isPurchase": true,
+      "userId": 3,
+      "updatedAt": "2025-04-27T18:07:50.601Z",
+      "id": 15
+    },
+    {
+      "image": "http://localhost:8000//file-1745777393338.jpg",
+      "name": "Wine Skin",
+      "tag": "travel",
+      "description": "Spanish Bota Bag Leather 1L Curved Wineskin Wine Skin",
+      "price": "80",
+      "isPurchase": true,
+      "userId": 3,
+      "updatedAt": "2025-04-27T18:09:53.399Z",
+      "id": 16
+    },
+    {
+      "image": "../../../../public/no-image-available.jpg",
+      "name": "Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text ",
+      "tag": "food",
+      "description": "Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text Full Text ",
+      "price": "1",
+      "isPurchase": false,
+      "userId": 1,
+      "updatedAt": "2025-04-27T18:18:21.278Z",
+      "id": 17
+    },
+    {
+      "image": "../../../../public/no-image-available.jpg",
+      "name": "...",
+      "tag": null,
+      "description": "...",
+      "price": "999",
+      "isPurchase": false,
+      "userId": 1,
+      "updatedAt": "2025-04-27T18:19:17.709Z",
+      "id": 18
+    },
+    {
+      "image": "http://localhost:8000//file-1745778143745.jpg",
+      "name": "Doppio Passo Primitivo Puglia, red wine Italy, 6 x 750ml -12 %",
+      "tag": "food",
+      "description": "Doppio Passo Primitivo Puglia, red wine Italy, 6 x 750mlDoppio Passo Primitivo - the multi-award-winning, exceptionally aromatic red wine from Apulia.",
+      "price": "42",
+      "isPurchase": false,
+      "userId": 1,
+      "updatedAt": "2025-04-27T18:22:23.809Z",
+      "id": 19
+    },
+    {
+      "image": "http://localhost:8000//file-1745778254513.jpg",
+      "name": "Ikigai: The Japanese secret to a long and happy life",
+      "tag": "education",
+      "description": "Prices include VAT. Depending on the delivery address, VAT may be added at the checkout.",
+      "price": "13",
+      "isPurchase": true,
+      "userId": 1,
+      "updatedAt": "2025-04-27T18:24:14.572Z",
+      "id": 20
+    },
+    {
+      "image": "http://localhost:8000//file-1745778393238.jpg",
+      "name": "Crocs Unisex Adult Classic Clog",
+      "tag": "sports",
+      "description": "Find Your Size: We recommend sizing down (e.g. if you are a 7.5, size down to a 7)\n",
+      "price": "43",
+      "isPurchase": true,
+      "userId": 1,
+      "updatedAt": "2025-04-27T18:26:33.297Z",
+      "id": 21
+    },
+    {
+      "image": "http://localhost:8000//file-1745778506638.jpg",
+      "name": "Clothes Hangers, Pack of 50, Black -16%",
+      "tag": "home",
+      "description": "INCLUDES: 50 suit clothes hangers in Black/Silver for keeping shirts, blazers, slacks, and more neatly hung and organized",
+      "price": "21",
+      "isPurchase": false,
+      "userId": 1,
+      "updatedAt": "2025-04-27T18:28:26.698Z",
+      "id": 22
+    }
+  ]
+}

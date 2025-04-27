@@ -122,14 +122,21 @@ Esto levantará el servidor y pondrá en funcionamiento el API REST para que pue
 
 1. Descargue el comprimido del proyecto desde GitHub a su ordenador.
 
-2. Una vez descarcargado el comprimido, abra el proyecto en Visual Studio agregando el directorio del proyecto a su espacio de trabajo.
+2. Una vez descargado el comprimido, abra el proyecto en Visual Studio agregando el directorio del proyecto a su espacio de trabajo.
 
 ### Notas
 
 - Asegúrate de tener correctamente instalados todos los programas necesarios antes de proceder con la ejecución del proyecto.
+
+- En el archivo db.json se posee tres cuentas y 14 posts. Estas son las credenciales de cada cuenta para por iniciar sesión en el proyecto y editar los posts ya creados:
+    - pablsch.it@gmail.com / pwd: 123456
+    - Pedro.it@gmail.com / pwd: 123456
+    - jose.JJ@gmail.com / pwd: 123456
 
 ## Sin Contribuciones ni Licencias
 
 Este proyecto no cuenta con contribuciones externas ni licencia en este momento.
 
 ## Vista Previa del Proyecto
+
+...

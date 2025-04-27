@@ -1,5 +1,14 @@
+import {tags} from "../../utils/constants.js"
 
 export function navbarView() {
+
+  const tagSelector = `
+  <option value="" selected>None</option>
+  ${tags.map(tag => {
+      return `<option value="${tag}">${tag}</option>`;
+  }).join('')}
+`;
+
   return `
     <a id="index-btn" class="nav-left">Home</a>
     
@@ -8,13 +17,9 @@ export function navbarView() {
 
         <input id="search" name="search" type="text" placeholder="Search" />
 
-          <select id="category-select" name="category">
-            <option value="">All Categories</option>
-            <option value="tech">Tech</option>
-            <option value="lifestyle">Lifestyle</option>
-            <option value="education">Education</option>
-            <option value="news">News</option>
-          </select>
+        <select id="post-tag" name="tag">
+          ${tagSelector}
+        </select>
 
           <button type="submit">Search</button>
 

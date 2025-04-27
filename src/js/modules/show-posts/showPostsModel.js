@@ -1,4 +1,4 @@
-export async function getPosts(search = '', category = '', page = 1, postsPerPage = 10) {
+export async function getPosts(search = '', tag = '', page = 1, postsPerPage = 10) {
 
   let posts = [];
 
@@ -9,8 +9,8 @@ export async function getPosts(search = '', category = '', page = 1, postsPerPag
       url += `&q=${search}`;
     }
 
-    if (category) {
-      url += `&category=${category}`;
+    if (tag) {
+      url += `&tag=${tag}`;
     }
 
     const response = await fetch(url);
@@ -25,8 +25,10 @@ export async function getPosts(search = '', category = '', page = 1, postsPerPag
 
     posts = await response.json();
 
-    if (posts.length === 0) {
-      const apiMessage = 'Sorry... No Post available at the moment.';
+
+
+    if (posts.length === 0 && response.ok) {
+      const apiMessage = 'Sorry... Nothing Found.';
       console.error(`Response: ${response.status} (${response.statusText})`);
       throw new Error(apiMessage);
     }
