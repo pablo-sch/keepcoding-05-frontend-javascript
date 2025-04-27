@@ -8,3 +8,5 @@
 8. Take screenshots of the project and upload them to the README once an acceptable level of aesthetics has been reached.
 9. Apply the DRY principle for links to CSS files in HTML files.
 10. Do not allow the user to make more than one click on a button to avoid problems of duplicates or null elements.
+11. Improve the content of the posts to make them more realistic.
+12. Make the image of the post in my showPosts display correctly for different screen sizes.
