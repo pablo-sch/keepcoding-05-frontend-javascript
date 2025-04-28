@@ -11,11 +11,15 @@ a {
 
     height: 100%;
 
-    padding: 1rem;
+    padding: 5px;
 
     border-radius: 8px;
     transition: transform 0.2s ease;
     background-color: var(--bg-post);
+}
+
+.post .post-image{
+    justify-content: center;
 }
 
 .post .title {
@@ -59,14 +63,12 @@ a {
 
 .post-image {
     /* DO NOT TOUCH THE CODE! */
-    display: block;
-
     width: 100%;
+    max-width: 300px;
     /* IMPORTANT TO BE WITH: 100% and HEIGHT: AUTO! */
     height: auto;
 
-    max-height: 200px;
-
+    /* max-height: 200px; */
     object-fit: cover;
     margin: 0.5rem 0;
 
@@ -74,6 +76,8 @@ a {
 }
 
 .sale-label {
+    font-size: small;
+
     position: absolute;
     top: 10px;
     right: 10px;
@@ -93,7 +97,11 @@ a {
 }
 
 @media (min-width: 460px) {
-    .post p {
-        padding: 5px;
+    .sale-label {
+        font-size: 1rem;
+    }
+
+    .post {
+        padding: 1rem;
     }
 }

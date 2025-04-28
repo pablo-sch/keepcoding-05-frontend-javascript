@@ -18,8 +18,17 @@ body {
 }
 
 main {
+    max-width: 1440px;
+
     margin: clamp(5px, 2vw, 1rem) clamp(10px, 5vw, 2rem);
+    margin-top: 0;
+    margin-bottom: 0;
+
+    padding: 1rem;
+
     background-color: var(--bg-color-4);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 video,
@@ -48,7 +57,7 @@ h3,
 h4,
 p {
     margin: 0;
-    text-align: justify;
+    text-align: left;
 }
 
 input,

@@ -13,35 +13,35 @@ export function navbarController(container) {
 function handleVisibility() {
   const path = window.location.pathname;
 
-  const searchBtn = document.querySelector('.nav-center');
+  const searchContainer = document.querySelector('.nav-center');
   const logoutBtn = document.getElementById('logout-btn');
   const loginBtn = document.getElementById('login-btn');
   const signupBtn = document.getElementById('signup-btn');
   const createPostBtn = document.getElementById('create-post-btn');
 
   // Button visibility logic based on path
-  if (searchBtn) searchBtn.style.display = 'none';
+  if (searchContainer) searchContainer.style.display = 'none';
 
   if (path.endsWith('index.html')) {
-    if (searchBtn) searchBtn.style.display = 'block'; // Make sure it's visible
+    if (searchContainer) searchContainer.style.display = 'flex'; // Make sure it's visible
   }
 
   // Button visibility logic based on authentication state
   if (isAuthenticated()) {
 
     // Show "Logout" and "Create Post", hide "Login" and "Sign Up"
-    if (logoutBtn) logoutBtn.style.display = 'block'; // Make sure it's visible
+    if (logoutBtn) logoutBtn.style.display = 'flex'; // Make sure it's visible
     if (loginBtn) loginBtn.style.display = 'none'; // Hide if there's a token
     if (signupBtn) signupBtn.style.display = 'none'; // Hide if there's a token
-    if (createPostBtn) createPostBtn.style.display = 'block'; // Make sure it's visible
+    if (createPostBtn) createPostBtn.style.display = 'flex'; // Make sure it's visible
 
   } else {
 
     // Show "Login" and "Sign Up", hide "Logout" and "Create Post"
     if (logoutBtn) logoutBtn.style.display = 'none'; // Hide if there's no token
     if (createPostBtn) createPostBtn.style.display = 'none'; // Hide if there's no token
-    if (loginBtn) loginBtn.style.display = 'block'; // Make sure it's visible
-    if (signupBtn) signupBtn.style.display = 'block'; // Make sure it's visible
+    if (loginBtn) loginBtn.style.display = 'flex'; // Make sure it's visible
+    if (signupBtn) signupBtn.style.display = 'flex'; // Make sure it's visible
   }
 
 }

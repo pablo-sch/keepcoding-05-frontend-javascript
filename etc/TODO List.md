@@ -1,4 +1,6 @@
-1. Improve the CSS
+# TODO List
+
+1. Improve the CSS.
 2. Load the image to the input of this one when you edit a post because currently this one doesn't receive anything, so you don't have to load the same original image again from the client.
 3. In the search panel, keep the search parameters when you search by word or tag.
 4. Improve the notifications in terms of appearance on the screen and its aesthetics.

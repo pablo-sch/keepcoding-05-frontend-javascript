@@ -1,8 +1,7 @@
-.showPosts-container {
+.post-card-container {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(2, 1fr);
-    padding: 1rem;
 
     a {
         color: inherit;
@@ -14,7 +13,7 @@
 }
 
 @media (min-width: 768px) {
-    .showPosts-container {
+    .post-card-container {
         grid-template-columns: repeat(4, 1fr);
     }
 }

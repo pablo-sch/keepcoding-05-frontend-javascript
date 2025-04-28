@@ -129,9 +129,9 @@ Esto levantará el servidor y pondrá en funcionamiento el API REST para que pue
 - Asegúrate de tener correctamente instalados todos los programas necesarios antes de proceder con la ejecución del proyecto.
 
 - En el archivo db.json se posee tres cuentas y 14 posts. Estas son las credenciales de cada cuenta para por iniciar sesión en el proyecto y editar los posts ya creados:
-    - pablsch.it@gmail.com / pwd: 123456
-    - Pedro.it@gmail.com / pwd: 123456
-    - jose.JJ@gmail.com / pwd: 123456
+- [pablsch.it@gmail.com](mailto:pablsch.it@gmail.com) / pwd: 123456
+- [Pedro.it@gmail.com](mailto:Pedro.it@gmail.com) / pwd: 123456
+- [jose.JJ@gmail.com](mailto:jose.JJ@gmail.com) / pwd: 123456
 
 ## Sin Contribuciones ni Licencias
 
