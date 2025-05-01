@@ -4,18 +4,51 @@
     align-items: stretch;
     flex-direction: column;
 
-    padding: clamp(1rem, 5vw, 2rem);
+    padding-left: clamp(1rem, 5vw, 4rem);
+    padding-right: clamp(1rem, 5vw, 4rem);
+
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    margin-right: 5%;
+    margin-left: 5%;
 
     background-color: var(--bg-color-3);
 }
 
+form button{
+    font-weight: bold;
+    align-self: self-start;
+    width: 1auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+textarea {
+    max-width: 100%;
+    min-width: 100%;
+
+    min-height: 10rem;
+    max-height: 10rem;
+}
+
 .form input,
 textarea,
-label,
-p {
+select {
     margin-bottom: 1rem;
 }
 
 .form label {
     font-weight: bold;
+}
+
+.form .radio-button{
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .form {
+        margin-right: 20%;
+        margin-left: 20%;
+    }
 }

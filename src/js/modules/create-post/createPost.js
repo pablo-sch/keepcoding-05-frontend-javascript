@@ -12,7 +12,7 @@ export function initCreatePost() {
         window.location = '/views/login.html'
     }
 
-    const createPostForm = document.querySelector('#createPostForm')
+    const createPostForm = document.querySelector('#create-post-form')
     const notifications = document.querySelector(".notifications");
     const loader = document.querySelector(".loader")
 

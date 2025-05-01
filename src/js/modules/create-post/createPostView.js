@@ -28,7 +28,7 @@ export const buildCreatePostForm = () => {
         <input required id="post-price" name="post-price" type="number" min="1" max="9999999" step="0.01"
             placeholder="Introduce the price of your product." />
 
-        <div>
+        <div class="radio-button">
             <label for="purchase">
                 <input required type="radio" id="purchase" name="transactionType" value="purchase">
                 Purchase
