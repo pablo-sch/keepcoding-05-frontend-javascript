@@ -40,10 +40,10 @@ export const buildCreatePostForm = () => {
             </label>
         </div>
 
-        <label for="post-tag">Tag: </label>
-        <select id="post-tag" name="tag">
-            ${tagSelector}
-        </select>
+        <div class="select-wrapper">
+          <p class="tag-label"><strong>Category:</strong></p>
+          <select id='post-tag'>${tagSelector}</select>
+        </div>
 
         <button>Create Post</button>
     `;

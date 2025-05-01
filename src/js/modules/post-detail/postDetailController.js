@@ -1,5 +1,5 @@
 import { getPost, getLoggedInUserInfo, removePost, updatePost, uploadImage } from "./postDetailModel.js";
-import { buildPostDetail_EditableView, buildPostDetail_ReadOnlyView } from "./postDetailView.js";
+import { buildEditableView, buildReadOnlyView } from "./postDetailView.js";
 
 
 export const postDetailController = async (postContainer, postId) => {
@@ -7,7 +7,7 @@ export const postDetailController = async (postContainer, postId) => {
 
   let postDetail = null;
   let user = null;
-  let isEditing = false;
+  let isOwner = false
 
   try {
     //----------------------------------------------------
@@ -22,18 +22,21 @@ export const postDetailController = async (postContainer, postId) => {
       dispatchNotification('post-error', error.message);
     }
 
-    try {
-      //===================================
-      user = await getLoggedInUserInfo();
-      //===================================
-    } catch (error) {
-      dispatchNotification('post-error', error.message);
+    if(!localStorage.getItem('accessToken')){
+      renderReadOnlyView(postDetail, isOwner);
+    }else{
+      try {
+        //===================================
+        user = await getLoggedInUserInfo();
+        //===================================
+      } catch (error) {
+        dispatchNotification('post-error', error.message);
+      }
+  
+      isOwner = user.id === postDetail.userId;
+  
+      renderReadOnlyView(postDetail, isOwner);
     }
-
-    const isOwner = user.id === postDetail.userId;
-
-    render_ReadOnlyView(postDetail, isOwner);
-
   } catch (error) {
     dispatchNotification('post-error', error.message);
   } finally {
@@ -43,13 +46,12 @@ export const postDetailController = async (postContainer, postId) => {
   }
 
   //===================================================================================================================
-  function render_ReadOnlyView(post, isOwner) {
-    isEditing = false;
-    postContainer.innerHTML = buildPostDetail_ReadOnlyView(post, isOwner);
+  function renderReadOnlyView(post, isOwner) {
+    postContainer.innerHTML = buildReadOnlyView(post, isOwner);
 
     if (isOwner) {
       const editPost = postContainer.querySelector("#edit-post")
-      editPost.addEventListener("click", () => render_EditableView(post));
+      editPost.addEventListener("click", () => renderEditableView(post));
 
       const deletePost = postContainer.querySelector("#delete-post")
       deletePost.addEventListener("click", () => handleDelete(post.id));
@@ -57,9 +59,8 @@ export const postDetailController = async (postContainer, postId) => {
   }
 
   //------------------------------------------------------------------------
-  function render_EditableView(post) {
-    isEditing = true;
-    postContainer.innerHTML = buildPostDetail_EditableView(post);
+  function renderEditableView(post) {
+    postContainer.innerHTML = buildEditableView(post);
 
     const editForm = document.getElementById("edit-post-form");
 

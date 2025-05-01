@@ -18,7 +18,7 @@ export function initPostDetail() {
 
     if (postId) {
 
-        const postContainer = document.querySelector(".postDetail-container")
+        const postContainer = document.querySelector(".post-detail-container")
 
         postContainer.addEventListener('load-post-started', () => {
             show();

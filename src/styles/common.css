@@ -1,5 +1,6 @@
 :root {
     --bg-color: #575757e8;
+    --bg-color-1: #cccccc;
     --bg-color-2: #747474;
     --bg-color-3: #a1a1a1;
     --bg-color-4: #b3b3b3;
@@ -27,6 +28,8 @@ main {
     margin-right: auto;
 
     padding: 1rem;
+    padding-top: 0;
+
 
     background-color: var(--bg-color-4);
 
@@ -43,6 +46,11 @@ a {
 
 * {
     box-sizing: border-box;
+}
+
+h1{
+    padding-top: 1rem;
+    background-color: var(--bg-color-1);
 }
 
 h1,
@@ -90,6 +98,6 @@ select {
 
 
 
-p {
+/* p {
     white-space: pre-line;
-}
+} */

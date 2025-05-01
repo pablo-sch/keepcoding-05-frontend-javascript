@@ -1,6 +1,6 @@
 import { tags } from "../../utils/constants.js";
 
-export const buildPostDetail_ReadOnlyView = (post, isOwner) => {
+export const buildReadOnlyView = (post, isOwner) => {
   const postType = post.isPurchase ? 'purchase' : 'sale';
 
   const date = new Date(post.updatedAt);
@@ -12,24 +12,23 @@ export const buildPostDetail_ReadOnlyView = (post, isOwner) => {
   const formattedDate = `${hours}:${minutes} ${day}-${month}-${year}`;
 
   const postHTML = `
-  <div class="post-view">
       <div class='image-container'>
-        <img src="${post.image}" alt="Product Image" class='post-image'>
-        <p class='sale-label ${postType}'>${postType}</p>
+        <div class="image-wrapper">
+          <img src="${post.image}" alt="Product Image" class='post-image'>
+          <p class='sale-label ${postType}'>${postType}</p>
+        </div>
       </div>
 
       <p class="title">
         <strong>${post.name} - €${post.price}</strong>
       </p>
 
-      <p><strong>Owner:</strong></p>
-      <p>${post.user.name}</p>
+      <p><strong>Owner: </strong>${post.user.name}</p>
 
       <p><strong>Description:</strong></p>
       <p>${post.description}</p>
 
-      <p><strong>Tag:</strong></p>
-      <p>${post.tag != null ? post.tag : 'None'}</p>
+      <p><strong>Tag: </strong>${post.tag != null ? post.tag : 'None'}</p>
 
       <p><strong>Last update at: </strong>${formattedDate}</p>
 
@@ -37,13 +36,12 @@ export const buildPostDetail_ReadOnlyView = (post, isOwner) => {
         <button id="edit-post">Edit</button>
         <button id="delete-post">Delete</button>
       ` : ''}
-    </div>
   `;
 
   return postHTML
 };
 
-export const buildPostDetail_EditableView = (post) => {
+export const buildEditableView = (post) => {
 
   const tagSelector = `
 
@@ -80,7 +78,8 @@ export const buildPostDetail_EditableView = (post) => {
         <input required id="post-price" name="post-price" type="number" min="1" max="9999999" step="0.01"
         placeholder="Introduce the price of your product." value="${post.price}" />
 
-        <div>
+          <div class="radio-button">
+
             <label for="purchase">
                 <input type="radio" id="purchase" name="transactionType" value="purchase" required ${post.isPurchase ? 'checked' : ''}>
                 Purchase
@@ -92,11 +91,15 @@ export const buildPostDetail_EditableView = (post) => {
             </label>
         </div>
 
-      <p><strong>Tag:</strong></p>
-      <select id='post-tag'>${tagSelector}</select>
+        <div class="select-wrapper">
+          <p class="tag-label"><strong>Category:</strong></p>
+          <select id='post-tag'>${tagSelector}</select>
+        </div>
 
-      <button id="save-changes">Save</button>
-      <button id="cancel-edit">Cancel</button>
+        <div class="buttons-container">
+          <button id="save-changes">Save</button>
+          <button id="cancel-edit">Cancel</button>
+        </div>
     </form>
   `;
   return postHTML
