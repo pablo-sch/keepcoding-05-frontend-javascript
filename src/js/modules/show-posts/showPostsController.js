@@ -75,6 +75,8 @@ export async function showPostsController(container) { // the container is ".pos
     
         for (let i = 1; i <= pageCount; i++) {
             const btn = document.createElement('button');
+            btn.classList.add('btn');
+
             btn.textContent = i;
     
             if (i === currentPage) {

@@ -1,0 +1,7 @@
+.input-search{
+    background-color: var(--bg-search);
+}
+
+.input-search::placeholder{
+    color: black;
+}

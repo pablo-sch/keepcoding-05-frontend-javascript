@@ -33,8 +33,10 @@ export const buildReadOnlyView = (post, isOwner) => {
       <p><strong>Last update at: </strong>${formattedDate}</p>
 
       ${isOwner ? `
-        <button id="edit-post">Edit</button>
-        <button id="delete-post">Delete</button>
+        <div class="buttons-container">
+          <button id="edit-post" class="btn btn-primary">Edit</button>
+          <button id="delete-post"class="btn btn-secondary">Delete</button>
+        </div>
       ` : ''}
   `;
 
@@ -59,7 +61,7 @@ export const buildEditableView = (post) => {
   const postHTML = `
     <form id="edit-post-form" class="form">
 
-      <div class="image-preview">
+      <div class="image-container">
         <img src="${post.image}" alt="Current Image" class="post-image" />
       </div>
 
@@ -97,8 +99,8 @@ export const buildEditableView = (post) => {
         </div>
 
         <div class="buttons-container">
-          <button id="save-changes">Save</button>
-          <button id="cancel-edit">Cancel</button>
+          <button id="save-changes" class="btn btn-primary">Save</button>
+          <button id="cancel-edit" class="btn btn-secondary">Cancel</button>
         </div>
     </form>
   `;

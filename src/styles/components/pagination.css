@@ -1,6 +1,6 @@
 .pages{
     display: flex;
     justify-content: center;
-
+    gap: 5px;
     margin-top: 1rem;
 }

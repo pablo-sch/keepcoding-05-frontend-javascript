@@ -45,7 +45,7 @@ export const buildCreatePostForm = () => {
           <select id='post-tag'>${tagSelector}</select>
         </div>
 
-        <button>Create Post</button>
+        <button class="btn btn-primary">Create Post</button>
     `;
 
     return createPostFormView

@@ -53,17 +53,9 @@
 .notification.success {
   background-color: lightblue;
   border-color: rgb(0, 172, 230);
-
-  button {
-    background-color: var(--btn-X-notification-success)
-  }
 }
 
 .notification.error {
   background-color: lightcoral;
   border-color: rgb(242, 8, 8);
-
-  button {
-    background-color: var(--btn-X-notification-error)
-  }
 }

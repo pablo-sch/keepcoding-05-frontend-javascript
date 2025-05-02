@@ -1,7 +1,73 @@
-button{
+button,
+.btn {
     font-weight: bold;
+    font-size: large;
     align-self: self-start;
     width: auto;
+    padding: 0.5rem;
     padding-right: 1rem;
     padding-left: 1rem;
+
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+button,
+a.btn {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+button:hover,
+a.btn:hover {
+    opacity: 0.8;
+}
+
+a.btn {
+    display: flex;
+
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-primary,
+.btn-secondary {
+    font-size: larger;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.btn-primary {
+    background-color: var(--btn-p);
+}
+
+.btn-secondary {
+    background-color: var(--btn-s);
+    color: white;
+}
+
+
+.btn-primary-navbar {
+    background-color: var(--btn-p-navbar);
+    color: var(--font-btn-p);
+}
+
+.btn-secondary-navbar {
+    background-color: var(--btn-s-navbar);
+    color: var(--font-btn-s);
+}
+
+.btn-search {
+    background-color: var(--btn-search);
+}
+
+.btn-home {
+    background-color: var(--btn-home);
+}
+
+.btn-exit{
+    background-color: var(--btn-X-notification);
+    color: var(--font-X-notification);
 }

@@ -6,9 +6,23 @@
     --bg-color-4: #b3b3b3;
 
     --bg-post: white;
+    --bg-search: rgb(157, 234, 248);
+    --bg-search-2: rgb(245, 254, 255);
 
-    --btn-X-notification-success: #1e84be;
-    --btn-X-notification-error: brown;
+    --btn-home: rgb(226, 228, 119);
+    --btn-search: rgb(38, 192, 219);
+
+    --btn-p-navbar: rgb(160, 231, 94) ;
+    --btn-s-navbar: rgb(247, 117, 66) ;
+
+    --btn-p: rgb(191, 243, 142) ;
+    --btn-s: rgb(248, 71, 48) ;
+
+    --btn-X-notification: rgb(255, 255, 255);
+    --font-X-notification: rgb(255, 0, 0);
+
+    --font-btn-p: rgb(0, 0, 0);
+    --font-btn-s: rgb(0, 0, 0);
 
     font-family: Arial, sans-serif;
     font-size: clamp(2px, 5vw, 16px);
@@ -74,9 +88,10 @@ textarea,
 label,
 p,
 textarea,
-button,
 select {
     padding: 7px;
+    border-radius: 6px;
+    border: none;
 }
 
 .radio-button{

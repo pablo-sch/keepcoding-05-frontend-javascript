@@ -16,37 +16,11 @@
     padding-top: clamp(1px, 5vw, 16px);
     padding-bottom: clamp(1px, 5vw, 16px);
 
-
     max-width: 1440px;
-
-    font-weight: bold;
-}
-
-.navbar a {
-    padding: clamp(1px, 5vw, 8px);
-
-    cursor: pointer;
-    background-color: var(--bg-color-4);
-}
-
-.nav-right a {
-    display: flex;
-
-    width: 100%;
-    justify-content: center;
-    align-items: center;
 }
 
 .nav-left {
     grid-area: 1 / 1 / 2 / 4;
-}
-
-.nav-left a {
-    display: flex;
-
-    width: 100%;
-    justify-content: center;
-    align-items: center;
 }
 
 .nav-center {
@@ -69,7 +43,6 @@
 
 .nav-right {
     display: flex;
-    justify-content: flex-end;
     gap: 1rem;
     grid-area: 1 / 4 / 2 / 7;
 }

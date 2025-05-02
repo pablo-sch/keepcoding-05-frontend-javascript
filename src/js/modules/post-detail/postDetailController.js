@@ -74,7 +74,8 @@ export const postDetailController = async (postContainer, postId) => {
     cancel.addEventListener("click", (event) => {
       event.preventDefault();
 
-      render_ReadOnlyView(postDetail, true);
+      postContainer.innerHTML = buildReadOnlyView(post, true);
+      renderReadOnlyView(post, true)
     });
   }
 

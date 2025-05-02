@@ -1,0 +1,8 @@
+.select-search{
+    background-color: var(--bg-search);
+}
+
+.select-search option{
+    background-color: var(--bg-search-2);
+}
+
