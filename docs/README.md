@@ -109,6 +109,7 @@ This will start the server and run the REST API, allowing interaction with the s
 
 - **HTML**: For structuring the content and building the layout of the web page.
 - **CSS**: For visual design and styling, ensuring an attractive and consistent user experience.
+- **JavaScript**: For adding interactivity and dynamic features to the website, enhancing the user experience with functionalities such as form validation, animations, and event handling.
 
 ## Installation and Usage Instructions
 

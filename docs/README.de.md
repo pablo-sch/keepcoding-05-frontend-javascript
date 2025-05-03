@@ -109,6 +109,7 @@ Dies startet den Server und stellt die REST-API bereit, sodass du mit der simuli
 
 - **HTML**: Für die Strukturierung der Inhalte und des Seitenlayouts.
 - **CSS**: Für das visuelle Design und die Benutzeroberfläche, um ein konsistentes und attraktives Nutzererlebnis zu bieten.
+- **JavaScript**: Für die Hinzufügung von Interaktivität und dynamischen Funktionen auf der Webseite, wodurch die Benutzererfahrung mit Funktionen wie Formularvalidierung, Animationen und Ereignisbehandlung verbessert wird.
 
 ## Installations- und Nutzungshinweise
 

@@ -109,6 +109,7 @@ Esto levantará el servidor y pondrá en funcionamiento la API REST para que pue
 
 - **HTML**: Para la estructuración del contenido y la creación de la estructura de la página web.
 - **CSS**: Para el diseño y estilo visual de la página, asegurando una experiencia de usuario atractiva y coherente.
+- **JavaScript**: Para agregar interactividad y características dinámicas al sitio web, mejorando la experiencia del usuario con funcionalidades como validación de formularios, animaciones y manejo de eventos.
 
 ## Instrucciones de instalación y uso
 
