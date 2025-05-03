@@ -21,8 +21,8 @@ export const buildCreatePostForm = () => {
             placeholder="Introduce the name of your post." />
 
         <label for="post-description">Description: </label>
-        <textarea required name="post-description" id="post-description" maxlength="300"
-            placeholder="Max. Length 300"></textarea>
+        <textarea required name="post-description" id="post-description" maxlength="1000"
+            placeholder="Max. Length 1000"></textarea>
 
         <label for="post-price">Price: </label>
         <input required id="post-price" name="post-price" type="number" min="1" max="9999999" step="0.01"

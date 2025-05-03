@@ -1,5 +1,6 @@
 .input-search{
     background-color: var(--bg-search);
+    font-size: clamp(0.6rem, 2.5vw, 1.5rem);
 }
 
 .input-search::placeholder{

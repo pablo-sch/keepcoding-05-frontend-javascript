@@ -4,84 +4,94 @@ import { buildEditableView, buildReadOnlyView } from "./postDetailView.js";
 
 export const postDetailController = async (postContainer, postId) => {
 
+  let currentPost = null;
+  let isOwner = false;
 
-  let postDetail = null;
-  let user = null;
-  let isOwner = false
+  await readOnlyPost()
 
-  try {
-    //----------------------------------------------------
-    loadStarted();
-    //----------------------------------------------------
+  async function loadPostData() {
+
+    let post
+    let user = null;
 
     try {
+      //----------------------------------------------------
+      loadStarted();
+      //----------------------------------------------------
+
       //===================================
-      postDetail = await getPost(postId);
+      post = await getPost(postId);
       //===================================
+
+      if(!post){
+        throw new Error('No post founded.')
+      }
+
+      if (!localStorage.getItem('accessToken')) {
+        return {post, owner: false};
+      }
+
+      //===================================
+      user = await getLoggedInUserInfo();
+      //===================================
+      const owner = user.id === post.userId;
+
+      return { post, owner };
+
     } catch (error) {
       dispatchNotification('post-error', error.message);
+    } finally {
+      //----------------------------------------------------
+      loadFinished();
+      //----------------------------------------------------
     }
-
-    if(!localStorage.getItem('accessToken')){
-      renderReadOnlyView(postDetail, isOwner);
-    }else{
-      try {
-        //===================================
-        user = await getLoggedInUserInfo();
-        //===================================
-      } catch (error) {
-        dispatchNotification('post-error', error.message);
-      }
-  
-      isOwner = user.id === postDetail.userId;
-  
-      renderReadOnlyView(postDetail, isOwner);
-    }
-  } catch (error) {
-    dispatchNotification('post-error', error.message);
-  } finally {
-    //----------------------------------------------------
-    loadFinished();
-    //----------------------------------------------------
   }
 
   //===================================================================================================================
-  function renderReadOnlyView(post, isOwner) {
-    postContainer.innerHTML = buildReadOnlyView(post, isOwner);
+  async function readOnlyPost() {
+
+    const result = await loadPostData();
+
+    currentPost = result.post;
+    isOwner = result.owner;
+
+    postContainer.innerHTML = ''
+    postContainer.innerHTML = buildReadOnlyView(currentPost, isOwner);
 
     if (isOwner) {
       const editPost = postContainer.querySelector("#edit-post")
-      editPost.addEventListener("click", () => renderEditableView(post));
+      editPost.addEventListener("click", () => editablePost(currentPost));
 
       const deletePost = postContainer.querySelector("#delete-post")
-      deletePost.addEventListener("click", () => handleDelete(post.id));
+      deletePost.addEventListener("click", () => handleDelete(currentPost.id));
     }
   }
 
   //------------------------------------------------------------------------
-  function renderEditableView(post) {
+  function editablePost(post) {
+
+    postContainer.innerHTML = ''
     postContainer.innerHTML = buildEditableView(post);
 
-    const editForm = document.getElementById("edit-post-form");
-
-    editForm.addEventListener('submit', (event) => {
+    const form = document.getElementById("edit-post-form");
+    form.addEventListener('submit', (event) => {
       event.preventDefault();
 
       handleSave(post);
     });
 
-    const cancel = postContainer.querySelector("#cancel-edit")
-    cancel.addEventListener("click", (event) => {
+    const cancelEdit = postContainer.querySelector("#cancel-edit")
+    cancelEdit.addEventListener("click", (event) => {
       event.preventDefault();
 
-      postContainer.innerHTML = buildReadOnlyView(post, true);
-      renderReadOnlyView(post, true)
+      readOnlyPost()
     });
   }
 
   //------------------------------------------------------------------------
   async function handleDelete(postId) {
-    if (confirm("Are you sure about deleting the post?")) {
+    if (!confirm("Are you sure about deleting the post?")) return;
+
       try {
         //----------------------------------------------------
         loadStarted();
@@ -103,23 +113,14 @@ export const postDetailController = async (postContainer, postId) => {
         loadFinished();
         //----------------------------------------------------
       }
-    }
   }
 
   //------------------------------------------------------------------------
   async function handleSave(post) {
 
-    const editForm = document.getElementById("edit-post-form");
+    const form = document.getElementById("edit-post-form");
 
-    const image = editForm.querySelector('#post-image').files[0];
-
-    const name = editForm.querySelector('#post-name').value;
-    const description = editForm.querySelector('#post-description').value;
-    const price = editForm.querySelector('#post-price').value;
-
-    const tag = editForm.querySelector('#post-tag').value;
-
-    const isPurchase = editForm.querySelector('input[name="transactionType"]:checked').value === 'purchase';
+    const { image, name, description, price, tag, isPurchase } = getFormData(form);
 
     try {
       //----------------------------------------------------
@@ -137,32 +138,30 @@ export const postDetailController = async (postContainer, postId) => {
         imageURL = '../../../../public/no-image-available.jpg';
       }
 
-      post.image = imageURL;
-      post.name = name;
-      post.description = description;
-      post.price = price;
-      post.tag = tag || null;
-      post.isPurchase = isPurchase;
+      const updatedPost = {
+        ...post,
+        image: imageURL,
+        name: name,
+        description: description,
+        price: price,
+        tag: tag || null,
+        isPurchase: isPurchase,
+      };
 
       //===================================
-      await updatePost(post);
+      await updatePost(updatedPost);
       //===================================
 
-      let getUpdatedPost;
-
-      const postId = post.id
       //===================================
-      getUpdatedPost = await getPost(postId);
+      currentPost = await getPost(post.id);
       //===================================
-
-      postDetail = getUpdatedPost;
 
       dispatchNotification('post-success', {
         message: "Post successfully updated.",
         type: 'success',
       });
 
-      render_ReadOnlyView(postDetail, true);
+      readOnlyPost()
 
     } catch (error) {
       dispatchNotification('post-error', error.message);
@@ -171,6 +170,17 @@ export const postDetailController = async (postContainer, postId) => {
       loadFinished()
       //----------------------------------------------------
     }
+  }
+
+  function getFormData(form) {
+    return {
+      image: form.querySelector('#post-image').files[0],
+      name: form.querySelector('#post-name').value,
+      description: form.querySelector('#post-description').value,
+      price: form.querySelector('#post-price').value,
+      tag: form.querySelector('#post-tag').value || null,
+      isPurchase: form.querySelector('input[name="transactionType"]:checked').value === 'purchase',
+    };
   }
 
   //===================================================================================================================

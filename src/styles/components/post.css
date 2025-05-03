@@ -1,6 +1,16 @@
-a {
-    height: 100%;
+.post-card-container {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.post-card-container a {
     display: block;
+    color: inherit;
+}
+
+.post-card-container a:hover {
+    transform: scale(1.02);
 }
 
 .post {
@@ -9,7 +19,9 @@ a {
     flex-direction: column;
     justify-content: flex-start;
 
+    max-height: 500px;
     height: 100%;
+    min-height: 200px;
 
     padding: 5px;
 
@@ -18,74 +30,50 @@ a {
     background-color: var(--bg-post);
 }
 
-.post .post-image{
-    justify-content: center;
-}
-
-.post .title {
-    font-weight: bold;
-}
-
-.post p {
-    /* Use a flexbox-based layout for multi-line truncation */
-    display: -webkit-box;
-
-    /* Limit the text to 3 lines (WebKit-specific) */
-    -webkit-line-clamp: 3;
-
-    /* Standard property for limiting text to 3 lines (not yet fully supported across all browsers) */
-    line-clamp: 3;
-
-    /* Required for -webkit-line-clamp to work properly */
-    -webkit-box-orient: vertical;
-
-    /* Hide overflow content that goes beyond the container */
-    overflow: hidden;
-
-    /* Display ellipsis (…) when text overflows */
-    text-overflow: ellipsis;
-
-    /* Set line height for better readability and consistent text height */
-    line-height: 1.4;
-
-    /* Prevent the element from expanding beyond 3 lines of text */
-    max-height: calc(1.4em * 3);
-    /* 1.4em line height times 3 lines */
-
-    /* Break long words if necessary to prevent overflow */
-    word-wrap: break-word;
-    word-break: break-word;
-
-    padding: 2px;
-
-    margin-bottom: 0.1rem;
-}
-
 .post-image {
     /* DO NOT TOUCH THE CODE! */
+    display: flex;
+    height: 50%;
     width: 100%;
-    max-width: 300px;
-    /* IMPORTANT TO BE WITH: 100% and HEIGHT: AUTO! */
-    height: auto;
+    object-fit: contain;
 
-    /* max-height: 200px; */
-    object-fit: cover;
-    margin: 0.5rem 0;
+    margin: 0 0 0.5rem 0;
+    justify-content: center;
 
     border: 1px solid #ddd;
 }
 
+.post-text {
+    display: flex;
+    flex-direction: column;
+
+    height: 50%;
+    overflow: hidden;
+    word-break: break-word;
+}
+
+.post-title {
+    font-weight: bold;
+}
+
+.post p {
+    padding: 0;
+    margin-bottom: 0.2rem;
+}
+
 .sale-label {
-    font-size: small;
+    font-size: clamp(0.6rem, 2.5vw, 1.5rem);
 
     position: absolute;
     top: 10px;
     right: 10px;
     color: white;
-    padding: 4px 10px;
+    padding: 4px 10px !important;
     border-radius: 4px;
     font-weight: bold;
     text-transform: uppercase;
+
+    white-space: nowrap;
 }
 
 .sale-label.purchase {
@@ -96,11 +84,13 @@ a {
     background-color: crimson;
 }
 
-@media (min-width: 460px) {
-    .sale-label {
-        font-size: 1rem;
+@media (min-width: 768px) {
+    .post-card-container {
+        grid-template-columns: repeat(4, 1fr);
     }
+}
 
+@media (min-width: 460px) {
     .post {
         padding: 1rem;
     }

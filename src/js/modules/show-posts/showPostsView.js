@@ -10,15 +10,19 @@ export const buildPost = (post) => {
 
         <img src="${post.image}" alt="Product Image" class="post-image">
 
-        <p class="title">${post.name}</p>
+        <div class="post-text">
 
-        <p>${post.tag ?? 'None'}</p>
+            <p class="post-title">${post.name}</p>
 
-        <p>€ ${post.price}</p>
+            <p>${post.tag ?? 'None'}</p>
 
-        <p>${post.description}</p>
+            <p>€ ${post.price}</p>
 
-        <p class="sale-label ${postType}">${postType}</p>
+            <p class="post-description">${post.description}</p>
+
+            <p class="sale-label ${postType}">${postType}</p>
+
+        </div>
     </div>`;
 
     return postView

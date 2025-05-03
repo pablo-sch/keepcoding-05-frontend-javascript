@@ -34,22 +34,17 @@ export function notificationsController(container) { // container is ".notificat
         n !== newNotification && n.classList.contains('error')
       );
 
-      oldErrors.forEach(n => {
-        setTimeout(() => removeNotification(n), 1000);
-      });
+      console.log('Error:', message)
 
-      setTimeout(() => {
-        removeNotification(newNotification);
-      }, 5000);
+      oldErrors.forEach(n => { setTimeout(() => removeNotification(n), 1000); });
+
+      setTimeout(() => { removeNotification(newNotification); }, 5000);
     } else {
-      setTimeout(() => {
-        removeNotification(newNotification);
-      }, 5000);
+      setTimeout(() => { removeNotification(newNotification); }, 5000);
     }
 
-    console.log('Error:',message)
   };
-  
+
 
   return {
     showNotification
