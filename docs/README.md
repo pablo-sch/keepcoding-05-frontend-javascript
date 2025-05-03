@@ -156,7 +156,7 @@ This project currently does not include external contributions or a license.
 
 ### Home Mobile
 
-![Home Mobile](../etc/preview_images/index_mobile.png)
+![Home Mobile](../etc/preview_images/home_mobile.png.png)
 
 ### Create Post
 
