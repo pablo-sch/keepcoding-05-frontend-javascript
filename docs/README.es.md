@@ -156,7 +156,7 @@ Este proyecto no cuenta con contribuciones externas ni licencia en este momento.
 
 ### Home Mobile
 
-![Home Mobile](../etc/preview_images/home_mobile.png.png)
+![Home Mobile](../etc/preview_images/home_mobile.png)
 
 ### Create Post
 

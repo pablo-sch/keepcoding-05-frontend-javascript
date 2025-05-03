@@ -156,7 +156,7 @@ This project currently does not include external contributions or a license.
 
 ### Home Mobile
 
-![Home Mobile](../etc/preview_images/home_mobile.png.png)
+![Home Mobile](../etc/preview_images/home_mobile.png)
 
 ### Create Post
 
@@ -168,4 +168,4 @@ This project currently does not include external contributions or a license.
 
 ### Edit Post
 
-![Edit Post](../etc/preview_images/post_edit.png)
+![Edit Post](../etc/preview_images/post_edit.png) 
