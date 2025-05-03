@@ -1,22 +1,22 @@
-# Frontend Development Project with JavaScript Submission
+# Frontend Development Project Delivery with JavaScript
 
-## Select Your Language
+## Select your language
 
 - 🇪🇸 [Spanish](README.es.md)
 - 🇩🇪 [German](README.de.md)
 
-## Skills Covered
+## Topics Covered
 
 - Basic browser functionality.
 - Browser Object Model (BOM):
   - Navigation
   - Location
   - Window
-- Document Object Model (DOM), its nodes, and elements.
+- Document Object Model (DOM), its nodes and elements.
 - Node selection.
-- Creation and removal of DOM elements.
-- Manipulation of DOM attributes, styles, and CSS classes.
-- DOM event handling.
+- DOM element creation and deletion.
+- Manipulating DOM attributes, styles, and CSS classes.
+- Handling DOM events.
 - Default behaviors in HTML components.
 - Event Bubbling & Capturing.
 - Promises and their states: *pending*, *fulfilled*, and *rejected*.
@@ -26,109 +26,109 @@
 
 ## Project Description
 
-In order to practice and demonstrate the knowledge acquired in virtual classes, this project consists of developing a web application similar to Wallapop. JavaScript libraries or frameworks are not allowed, although external CSS utilities can be used.  
-Additionally, a `db.json` file must be provided for the backend with the example data required for grading the assignment.
+To practice and demonstrate the knowledge acquired in virtual classes, this project consists of developing a web application similar to Wallapop. JavaScript libraries or frameworks are not allowed, although external CSS utilities may be used.  
+Additionally, a `db.json` file must be provided for the backend, containing sample data required for grading the assignment.
 
-### 1. Ads List
+### 1. Post Listing
 
-- Each ad should display its image (if available), name, description, price, and whether it is for buying or selling.  
-- Ads must be fetched through an endpoint.  
-- The listing screen must handle all interface states:
+- Each post must display its image (if available), name, description, price, and whether it’s for sale or purchase.  
+- Posts must be retrieved from an endpoint.  
+- The listing screen must manage all UI states:
 
-  - **Empty** (no ads).
-  - **Error** (failed to load ads).
-  - **Loading** (while ads are being loaded).
-  - **Success** (when ads have been successfully loaded).
+  - **Empty** (no posts available).
+  - **Error** (while loading posts).
+  - **Loading** (while posts are being loaded).
+  - **Success** (when posts have been successfully retrieved).
 
-- Clicking on an ad should take the user to its detail screen.  
-- If the user is logged in, a button should be displayed to access the ad creation screen.
+- Clicking on a post should open its detail screen.  
+- If the user is logged in, a button should appear to access the post creation screen.
 
-### 2. Ad Detail
+### 2. Post Detail
 
-- It should display the image (if available), name, description, price, and whether it's for buying or selling.  
-- It should manage all interface states:
+- Must display the image (if available), name, description, price, and whether it’s for sale or purchase.  
+- Must manage all UI states:
 
-  - **Empty** (the ad does not exist).
-  - **Error** (failed to load the ad information).
-  - **Loading** (while the information is being loaded).
-  - **Success** (when the information has been successfully retrieved).
+  - **Empty** (post does not exist).
+  - **Error** (while loading post information).
+  - **Loading** (while information is being loaded).
+  - **Success** (when the information is successfully retrieved).
 
-- If the user is authenticated and the ad belongs to them, a button to delete it should be shown (with confirmation).
+- If the user is authenticated and owns the post, a button to delete it must be shown (with confirmation).
 
-### 3. Ad Creation
+### 3. Post Creation
 
-- It should include a form with the following fields:
+- Must include a form with the following fields:
   - **Photo** (optional).
   - **Name** (required).
   - **Description** (required).
   - **Price** (required).
   - **Buy/Sell** (required).
 
-- When the form is submitted, a request should be made to the backend to save the ad.  
-- The interface states must be managed:
+- On form submission, a request must be sent to the backend to save the post.  
+- The UI must handle the following states:
 
-  - **Error** (failed to save the ad).
-  - **Loading** (while the ad is being saved).
-  - **Success** (when the ad has been successfully saved).
+  - **Error** (while saving the post).
+  - **Loading** (during the saving process).
+  - **Success** (when the post is saved successfully).
 
-- This screen can only be accessed if the user is logged in. Otherwise, the user should be redirected to the listing screen with a message explaining the reason.
+- This screen is accessible only to logged-in users. Otherwise, redirect to the listing page and inform the user of the reason.
 
 ### 4. Login
 
-- It should display a form with username and password fields.  
-- Upon form submission, the user should be authenticated against the backend and a JWT token should be obtained.  
-- The states: loading, error, and success must be managed.
+- Must display a form with username and password fields.  
+- On submission, the user should be authenticated via the backend and receive a JWT token.  
+- The following states must be handled: loading, error, and success.
 
 ### 5. Registration
 
 - Similar to the login screen.  
-- It should register the user in the backend.  
-- The states: loading, error, and success must be managed.
+- Must register the user via the backend.  
+- The following states must be handled: loading, error, and success.
 
-## Optional
+## Optional Features
 
-- Pagination for ads in the listing (the API returns only 10 by default).
-- Ads search.
-- Ad editing (only if the user is the owner).
-- Static tag filtering.
-- Making the tags dynamic.
+- Post pagination in the listing (the API returns only 10 by default).
+- Post search functionality.
+- Post editing (only if the user is the owner).
+- Filtering by static tags.
+- Making tags dynamic.
 
-## REST API for the Assignment
+## REST API for Practice Support
 
-To emulate a database, **sparrest.js** will be used, a REST API created by instructor Alberto Casero (KeepCoding), based on `json-server`.
+To emulate a database, **sparrest.js** will be used — a REST API created by instructor Alberto Casero (KeepCoding), based on `json-server`.
 
-### Clone the Repository
+### Cloning the Repository
 
 ```bash
 git clone https://github.com/kasappeal/sparrest.js.git
 ```
 
-This will start the server and activate the REST API so you can interact with the simulated database.
+This will start the server and run the REST API, allowing interaction with the simulated database.
 
 ## Technologies Used
 
-- **HTML**: For structuring content and creating the page layout.
-- **CSS**: For the design and visual styling of the page, ensuring an attractive and consistent user experience.
+- **HTML**: For structuring the content and building the layout of the web page.
+- **CSS**: For visual design and styling, ensuring an attractive and consistent user experience.
 
 ## Installation and Usage Instructions
 
 ### Software Requirements
 
-- **Visual Studio** (Tested on version 1.99.0)
-- **Live Server** (Visual Studio Addon, Optional)
+- **Visual Studio Code** (tested on version 1.99.0)
+- **Live Server** (Visual Studio Code extension, optional)
 
 ### Program Descriptions
 
-- **Visual Studio**: Integrated development environment (IDE) needed to run the project. Make sure to use version 1.99.0 to avoid compatibility issues.
-- **Live Server**: Visual Studio extension that allows viewing HTML files locally in a browser, showing real-time changes.
+- **Visual Studio Code**: Integrated Development Environment (IDE) required to run the project. Make sure to use version 1.99.0 to avoid compatibility issues.
+- **Live Server**: A Visual Studio Code extension that allows you to preview HTML files locally in a browser, showing real-time changes.
 
 ### Steps to Use This Project
 
-1. Download the compressed file of the project from GitHub to your computer or clone it via SourceTree.
+1. Download the compressed project file from GitHub to your computer or clone it using SourceTree.
 
 2. Once downloaded or cloned, add it to your workspace in Visual Studio Code.
 
-3. After downloading Sparrest, update its dependencies. Then, to incorporate the tested database into this project, copy the `db.json` file from this project and replace it with the one generated by Sparrest once initialized.
+3. After downloading Sparrest, update its dependencies. Then, to incorporate the sample database used in this project, copy the project's `db.json` file and replace the one generated by Sparrest when initialized.
 
 To start the database, simply run the following command inside the Sparrest directory:
 
@@ -138,15 +138,15 @@ npm start
 
 ### Notes
 
-- The `db.json` file contains three accounts and 14 posts. These are the credentials for each account to log in and edit the posts already created:
+- The `db.json` file contains three accounts and 14 posts. These are the credentials for logging in and editing the existing posts:
 
-- [pablsch.it@gmail.com](mailto:pablsch.it@gmail.com) / pwd: 123456
-- [Pedro.it@gmail.com](mailto:Pedro.it@gmail.com) / pwd: 123456
+- [pablsch.it@gmail.com](mailto:pablsch.it@gmail.com) / pwd: 123456  
+- [Pedro.it@gmail.com](mailto:Pedro.it@gmail.com) / pwd: 123456  
 - [jose.JJ@gmail.com](mailto:jose.JJ@gmail.com) / pwd: 123456
 
-## No Contributions or Licenses
+## No Contributions or License
 
-This project currently does not have external contributions or a license.
+This project currently does not include external contributions or a license.
 
 ## Project Preview
 

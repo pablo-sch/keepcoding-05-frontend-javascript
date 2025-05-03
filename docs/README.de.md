@@ -5,7 +5,7 @@
 - 🇪🇸 [Spanisch](README.es.md)
 - 🇺🇸 [Englisch](README.md)
 
-## Erlernte Kenntnisse
+## Behandelte Themen
 
 - Grundlegende Funktionsweise eines Browsers.
 - Browser Object Model (BOM):
@@ -13,89 +13,89 @@
   - Location
   - Window
 - Document Object Model (DOM), seine Knoten und Elemente.
-- Knoten auswählen.
+- Auswahl von Knoten.
 - Erstellen und Entfernen von DOM-Elementen.
-- Manipulation von DOM-Attributen sowie deren Stilen und CSS-Klassen.
-- DOM-Ereignisbehandlung.
-- Standardverhalten in HTML-Komponenten.
-- Event Bubbling & Capturing.
-- Promises und deren Zustände: *pending*, *fulfilled* und *rejected*.
+- Bearbeiten von DOM-Attributen sowie deren Styles und CSS-Klassen.
+- Umgang mit DOM-Ereignissen.
+- Standardverhalten von HTML-Komponenten.
+- *Event Bubbling* und *Capturing*.
+- Promises und ihre Zustände: *pending*, *fulfilled* und *rejected*.
 - HTTP-Anfragen mit `fetch`.
 - `localStorage` und `sessionStorage`.
 - Lokale Datenspeicherung in HTML5: Cookies, Storage und IndexedDB.
 
 ## Projektbeschreibung
 
-Um das in den virtuellen Kursen erlernte Wissen zu üben und zu demonstrieren, besteht dieses Projekt darin, eine Webanwendung zu entwickeln, die Wallapop ähnlich ist. Die Verwendung von JavaScript-Bibliotheken oder -Frameworks ist nicht gestattet, externe CSS-Utilities können jedoch verwendet werden.  
-Zusätzlich muss eine `db.json`-Datei für das Backend mit den Beispiel-Daten bereitgestellt werden, die für die Korrektur der Aufgabe erforderlich sind.
+Ziel dieses Projekts ist es, das im virtuellen Unterricht erworbene Wissen zu üben und zu demonstrieren. Es soll eine Webanwendung entwickelt werden, die ähnlich wie Wallapop funktioniert. Die Verwendung von JavaScript-Bibliotheken oder -Frameworks ist nicht erlaubt, jedoch dürfen externe CSS-Utilities genutzt werden.  
+Zusätzlich muss eine Datei `db.json` bereitgestellt werden, die Beispieldaten für die Korrektur enthält.
 
-### 1. Anzeigenliste
+### 1. Beitrag-Übersicht
 
-- Jede Anzeige sollte ihr Bild (falls vorhanden), den Namen, die Beschreibung, den Preis und die Angabe, ob es sich um einen Kauf oder Verkauf handelt, anzeigen.  
-- Die Anzeigen müssen über ein Endpoint abgerufen werden.  
-- Der Listenscreen muss alle Zustände der Benutzeroberfläche verwalten:
+- Jeder Beitrag soll ein Bild (falls vorhanden), einen Namen, eine Beschreibung, einen Preis und die Angabe "Kauf" oder "Verkauf" anzeigen.  
+- Die Beiträge sollen über einen API-Endpunkt abgerufen werden.  
+- Die Benutzeroberfläche muss alle Zustände verwalten:
 
-  - **Leer** (keine Anzeigen).
-  - **Fehler** (beim Laden der Anzeigen).
-  - **Laden** (während die Anzeigen geladen werden).
-  - **Erfolg** (wenn die Anzeigen erfolgreich abgerufen wurden).
+  - **Leer** (keine Beiträge vorhanden).
+  - **Fehler** (beim Laden der Beiträge).
+  - **Ladevorgang** (während des Ladens).
+  - **Erfolg** (Beiträge wurden erfolgreich geladen).
 
-- Durch Klicken auf eine Anzeige sollte der Benutzer zum Detailbildschirm dieser Anzeige weitergeleitet werden.  
-- Wenn der Benutzer angemeldet ist, sollte eine Schaltfläche angezeigt werden, um zum Bildschirm zur Erstellung von Anzeigen zu gelangen.
+- Beim Klicken auf einen Beitrag gelangt man zur Detailansicht.  
+- Wenn der Benutzer angemeldet ist, soll ein Button zur Beitragserstellung angezeigt werden.
 
-### 2. Anzeigendetail
+### 2. Beitrags-Details
 
-- Es sollte das Bild (falls vorhanden), den Namen, die Beschreibung, den Preis und die Angabe, ob es sich um einen Kauf oder Verkauf handelt, anzeigen.  
-- Es sollte alle Zustände der Benutzeroberfläche verwalten:
+- Es sollen Bild (falls vorhanden), Name, Beschreibung, Preis und Kauf/Verkauf angezeigt werden.  
+- Die Benutzeroberfläche muss alle Zustände verwalten:
 
-  - **Leer** (die Anzeige existiert nicht).
-  - **Fehler** (beim Laden der Anzeigedaten).
-  - **Laden** (während die Daten geladen werden).
-  - **Erfolg** (wenn die Daten erfolgreich abgerufen wurden).
+  - **Leer** (Beitrag existiert nicht).
+  - **Fehler** (beim Laden der Daten).
+  - **Ladevorgang** (während des Ladens).
+  - **Erfolg** (Informationen wurden erfolgreich geladen).
 
-- Wenn der Benutzer authentifiziert ist und die Anzeige ihm gehört, sollte eine Schaltfläche zum Löschen der Anzeige angezeigt werden (mit Bestätigung).
+- Ist der Benutzer authentifiziert und Eigentümer des Beitrags, soll ein Löschbutton mit Bestätigung angezeigt werden.
 
-### 3. Erstellung einer Anzeige
+### 3. Beitrag erstellen
 
-- Es sollte ein Formular mit den folgenden Feldern enthalten:
-  - **Foto** (optional).
-  - **Name** (erforderlich).
-  - **Beschreibung** (erforderlich).
-  - **Preis** (erforderlich).
-  - **Kauf/Verkauf** (erforderlich).
+- Ein Formular mit folgenden Feldern muss vorhanden sein:
+  - **Foto** (optional)
+  - **Name** (Pflichtfeld)
+  - **Beschreibung** (Pflichtfeld)
+  - **Preis** (Pflichtfeld)
+  - **Kauf/Verkauf** (Pflichtfeld)
 
-- Beim Absenden des Formulars sollte eine Anfrage an das Backend gesendet werden, um die Anzeige zu speichern.  
-- Die Benutzeroberfläche muss folgende Zustände verwalten:
+- Beim Absenden soll der Beitrag über eine API-Anfrage im Backend gespeichert werden.  
+- Die Benutzeroberfläche muss folgende Zustände behandeln:
 
-  - **Fehler** (beim Speichern der Anzeige).
-  - **Laden** (während die Anzeige gespeichert wird).
-  - **Erfolg** (wenn die Anzeige erfolgreich gespeichert wurde).
+  - **Fehler** (beim Speichern).
+  - **Ladevorgang** (während des Speicherns).
+  - **Erfolg** (Beitrag wurde erfolgreich gespeichert).
 
-- Dieser Bildschirm kann nur aufgerufen werden, wenn der Benutzer angemeldet ist. Andernfalls wird der Benutzer zum Listenbildschirm weitergeleitet und erhält eine Nachricht mit dem Grund.
+- Diese Seite ist nur für angemeldete Benutzer zugänglich. Andernfalls wird man zur Übersicht umgeleitet und informiert.
 
 ### 4. Login
 
-- Es sollte ein Formular mit den Feldern Benutzername und Passwort angezeigt werden.  
-- Nach dem Absenden des Formulars sollte der Benutzer gegen das Backend authentifiziert werden, und ein JWT-Token sollte abgerufen werden.  
-- Die Zustände: Laden, Fehler und Erfolg müssen verwaltet werden.
+- Es soll ein Formular mit Benutzername und Passwort angezeigt werden.  
+- Beim Absenden soll der Benutzer über das Backend authentifiziert werden und ein JWT-Token erhalten.  
+- Die Zustände „Laden“, „Fehler“ und „Erfolg“ müssen verwaltet werden.
 
 ### 5. Registrierung
 
-- Ähnlich zum Login-Bildschirm.  
-- Der Benutzer sollte im Backend registriert werden.  
-- Die Zustände: Laden, Fehler und Erfolg müssen verwaltet werden.
+- Ähnlich wie der Login-Bildschirm.  
+- Der Benutzer soll über das Backend registriert werden.  
+- Die Zustände „Laden“, „Fehler“ und „Erfolg“ müssen verwaltet werden.
 
 ## Optional
 
-- Pagination der Anzeigen in der Liste (die API gibt standardmäßig nur 10 zurück).
-- Suchfunktion für Anzeigen.
-- Bearbeitung von Anzeigen (nur wenn der Benutzer der Eigentümer ist).
-- Filterung nach Tags (Statische Tags).
-- Dynamische Tags ermöglichen.
+- Paginierung der Beiträge in der Übersicht (API liefert standardmäßig nur 10).
+- Suchfunktion für Beiträge.
+- Bearbeitung von Beiträgen (nur durch den Eigentümer).
+- Filterung nach statischen Tags.
+- Dynamische Tags implementieren.
 
-## REST API für das Projekt
+## REST-API zur Projektunterstützung
 
-Um eine Datenbank zu emulieren, wird **sparrest.js** verwendet, eine REST API, die von Dozent Alberto Casero (KeepCoding) erstellt wurde und auf `json-server` basiert.
+Zur Simulation einer Datenbank wird **sparrest.js** verwendet — eine vom Dozenten Alberto Casero (KeepCoding) erstellte REST-API, basierend auf `json-server`.
 
 ### Repository klonen
 
@@ -103,34 +103,34 @@ Um eine Datenbank zu emulieren, wird **sparrest.js** verwendet, eine REST API, d
 git clone https://github.com/kasappeal/sparrest.js.git
 ```
 
-Dies startet den Server und aktiviert die REST API, sodass Sie mit der simulierten Datenbank interagieren können.
+Dies startet den Server und stellt die REST-API bereit, sodass du mit der simulierten Datenbank interagieren kannst.
 
 ## Verwendete Technologien
 
-- **HTML**: Zur Strukturierung des Inhalts und zum Erstellen des Seitenlayouts.
-- **CSS**: Für das Design und die visuelle Gestaltung der Seite, um eine attraktive und konsistente Benutzererfahrung zu gewährleisten.
+- **HTML**: Für die Strukturierung der Inhalte und des Seitenlayouts.
+- **CSS**: Für das visuelle Design und die Benutzeroberfläche, um ein konsistentes und attraktives Nutzererlebnis zu bieten.
 
 ## Installations- und Nutzungshinweise
 
 ### Softwareanforderungen
 
-- **Visual Studio** (Getestet mit Version 1.99.0)
-- **Live Server** (Visual Studio Addon, optional)
+- **Visual Studio Code** (getestet mit Version 1.99.0)
+- **Live Server** (VS Code-Erweiterung, optional)
 
-### Beschreibung der Programme
+### Programmbeschreibung
 
-- **Visual Studio**: Integrierte Entwicklungsumgebung (IDE), die benötigt wird, um das Projekt auszuführen. Stellen Sie sicher, dass Sie Version 1.99.0 verwenden, um Kompatibilitätsprobleme zu vermeiden.
-- **Live Server**: Visual Studio-Erweiterung, die es ermöglicht, HTML-Dateien lokal in einem Browser anzuzeigen und Änderungen in Echtzeit anzuzeigen.
+- **Visual Studio Code**: Integrierte Entwicklungsumgebung (IDE) zur Projektausführung. Achte darauf, Version 1.99.0 zu verwenden, um Kompatibilitätsprobleme zu vermeiden.
+- **Live Server**: Erweiterung für VS Code, die eine lokale HTML-Vorschau im Browser mit Live-Reload ermöglicht.
 
-### Schritte zur Verwendung dieses Projekts
+### Schritte zur Verwendung des Projekts
 
-1. Laden Sie die komprimierte Datei des Projekts von GitHub auf Ihren Computer herunter oder klonen Sie sie über SourceTree.
+1. Lade die Projektdateien als ZIP von GitHub herunter oder klone das Repository mit SourceTree.
 
-2. Sobald das Projekt heruntergeladen oder geklont wurde, fügen Sie es zu Ihrem Arbeitsbereich in Visual Studio Code hinzu.
+2. Öffne das Projekt anschließend in deinem Arbeitsbereich in Visual Studio Code.
 
-3. Nachdem Sie Sparrest heruntergeladen haben, aktualisieren Sie die Abhängigkeiten. Um die getestete Datenbank in dieses Projekt zu integrieren, kopieren Sie die `db.json`-Datei aus diesem Projekt und ersetzen Sie die Datei, die von Sparrest nach der Initialisierung generiert wird.
+3. Nach dem Herunterladen von Sparrest aktualisiere die Abhängigkeiten. Um die in diesem Projekt verwendete Datenbank zu nutzen, kopiere die Datei `db.json` aus dem Projektordner und ersetze die automatisch generierte Datei in Sparrest.
 
-Um die Datenbank zu starten, führen Sie einfach den folgenden Befehl im Sparrest-Verzeichnis aus:
+Starte die Datenbank mit folgendem Befehl im Sparrest-Verzeichnis:
 
 ```bash
 npm start
@@ -138,11 +138,11 @@ npm start
 
 ### Hinweise
 
-- Die `db.json`-Datei enthält drei Konten und 14 Beiträge. Dies sind die Anmeldeinformationen für jedes Konto, um sich im Projekt anzumelden und die bereits erstellten Beiträge zu bearbeiten:
+- Die Datei `db.json` enthält drei Benutzerkonten und 14 Beiträge. Folgende Zugangsdaten können verwendet werden, um sich anzumelden und bestehende Beiträge zu bearbeiten:
 
-- [pablsch.it@gmail.com](mailto:pablsch.it@gmail.com) / pwd: 123456
-- [Pedro.it@gmail.com](mailto:Pedro.it@gmail.com) / pwd: 123456
-- [jose.JJ@gmail.com](mailto:jose.JJ@gmail.com) / pwd: 123456
+- [pablsch.it@gmail.com](mailto:pablsch.it@gmail.com) / Passwort: 123456  
+- [Pedro.it@gmail.com](mailto:Pedro.it@gmail.com) / Passwort: 123456  
+- [jose.JJ@gmail.com](mailto:jose.JJ@gmail.com) / Passwort: 123456
 
 ## Keine Beiträge oder Lizenzen
 
