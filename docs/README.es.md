@@ -150,4 +150,22 @@ Este proyecto no cuenta con contribuciones externas ni licencia en este momento.
 
 ## Vista previa del proyecto
 
-...
+### Home
+
+![Home](../etc/preview_images/home.png)
+
+### Home Mobile
+
+![Home Mobile](../etc/preview_images/index_mobile.png)
+
+### Create Post
+
+![Create Post](../etc/preview_images/create_post.png)
+
+### Post Detail
+
+![Post Detail](../etc/preview_images/post_detail.png)
+
+### Edit Post
+
+![Edit Post](../etc/preview_images/post_edit.png)

@@ -11,13 +11,13 @@
 .image-wrapper {
     position: relative;
     display: inline-block;
-  }
+}
 
-  .post-image {
+.post-image {
     display: block;
 
     max-height: 500px;
-    width: auto;
+    max-width: 100%
 }
 
 p {

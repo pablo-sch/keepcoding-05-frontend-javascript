@@ -150,4 +150,22 @@ This project currently does not include external contributions or a license.
 
 ## Project Preview
 
-...
+### Home
+
+![Home](../etc/preview_images/home.png)
+
+### Home Mobile
+
+![Home Mobile](../etc/preview_images/index_mobile.png)
+
+### Create Post
+
+![Create Post](../etc/preview_images/create_post.png)
+
+### Post Detail
+
+![Post Detail](../etc/preview_images/post_detail.png)
+
+### Edit Post
+
+![Edit Post](../etc/preview_images/post_edit.png)
