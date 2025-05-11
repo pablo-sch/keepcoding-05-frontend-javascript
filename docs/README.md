@@ -1,59 +1,63 @@
 # Frontend Development Project Delivery with JavaScript
 
+**KeepCoding Projects - Web 18**  
+Check the full list of repositories and descriptions in [repos-kc-web-18.md](https://github.com/pablo-sch/pablo-sch/blob/main/docs/repos-kc-web-18.md)
+
 ## Select your language
 
 - 🇪🇸 [Spanish](README.es.md)
 - 🇩🇪 [German](README.de.md)
 
-## Topics Covered
+<!-- ------------------------------------------------------------------------------------------- -->
+## Project Objective
 
-- Basic browser functionality.
+In order to practice and demonstrate the knowledge acquired during online classes, this project involves developing a web application similar to Wallapop. JavaScript libraries or frameworks are not allowed, although external CSS utilities can be used.  
+Additionally, a `db.json` file must be provided for the backend, containing the necessary sample data for the evaluation of the project.
+
+<!-- ------------------------------------------------------------------------------------------- -->
+## Learned and Applied Knowledge
+
+- Basic functionality of a browser.
 - Browser Object Model (BOM):
   - Navigation
   - Location
   - Window
 - Document Object Model (DOM), its nodes and elements.
 - Node selection.
-- DOM element creation and deletion.
+- Creating and removing DOM elements.
 - Manipulating DOM attributes, styles, and CSS classes.
 - Handling DOM events.
 - Default behaviors in HTML components.
-- Event Bubbling & Capturing.
+- Event Bubbling and Capturing.
 - Promises and their states: *pending*, *fulfilled*, and *rejected*.
 - HTTP requests with `fetch`.
 - `localStorage` and `sessionStorage`.
 - Local data storage in HTML5: cookies, storage, and IndexedDB.
 
-## Project Description
-
-To practice and demonstrate the knowledge acquired in virtual classes, this project consists of developing a web application similar to Wallapop. JavaScript libraries or frameworks are not allowed, although external CSS utilities may be used.  
-Additionally, a `db.json` file must be provided for the backend, containing sample data required for grading the assignment.
+<!-- ------------------------------------------------------------------------------------------- -->
+## Project Details
 
 ### 1. Post Listing
 
-- Each post must display its image (if available), name, description, price, and whether it’s for sale or purchase.  
-- Posts must be retrieved from an endpoint.  
-- The listing screen must manage all UI states:
-
+- Each post must display its image (if available), name, description, price, and whether it is for buying or selling.  
+- Posts must be fetched through an *endpoint*.  
+- The listing screen must handle all interface states:
   - **Empty** (no posts available).
-  - **Error** (while loading posts).
-  - **Loading** (while posts are being loaded).
-  - **Success** (when posts have been successfully retrieved).
-
-- Clicking on a post should open its detail screen.  
-- If the user is logged in, a button should appear to access the post creation screen.
+  - **Error** (loading failure).
+  - **Loading** (while posts are being fetched).
+  - **Success** (posts successfully loaded).
+- Clicking a post should open its detail screen.  
+- If the user is logged in, a button must be shown to access the post creation screen.
 
 ### 2. Post Detail
 
-- Must display the image (if available), name, description, price, and whether it’s for sale or purchase.  
-- Must manage all UI states:
-
-  - **Empty** (post does not exist).
-  - **Error** (while loading post information).
-  - **Loading** (while information is being loaded).
-  - **Success** (when the information is successfully retrieved).
-
-- If the user is authenticated and owns the post, a button to delete it must be shown (with confirmation).
+- Must show image (if available), name, description, price, and whether it's for buying or selling.  
+- Must handle all interface states:
+  - **Empty** (post not found).
+  - **Error** (loading error).
+  - **Loading** (while loading details).
+  - **Success** (data loaded successfully).
+- If the user is authenticated and owns the post, a delete button must be shown (with confirmation).
 
 ### 3. Post Creation
 
@@ -63,75 +67,81 @@ Additionally, a `db.json` file must be provided for the backend, containing samp
   - **Description** (required).
   - **Price** (required).
   - **Buy/Sell** (required).
-
-- On form submission, a request must be sent to the backend to save the post.  
-- The UI must handle the following states:
-
-  - **Error** (while saving the post).
-  - **Loading** (during the saving process).
-  - **Success** (when the post is saved successfully).
-
-- This screen is accessible only to logged-in users. Otherwise, redirect to the listing page and inform the user of the reason.
+- Upon form submission, a request must be sent to the backend to save the post.  
+- Must handle interface states:
+  - **Error** (error while saving).
+  - **Loading** (saving in progress).
+  - **Success** (saved successfully).
+- This screen is only accessible if the user is logged in. Otherwise, the user will be redirected to the listing page with a notice.
 
 ### 4. Login
 
-- Must display a form with username and password fields.  
-- On submission, the user should be authenticated via the backend and receive a JWT token.  
-- The following states must be handled: loading, error, and success.
+- Must show a form with username and password fields.  
+- On form submission, the user should be authenticated via the backend, receiving a JWT token.  
+- Interface must handle loading, error, and success states.
 
 ### 5. Registration
 
 - Similar to the login screen.  
-- Must register the user via the backend.  
-- The following states must be handled: loading, error, and success.
+- Registers a user in the backend.  
+- Interface must handle loading, error, and success states.
 
-## Optional Features
+### 6. Optional Objectives
 
-- Post pagination in the listing (the API returns only 10 by default).
+- Pagination for the post listing (API returns only 10 by default).
 - Post search functionality.
 - Post editing (only if the user is the owner).
-- Filtering by static tags.
-- Making tags dynamic.
+- Filtering by static *tags*.
+- Dynamic *tag* creation and filtering.
 
-## REST API for Practice Support
+<!-- ------------------------------------------------------------------------------------------- -->
+## Technologies Used
 
-To emulate a database, **sparrest.js** will be used — a REST API created by instructor Alberto Casero (KeepCoding), based on `json-server`.
+### Languages
 
-### Cloning the Repository
+- **HTML**: For structuring content and building the webpage layout.
+- **CSS**: For styling and visual design of the page, ensuring a coherent and attractive user experience.
+- **JavaScript**: For adding interactivity and dynamic features to the website, enhancing user experience with features like form validation, animations, and event handling.
+
+### Dependencies
+
+None
+
+<!-- ------------------------------------------------------------------------------------------- -->
+## Installation and Usage Instructions
+
+### Software Requirements
+
+- **[Git](https://git-scm.com/downloads)** (tested on version **2.47.1.windows.1**)
+- **[Visual Studio Code](https://code.visualstudio.com/)** (tested on version **1.99.0**)
+- **[Sparrest (API REST)](https://github.com/kasappeal/sparrest.js)** (created by instructor **Alberto Casero** – **KeepCoding**)
+- **Live Server** (VS Code addon, *optional*)
+
+### Repository Cloning
+
+API REST Sparrest
 
 ```bash
 git clone https://github.com/kasappeal/sparrest.js.git
 ```
 
-This will start the server and run the REST API, allowing interaction with the simulated database.
+Project
 
-## Technologies Used
+```bash
+git clone https://github.com/pablo-sch/keepcoding-05-frontend-javascript.git
+```
 
-- **HTML**: For structuring the content and building the layout of the web page.
-- **CSS**: For visual design and styling, ensuring an attractive and consistent user experience.
-- **JavaScript**: For adding interactivity and dynamic features to the website, enhancing the user experience with functionalities such as form validation, animations, and event handling.
-
-## Installation and Usage Instructions
-
-### Software Requirements
-
-- **Visual Studio Code** (tested on version 1.99.0)
-- **Live Server** (Visual Studio Code extension, optional)
-
-### Program Descriptions
-
-- **Visual Studio Code**: Integrated Development Environment (IDE) required to run the project. Make sure to use version 1.99.0 to avoid compatibility issues.
-- **Live Server**: A Visual Studio Code extension that allows you to preview HTML files locally in a browser, showing real-time changes.
+![Demo](https://github.com/pablo-sch/pablo-sch/blob/main/etc/clone-tutorial.gif)
 
 ### Steps to Use This Project
 
-1. Download the compressed project file from GitHub to your computer or clone it using SourceTree.
+You must start the server to run the REST API and enable interaction with the mock database.
 
+1. Download the compressed project file from GitHub or clone it using SourceTree.
 2. Once downloaded or cloned, add it to your workspace in Visual Studio Code.
+3. After downloading Sparrest, update its dependencies. Then, to integrate the tested database, copy the `db.json` file from the project and replace the one generated by Sparrest after initialization.
 
-3. After downloading Sparrest, update its dependencies. Then, to incorporate the sample database used in this project, copy the project's `db.json` file and replace the one generated by Sparrest when initialized.
-
-To start the database, simply run the following command inside the Sparrest directory:
+To start the database, run the following command inside the Sparrest directory:
 
 ```bash
 npm start
@@ -139,16 +149,15 @@ npm start
 
 ### Notes
 
-- The `db.json` file contains three accounts and 14 posts. These are the credentials for logging in and editing the existing posts:
+- Once the repository is cloned, you can open the `.html` files with **Live Server** to preview them in the browser.
+
+- The `db.json` file contains three user accounts and 14 posts. These are the credentials for each account to log in and edit existing posts:
 
 - [pablsch.it@gmail.com](mailto:pablsch.it@gmail.com) / pwd: 123456  
 - [Pedro.it@gmail.com](mailto:Pedro.it@gmail.com) / pwd: 123456  
 - [jose.JJ@gmail.com](mailto:jose.JJ@gmail.com) / pwd: 123456
 
-## No Contributions or License
-
-This project currently does not include external contributions or a license.
-
+<!-- ------------------------------------------------------------------------------------------- -->
 ## Project Preview
 
 ### Home
@@ -169,4 +178,9 @@ This project currently does not include external contributions or a license.
 
 ### Edit Post
 
-![Edit Post](../etc/preview_images/post_edit.png) 
+![Edit Post](../etc/preview_images/post_edit.png)
+
+<!-- ------------------------------------------------------------------------------------------- -->
+## Contributions and Licensing
+
+This project has no external contributions or licenses.

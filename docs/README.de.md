@@ -1,11 +1,21 @@
-# Frontend-Entwicklungsprojekt mit JavaScript - Abgabe
+# Abgabe Frontend-Entwicklungsprojekt mit JavaScript
+
+**KeepCoding Projekte - Web 18**  
+Die vollständige Liste der Repositories und Beschreibungen findest du in [repos-kc-web-18.md](https://github.com/pablo-sch/pablo-sch/blob/main/docs/repos-kc-web-18.md)
 
 ## Wähle deine Sprache
 
-- 🇪🇸 [Spanisch](README.es.md)
 - 🇺🇸 [Englisch](README.md)
+- 🇪🇸 [Spanisch](README.es.md)
 
-## Behandelte Themen
+<!-- ------------------------------------------------------------------------------------------- -->
+## Projektziel
+
+Zur Übung und Demonstration des im Online-Unterricht erworbenen Wissens besteht dieses Projekt darin, eine Webanwendung ähnlich wie Wallapop zu entwickeln. Die Verwendung von JavaScript-Bibliotheken oder -Frameworks ist nicht erlaubt, allerdings dürfen externe CSS-Utilities verwendet werden.  
+Zusätzlich muss eine `db.json`-Datei für das Backend bereitgestellt werden, die die notwendigen Beispieldaten für die Korrektur enthält.
+
+<!-- ------------------------------------------------------------------------------------------- -->
+## Erlerntes und Angewandtes Wissen
 
 - Grundlegende Funktionsweise eines Browsers.
 - Browser Object Model (BOM):
@@ -13,125 +23,125 @@
   - Location
   - Window
 - Document Object Model (DOM), seine Knoten und Elemente.
-- Auswahl von Knoten.
+- Auswahl von DOM-Knoten.
 - Erstellen und Entfernen von DOM-Elementen.
-- Bearbeiten von DOM-Attributen sowie deren Styles und CSS-Klassen.
-- Umgang mit DOM-Ereignissen.
+- Manipulation von Attributen, Stilen und CSS-Klassen im DOM.
+- Umgang mit DOM-Events.
 - Standardverhalten von HTML-Komponenten.
-- *Event Bubbling* und *Capturing*.
-- Promises und ihre Zustände: *pending*, *fulfilled* und *rejected*.
+- Event-Bubbling und Capturing.
+- Promises und ihre Zustände: *pending*, *fulfilled*, *rejected*.
 - HTTP-Anfragen mit `fetch`.
 - `localStorage` und `sessionStorage`.
 - Lokale Datenspeicherung in HTML5: Cookies, Storage und IndexedDB.
 
-## Projektbeschreibung
+<!-- ------------------------------------------------------------------------------------------- -->
+## Projektdetails
 
-Ziel dieses Projekts ist es, das im virtuellen Unterricht erworbene Wissen zu üben und zu demonstrieren. Es soll eine Webanwendung entwickelt werden, die ähnlich wie Wallapop funktioniert. Die Verwendung von JavaScript-Bibliotheken oder -Frameworks ist nicht erlaubt, jedoch dürfen externe CSS-Utilities genutzt werden.  
-Zusätzlich muss eine Datei `db.json` bereitgestellt werden, die Beispieldaten für die Korrektur enthält.
+### 1. Post-Übersicht
 
-### 1. Beitrag-Übersicht
+- Jeder Post soll ein Bild (falls vorhanden), Name, Beschreibung, Preis und ob es sich um Kauf oder Verkauf handelt anzeigen.  
+- Die Posts müssen über einen *Endpoint* geladen werden.  
+- Die Übersichtsseite muss alle UI-Zustände handhaben:
+  - **Leer** (keine Posts vorhanden).
+  - **Fehler** (beim Laden der Posts).
+  - **Ladevorgang** (während die Posts geladen werden).
+  - **Erfolg** (Posts erfolgreich geladen).
+- Beim Klicken auf einen Post soll die Detailseite geöffnet werden.  
+- Wenn der Benutzer eingeloggt ist, soll ein Button zum Erstellen neuer Posts angezeigt werden.
 
-- Jeder Beitrag soll ein Bild (falls vorhanden), einen Namen, eine Beschreibung, einen Preis und die Angabe "Kauf" oder "Verkauf" anzeigen.  
-- Die Beiträge sollen über einen API-Endpunkt abgerufen werden.  
-- Die Benutzeroberfläche muss alle Zustände verwalten:
+### 2. Post-Detailansicht
 
-  - **Leer** (keine Beiträge vorhanden).
-  - **Fehler** (beim Laden der Beiträge).
-  - **Ladevorgang** (während des Ladens).
-  - **Erfolg** (Beiträge wurden erfolgreich geladen).
-
-- Beim Klicken auf einen Beitrag gelangt man zur Detailansicht.  
-- Wenn der Benutzer angemeldet ist, soll ein Button zur Beitragserstellung angezeigt werden.
-
-### 2. Beitrags-Details
-
-- Es sollen Bild (falls vorhanden), Name, Beschreibung, Preis und Kauf/Verkauf angezeigt werden.  
-- Die Benutzeroberfläche muss alle Zustände verwalten:
-
-  - **Leer** (Beitrag existiert nicht).
+- Zeigt Bild (falls vorhanden), Name, Beschreibung, Preis und ob Kauf oder Verkauf.  
+- Muss alle UI-Zustände behandeln:
+  - **Leer** (Post existiert nicht).
   - **Fehler** (beim Laden der Daten).
-  - **Ladevorgang** (während des Ladens).
-  - **Erfolg** (Informationen wurden erfolgreich geladen).
+  - **Ladevorgang** (während Daten geladen werden).
+  - **Erfolg** (Daten erfolgreich geladen).
+- Wenn der Benutzer angemeldet ist und der Besitzer des Posts ist, soll ein Lösch-Button mit Bestätigung angezeigt werden.
 
-- Ist der Benutzer authentifiziert und Eigentümer des Beitrags, soll ein Löschbutton mit Bestätigung angezeigt werden.
+### 3. Erstellung eines Posts
 
-### 3. Beitrag erstellen
-
-- Ein Formular mit folgenden Feldern muss vorhanden sein:
-  - **Foto** (optional)
-  - **Name** (Pflichtfeld)
-  - **Beschreibung** (Pflichtfeld)
-  - **Preis** (Pflichtfeld)
-  - **Kauf/Verkauf** (Pflichtfeld)
-
-- Beim Absenden soll der Beitrag über eine API-Anfrage im Backend gespeichert werden.  
-- Die Benutzeroberfläche muss folgende Zustände behandeln:
-
+- Muss ein Formular mit folgenden Feldern enthalten:
+  - **Foto** (optional).
+  - **Name** (Pflichtfeld).
+  - **Beschreibung** (Pflichtfeld).
+  - **Preis** (Pflichtfeld).
+  - **Kauf/Verkauf** (Pflichtfeld).
+- Beim Absenden des Formulars wird ein Request an das Backend gesendet, um den Post zu speichern.  
+- Die UI-Zustände müssen behandelt werden:
   - **Fehler** (beim Speichern).
-  - **Ladevorgang** (während des Speicherns).
-  - **Erfolg** (Beitrag wurde erfolgreich gespeichert).
-
-- Diese Seite ist nur für angemeldete Benutzer zugänglich. Andernfalls wird man zur Übersicht umgeleitet und informiert.
+  - **Ladevorgang** (beim Speichern).
+  - **Erfolg** (Post erfolgreich gespeichert).
+- Nur eingeloggte Benutzer haben Zugriff auf diese Seite. Andernfalls erfolgt eine Weiterleitung zur Übersicht mit Hinweis.
 
 ### 4. Login
 
-- Es soll ein Formular mit Benutzername und Passwort angezeigt werden.  
-- Beim Absenden soll der Benutzer über das Backend authentifiziert werden und ein JWT-Token erhalten.  
-- Die Zustände „Laden“, „Fehler“ und „Erfolg“ müssen verwaltet werden.
+- Zeigt ein Formular mit Benutzername und Passwort.  
+- Beim Absenden wird der Benutzer über das Backend authentifiziert und ein JWT-Token empfangen.  
+- UI-Zustände: Laden, Fehler, Erfolg.
 
 ### 5. Registrierung
 
-- Ähnlich wie der Login-Bildschirm.  
-- Der Benutzer soll über das Backend registriert werden.  
-- Die Zustände „Laden“, „Fehler“ und „Erfolg“ müssen verwaltet werden.
+- Ähnlich wie die Login-Seite.  
+- Registriert den Benutzer im Backend.  
+- UI-Zustände: Laden, Fehler, Erfolg.
 
-## Optional
+### 6. Optionale Ziele
 
-- Paginierung der Beiträge in der Übersicht (API liefert standardmäßig nur 10).
-- Suchfunktion für Beiträge.
-- Bearbeitung von Beiträgen (nur durch den Eigentümer).
-- Filterung nach statischen Tags.
-- Dynamische Tags implementieren.
+- Paginierung der Posts in der Übersicht (API liefert standardmäßig nur 10).
+- Post-Suchfunktion.
+- Bearbeitung von Posts (nur wenn Benutzer Eigentümer ist).
+- Filterung nach statischen *Tags*.
+- Dynamische *Tags* ermöglichen.
 
-## REST-API zur Projektunterstützung
+<!-- ------------------------------------------------------------------------------------------- -->
+## Verwendete Technologien
 
-Zur Simulation einer Datenbank wird **sparrest.js** verwendet — eine vom Dozenten Alberto Casero (KeepCoding) erstellte REST-API, basierend auf `json-server`.
+### Sprachen
 
-### Repository klonen
+- **HTML**: Strukturierung des Inhalts und Aufbau der Seitenstruktur.
+- **CSS**: Design und visuelle Gestaltung der Seite für ein ansprechendes Nutzererlebnis.
+- **JavaScript**: Interaktivität und dynamische Funktionalitäten wie Formularvalidierung, Animationen und Event-Handling.
+
+### Abhängigkeiten
+
+Keine
+
+<!-- ------------------------------------------------------------------------------------------- -->
+## Installations- und Nutzungshinweise
+
+### Softwareanforderungen
+
+- **[Git](https://git-scm.com/downloads)** (getestet mit Version **2.47.1.windows.1**)
+- **[Visual Studio Code](https://code.visualstudio.com/)** (getestet mit Version **1.99.0**)
+- **[Sparrest (REST-API)](https://github.com/kasappeal/sparrest.js)** (entwickelt von **Alberto Casero** – **KeepCoding**)
+- **Live Server** (VS Code addon, *optional*)
+
+### Repository-Klonen
+
+API REST Sparrest
 
 ```bash
 git clone https://github.com/kasappeal/sparrest.js.git
 ```
 
-Dies startet den Server und stellt die REST-API bereit, sodass du mit der simulierten Datenbank interagieren kannst.
+Projekt
 
-## Verwendete Technologien
+```bash
+git clone https://github.com/pablo-sch/keepcoding-05-frontend-javascript.git
+```
 
-- **HTML**: Für die Strukturierung der Inhalte und des Seitenlayouts.
-- **CSS**: Für das visuelle Design und die Benutzeroberfläche, um ein konsistentes und attraktives Nutzererlebnis zu bieten.
-- **JavaScript**: Für die Hinzufügung von Interaktivität und dynamischen Funktionen auf der Webseite, wodurch die Benutzererfahrung mit Funktionen wie Formularvalidierung, Animationen und Ereignisbehandlung verbessert wird.
+![Demo](https://github.com/pablo-sch/pablo-sch/blob/main/etc/clone-tutorial.gif)
 
-## Installations- und Nutzungshinweise
+### Schritte zur Nutzung des Projekts
 
-### Softwareanforderungen
+Der Server muss gestartet werden, um die REST-API zu aktivieren und mit der simulierten Datenbank zu interagieren.
 
-- **Visual Studio Code** (getestet mit Version 1.99.0)
-- **Live Server** (VS Code-Erweiterung, optional)
+1. Lade das Projekt als ZIP-Datei von GitHub herunter oder klone es mit SourceTree.
+2. Füge es in Visual Studio Code zu deinem Workspace hinzu.
+3. Nachdem du Sparrest heruntergeladen hast, installiere die Abhängigkeiten. Ersetze dann die generierte `db.json` durch die Datei aus diesem Projekt.
 
-### Programmbeschreibung
-
-- **Visual Studio Code**: Integrierte Entwicklungsumgebung (IDE) zur Projektausführung. Achte darauf, Version 1.99.0 zu verwenden, um Kompatibilitätsprobleme zu vermeiden.
-- **Live Server**: Erweiterung für VS Code, die eine lokale HTML-Vorschau im Browser mit Live-Reload ermöglicht.
-
-### Schritte zur Verwendung des Projekts
-
-1. Lade die Projektdateien als ZIP von GitHub herunter oder klone das Repository mit SourceTree.
-
-2. Öffne das Projekt anschließend in deinem Arbeitsbereich in Visual Studio Code.
-
-3. Nach dem Herunterladen von Sparrest aktualisiere die Abhängigkeiten. Um die in diesem Projekt verwendete Datenbank zu nutzen, kopiere die Datei `db.json` aus dem Projektordner und ersetze die automatisch generierte Datei in Sparrest.
-
-Starte die Datenbank mit folgendem Befehl im Sparrest-Verzeichnis:
+Zum Starten der Datenbank führe folgenden Befehl im Sparrest-Verzeichnis aus:
 
 ```bash
 npm start
@@ -139,34 +149,38 @@ npm start
 
 ### Hinweise
 
-- Die Datei `db.json` enthält drei Benutzerkonten und 14 Beiträge. Folgende Zugangsdaten können verwendet werden, um sich anzumelden und bestehende Beiträge zu bearbeiten:
+- Sobald das Repository geklont wurde, kannst du die `.html`-Dateien mit **Live Server** öffnen, um sie im Browser vorzuschauen.
+
+- Die Datei `db.json` enthält drei Benutzerkonten und 14 Posts. Hier sind die Zugangsdaten, um sich anzumelden und vorhandene Posts zu bearbeiten:
 
 - [pablsch.it@gmail.com](mailto:pablsch.it@gmail.com) / Passwort: 123456  
 - [Pedro.it@gmail.com](mailto:Pedro.it@gmail.com) / Passwort: 123456  
 - [jose.JJ@gmail.com](mailto:jose.JJ@gmail.com) / Passwort: 123456
 
-## Keine Beiträge oder Lizenzen
-
-Dieses Projekt hat derzeit keine externen Beiträge oder eine Lizenz.
-
+<!-- ------------------------------------------------------------------------------------------- -->
 ## Projektvorschau
 
-### Home
+### Startseite
 
 ![Home](../etc/preview_images/home.png)
 
-### Home Mobile
+### Startseite Mobil
 
 ![Home Mobile](../etc/preview_images/home_mobile.png)
 
-### Create Post
+### Post erstellen
 
 ![Create Post](../etc/preview_images/create_post.png)
 
-### Post Detail
+### Post-Detail
 
 ![Post Detail](../etc/preview_images/post_detail.png)
 
-### Edit Post
+### Post bearbeiten
 
 ![Edit Post](../etc/preview_images/post_edit.png)
+
+<!-- ------------------------------------------------------------------------------------------- -->
+## Beiträge und Lizenz
+
+Dieses Projekt enthält keine externen Beiträge und steht unter keiner Lizenz.
