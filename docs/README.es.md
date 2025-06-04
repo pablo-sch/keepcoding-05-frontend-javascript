@@ -9,12 +9,14 @@ Consulta la lista completa de repositorios y descripciones en [repos-kc-web-18.m
 - 🇩🇪 [Alemán](README.de.md)
 
 <!-- ------------------------------------------------------------------------------------------- -->
+
 ## Objetivo del Proyecto
 
-Con el fin de ejercitar y demostrar los conocimientos adquiridos en clases virtuales, este proyecto consiste en desarrollar una aplicación web similar a Wallapop. No se permite utilizar librerías o *frameworks* de JavaScript, aunque sí se pueden usar utilidades de CSS externas.  
+Con el fin de ejercitar y demostrar los conocimientos adquiridos en clases virtuales, este proyecto consiste en desarrollar una aplicación web similar a Wallapop. No se permite utilizar librerías o _frameworks_ de JavaScript, aunque sí se pueden usar utilidades de CSS externas.  
 Además, se debe proporcionar un archivo `db.json` para el backend con los datos de ejemplo necesarios para la corrección de la práctica.
 
 <!-- ------------------------------------------------------------------------------------------- -->
+
 ## Conocimientos Aprendidos y Trabajados
 
 - Funcionamiento básico de un navegador.
@@ -28,30 +30,31 @@ Además, se debe proporcionar un archivo `db.json` para el backend con los datos
 - Manipulación de atributos del DOM, así como de sus estilos y clases CSS.
 - Manejo de eventos del DOM.
 - Comportamientos por defecto en los componentes HTML.
-- *Event Bubbling* y *Capturing*.
-- Promesas y sus estados: *pending*, *fulfilled* y *rejected*.
+- _Event Bubbling_ y _Capturing_.
+- Promesas y sus estados: _pending_, _fulfilled_ y _rejected_.
 - Peticiones HTTP con `fetch`.
 - `localStorage` y `sessionStorage`.
 - Almacenamiento local de datos en HTML5: cookies, storage e IndexedDB.
 
 <!-- ------------------------------------------------------------------------------------------- -->
+
 ## Detalles del Proyecto
 
 ### 1. Listado de Posts
 
-- Cada post debe mostrar su imagen (si tiene), nombre, descripción, precio y si es de compra o venta.  
-- Los posts deben obtenerse a través de un *endpoint*.  
+- Cada post debe mostrar su imagen (si tiene), nombre, descripción, precio y si es de compra o venta.
+- Los posts deben obtenerse a través de un _endpoint_.
 - La pantalla de listado debe gestionar todos los estados de la interfaz:
   - **Vacío** (no hay posts).
   - **Error** (al cargar los posts).
   - **Carga** (mientras se cargan los posts).
   - **Éxito** (cuando los posts se han recuperado correctamente).
-- Al pulsar sobre un post, se debe acceder a su pantalla de detalle.  
+- Al pulsar sobre un post, se debe acceder a su pantalla de detalle.
 - Si el usuario ha iniciado sesión, debe mostrarse un botón para acceder a la pantalla de creación de posts.
 
 ### 2. Detalle de Post
 
-- Debe mostrar imagen (si tiene), nombre, descripción, precio y si es de compra o venta.  
+- Debe mostrar imagen (si tiene), nombre, descripción, precio y si es de compra o venta.
 - Debe gestionar todos los estados de la interfaz:
   - **Vacío** (no existe el post).
   - **Error** (al cargar la información del post).
@@ -67,7 +70,7 @@ Además, se debe proporcionar un archivo `db.json` para el backend con los datos
   - **Descripción** (obligatoria).
   - **Precio** (obligatorio).
   - **Compra/Venta** (obligatorio).
-- Al enviar el formulario, se debe hacer una petición al backend para guardar el post.  
+- Al enviar el formulario, se debe hacer una petición al backend para guardar el post.
 - Se deben gestionar los estados de la interfaz:
   - **Error** (al guardar el post).
   - **Carga** (durante el guardado).
@@ -76,14 +79,14 @@ Además, se debe proporcionar un archivo `db.json` para el backend con los datos
 
 ### 4. Login
 
-- Debe mostrar un formulario con nombre de usuario y contraseña.  
-- Al enviar el formulario, se debe autenticar al usuario contra el backend y obtener un token JWT.  
+- Debe mostrar un formulario con nombre de usuario y contraseña.
+- Al enviar el formulario, se debe autenticar al usuario contra el backend y obtener un token JWT.
 - Se deben gestionar los estados: carga, error y éxito.
 
 ### 5. Registro
 
-- Similar a la pantalla de login.  
-- Debe registrar al usuario en el backend.  
+- Similar a la pantalla de login.
+- Debe registrar al usuario en el backend.
 - Se deben gestionar los estados: carga, error y éxito.
 
 ### 6. Objetivos Opcionales
@@ -91,10 +94,11 @@ Además, se debe proporcionar un archivo `db.json` para el backend con los datos
 - Paginación de posts en el listado (la API devuelve solo 10 por defecto).
 - Buscador de posts.
 - Edición de posts (solo si el usuario es propietario).
-- Filtrado por etiquetas (*tags*) estáticas.
-- Hacer que los *tags* sean dinámicos.
+- Filtrado por etiquetas (_tags_) estáticas.
+- Hacer que los _tags_ sean dinámicos.
 
 <!-- ------------------------------------------------------------------------------------------- -->
+
 ## Tecnologías Utilizadas
 
 ### Lenguajes
@@ -108,6 +112,7 @@ Además, se debe proporcionar un archivo `db.json` para el backend con los datos
 Ninguna
 
 <!-- ------------------------------------------------------------------------------------------- -->
+
 ## Instrucciones de Instalación y Uso
 
 ### Requisitos de Software
@@ -115,21 +120,23 @@ Ninguna
 - **[Git](https://git-scm.com/downloads)** (testeado en la versión **2.47.1.windows.1**)
 - **[Visual Studio Code](https://code.visualstudio.com/)** (testeado en la versión **1.99.0**)
 - **[Sparrest (API REST)](https://github.com/kasappeal/sparrest.js)** (creada por el docente **Alberto Casero** - **KeepCoding**)
-- **Live Server** (VS Code addon, *opcional*)
+- **Live Server** (VS Code addon, _opcional_)
 
 ### Clonación del Repositorio
 
-API REST Sparrest
+- **API REST Sparrest**
 
 ```bash
 git clone https://github.com/kasappeal/sparrest.js.git
 ```
 
-Poyecto
+- **Poyecto**
 
 ```bash
 git clone https://github.com/pablo-sch/keepcoding-05-frontend-javascript.git
 ```
+
+- **Demo**
 
 ![Demo](https://github.com/pablo-sch/pablo-sch/blob/main/etc/clone-tutorial.gif)
 
@@ -153,11 +160,12 @@ npm start
 
 - El archivo `db.json` contiene tres cuentas y 14 publicaciones. Estas son las credenciales de cada cuenta para iniciar sesión en el proyecto y editar las publicaciones ya creadas:
 
-- [pablsch.it@gmail.com](mailto:pablsch.it@gmail.com) / pwd: 123456  
-- [Pedro.it@gmail.com](mailto:Pedro.it@gmail.com) / pwd: 123456  
+- [pablsch.it@gmail.com](mailto:pablsch.it@gmail.com) / pwd: 123456
+- [Pedro.it@gmail.com](mailto:Pedro.it@gmail.com) / pwd: 123456
 - [jose.JJ@gmail.com](mailto:jose.JJ@gmail.com) / pwd: 123456
 
 <!-- ------------------------------------------------------------------------------------------- -->
+
 ## Vista Previa del Proyecto
 
 ### Home
@@ -181,6 +189,7 @@ npm start
 ![Edit Post](../etc/preview_images/post_edit.png)
 
 <!-- ------------------------------------------------------------------------------------------- -->
+
 ## Contribuciones y Licencias
 
 Este proyecto no cuenta con contribuciones externas ni licencias.

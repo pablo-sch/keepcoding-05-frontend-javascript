@@ -9,12 +9,14 @@ Die vollständige Liste der Repositories und Beschreibungen findest du in [repos
 - 🇪🇸 [Spanisch](README.es.md)
 
 <!-- ------------------------------------------------------------------------------------------- -->
+
 ## Projektziel
 
 Zur Übung und Demonstration des im Online-Unterricht erworbenen Wissens besteht dieses Projekt darin, eine Webanwendung ähnlich wie Wallapop zu entwickeln. Die Verwendung von JavaScript-Bibliotheken oder -Frameworks ist nicht erlaubt, allerdings dürfen externe CSS-Utilities verwendet werden.  
 Zusätzlich muss eine `db.json`-Datei für das Backend bereitgestellt werden, die die notwendigen Beispieldaten für die Korrektur enthält.
 
 <!-- ------------------------------------------------------------------------------------------- -->
+
 ## Erlerntes und Angewandtes Wissen
 
 - Grundlegende Funktionsweise eines Browsers.
@@ -29,29 +31,30 @@ Zusätzlich muss eine `db.json`-Datei für das Backend bereitgestellt werden, di
 - Umgang mit DOM-Events.
 - Standardverhalten von HTML-Komponenten.
 - Event-Bubbling und Capturing.
-- Promises und ihre Zustände: *pending*, *fulfilled*, *rejected*.
+- Promises und ihre Zustände: _pending_, _fulfilled_, _rejected_.
 - HTTP-Anfragen mit `fetch`.
 - `localStorage` und `sessionStorage`.
 - Lokale Datenspeicherung in HTML5: Cookies, Storage und IndexedDB.
 
 <!-- ------------------------------------------------------------------------------------------- -->
+
 ## Projektdetails
 
 ### 1. Post-Übersicht
 
-- Jeder Post soll ein Bild (falls vorhanden), Name, Beschreibung, Preis und ob es sich um Kauf oder Verkauf handelt anzeigen.  
-- Die Posts müssen über einen *Endpoint* geladen werden.  
+- Jeder Post soll ein Bild (falls vorhanden), Name, Beschreibung, Preis und ob es sich um Kauf oder Verkauf handelt anzeigen.
+- Die Posts müssen über einen _Endpoint_ geladen werden.
 - Die Übersichtsseite muss alle UI-Zustände handhaben:
   - **Leer** (keine Posts vorhanden).
   - **Fehler** (beim Laden der Posts).
   - **Ladevorgang** (während die Posts geladen werden).
   - **Erfolg** (Posts erfolgreich geladen).
-- Beim Klicken auf einen Post soll die Detailseite geöffnet werden.  
+- Beim Klicken auf einen Post soll die Detailseite geöffnet werden.
 - Wenn der Benutzer eingeloggt ist, soll ein Button zum Erstellen neuer Posts angezeigt werden.
 
 ### 2. Post-Detailansicht
 
-- Zeigt Bild (falls vorhanden), Name, Beschreibung, Preis und ob Kauf oder Verkauf.  
+- Zeigt Bild (falls vorhanden), Name, Beschreibung, Preis und ob Kauf oder Verkauf.
 - Muss alle UI-Zustände behandeln:
   - **Leer** (Post existiert nicht).
   - **Fehler** (beim Laden der Daten).
@@ -67,7 +70,7 @@ Zusätzlich muss eine `db.json`-Datei für das Backend bereitgestellt werden, di
   - **Beschreibung** (Pflichtfeld).
   - **Preis** (Pflichtfeld).
   - **Kauf/Verkauf** (Pflichtfeld).
-- Beim Absenden des Formulars wird ein Request an das Backend gesendet, um den Post zu speichern.  
+- Beim Absenden des Formulars wird ein Request an das Backend gesendet, um den Post zu speichern.
 - Die UI-Zustände müssen behandelt werden:
   - **Fehler** (beim Speichern).
   - **Ladevorgang** (beim Speichern).
@@ -76,14 +79,14 @@ Zusätzlich muss eine `db.json`-Datei für das Backend bereitgestellt werden, di
 
 ### 4. Login
 
-- Zeigt ein Formular mit Benutzername und Passwort.  
-- Beim Absenden wird der Benutzer über das Backend authentifiziert und ein JWT-Token empfangen.  
+- Zeigt ein Formular mit Benutzername und Passwort.
+- Beim Absenden wird der Benutzer über das Backend authentifiziert und ein JWT-Token empfangen.
 - UI-Zustände: Laden, Fehler, Erfolg.
 
 ### 5. Registrierung
 
-- Ähnlich wie die Login-Seite.  
-- Registriert den Benutzer im Backend.  
+- Ähnlich wie die Login-Seite.
+- Registriert den Benutzer im Backend.
 - UI-Zustände: Laden, Fehler, Erfolg.
 
 ### 6. Optionale Ziele
@@ -91,10 +94,11 @@ Zusätzlich muss eine `db.json`-Datei für das Backend bereitgestellt werden, di
 - Paginierung der Posts in der Übersicht (API liefert standardmäßig nur 10).
 - Post-Suchfunktion.
 - Bearbeitung von Posts (nur wenn Benutzer Eigentümer ist).
-- Filterung nach statischen *Tags*.
-- Dynamische *Tags* ermöglichen.
+- Filterung nach statischen _Tags_.
+- Dynamische _Tags_ ermöglichen.
 
 <!-- ------------------------------------------------------------------------------------------- -->
+
 ## Verwendete Technologien
 
 ### Sprachen
@@ -108,6 +112,7 @@ Zusätzlich muss eine `db.json`-Datei für das Backend bereitgestellt werden, di
 Keine
 
 <!-- ------------------------------------------------------------------------------------------- -->
+
 ## Installations- und Nutzungshinweise
 
 ### Softwareanforderungen
@@ -115,21 +120,23 @@ Keine
 - **[Git](https://git-scm.com/downloads)** (getestet mit Version **2.47.1.windows.1**)
 - **[Visual Studio Code](https://code.visualstudio.com/)** (getestet mit Version **1.99.0**)
 - **[Sparrest (REST-API)](https://github.com/kasappeal/sparrest.js)** (entwickelt von **Alberto Casero** – **KeepCoding**)
-- **Live Server** (VS Code addon, *optional*)
+- **Live Server** (VS Code addon, _optional_)
 
 ### Repository-Klonen
 
-API REST Sparrest
+- **API REST Sparrest**
 
 ```bash
 git clone https://github.com/kasappeal/sparrest.js.git
 ```
 
-Projekt
+- **Projekt**
 
 ```bash
 git clone https://github.com/pablo-sch/keepcoding-05-frontend-javascript.git
 ```
+
+- **Demo**
 
 ![Demo](https://github.com/pablo-sch/pablo-sch/blob/main/etc/clone-tutorial.gif)
 
@@ -153,11 +160,12 @@ npm start
 
 - Die Datei `db.json` enthält drei Benutzerkonten und 14 Posts. Hier sind die Zugangsdaten, um sich anzumelden und vorhandene Posts zu bearbeiten:
 
-- [pablsch.it@gmail.com](mailto:pablsch.it@gmail.com) / Passwort: 123456  
-- [Pedro.it@gmail.com](mailto:Pedro.it@gmail.com) / Passwort: 123456  
+- [pablsch.it@gmail.com](mailto:pablsch.it@gmail.com) / Passwort: 123456
+- [Pedro.it@gmail.com](mailto:Pedro.it@gmail.com) / Passwort: 123456
 - [jose.JJ@gmail.com](mailto:jose.JJ@gmail.com) / Passwort: 123456
 
 <!-- ------------------------------------------------------------------------------------------- -->
+
 ## Projektvorschau
 
 ### Startseite
@@ -181,6 +189,7 @@ npm start
 ![Edit Post](../etc/preview_images/post_edit.png)
 
 <!-- ------------------------------------------------------------------------------------------- -->
+
 ## Beiträge und Lizenz
 
 Dieses Projekt enthält keine externen Beiträge und steht unter keiner Lizenz.
