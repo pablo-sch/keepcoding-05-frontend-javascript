@@ -1,7 +1,7 @@
 # Entrega Proyecto de Desarrollo Frontend con JavaScript
 
 **Proyectos KeepCoding - Web 18**  
-Consulta la lista completa de repositorios y descripciones en [repos-kc-web-18.md](https://github.com/pablo-sch/pablo-sch/blob/main/docs/repos-kc-web-18.md)
+Consulta la lista completa de repositorios y descripciones en 📁 [repos-kc-web-18.md](https://github.com/pablo-sch/pablo-sch/blob/main/docs/repos-kc-web-18.md)
 
 ## Selecciona tu Idioma
 
@@ -124,19 +124,19 @@ Ninguna
 
 ### Clonación del Repositorio
 
-- **API REST Sparrest**
+API REST Sparrest
 
 ```bash
 git clone https://github.com/kasappeal/sparrest.js.git
 ```
 
-- **Poyecto**
+Poyecto
 
 ```bash
 git clone https://github.com/pablo-sch/keepcoding-05-frontend-javascript.git
 ```
 
-- **Demo**
+Demo
 
 ![Demo](https://github.com/pablo-sch/pablo-sch/blob/main/etc/clone-tutorial.gif)
 
